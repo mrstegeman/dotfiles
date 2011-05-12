@@ -1,0 +1,16 @@
+[user]
+    name = Mike Stegeman
+    email = mrstegeman@gmail.com
+[color]
+    diff = true
+    branch = true
+    status = true
+[diff]
+    external = git_diff_wrapper
+[pager]
+    diff =
+[core]
+    editor = vim
+    pager = less
+[merge]
+    tool = vimdiff

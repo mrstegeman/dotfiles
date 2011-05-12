@@ -1,0 +1,5 @@
+[config]
+save_dir = /home/michael/Music
+name_template = ${artist}/${album}/${tracknum} - ${title}
+num_threads = 2
+toolkit = gtk
