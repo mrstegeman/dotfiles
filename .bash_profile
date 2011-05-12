@@ -1,11 +1,16 @@
-HISTFILESIZE=1000000000 HISTSIZE=1000000
+# locale
+export LC_COLLATE=C
 
-# include .bashrc if it exists
-if [ -f ~/.bashrc ]; then
+# programs
+export EDITOR=vim
+export VISUAL=$EDITOR
+export BROWSER=firefox
+export PAGER=less
+
+# path
+export PATH=$HOME/bin:$PATH
+
+# include .bashrc if it exists and session is interactive
+if [ -n $PS1 && -f ~/.bashrc ]; then
     . ~/.bashrc
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d ~/bin ] ; then
-    PATH=~/bin:"${PATH}"
 fi
