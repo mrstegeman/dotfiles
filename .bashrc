@@ -38,6 +38,9 @@ if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto -A'
     alias grep='grep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias zgrep='zgrep --color=auto'
+    alias pcregrep='pcregrep --color=auto'
 fi
 
 # enable programmable completion features

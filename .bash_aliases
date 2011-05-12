@@ -1,12 +1,7 @@
 # some good aliases
-alias quit='exit'
 alias date='date "+%A, %B %d, %Y   %R:%S"'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
 alias extip="wget -qO - http://www.whatismyip.com/automation/n09230945.asp && echo"
 alias tracklist="ls -R -1"
-alias renew="sudo dhclient eth0"
 alias vidmerge="mencoder -forceidx -oac copy -ovc copy -o"
 alias vga-off="xrandr --output VGA --off"
 alias vga-on="xrandr --output VGA --mode 1280x1024"
@@ -14,7 +9,6 @@ alias upgrade="yaourt -Syyu --aur --devel"
 
 # Extract files from any archive
 # Usage: extract <archive_name>
-
 extract () {
     for file in "$@"
     do
@@ -39,4 +33,26 @@ extract () {
             echo "'$file' is not a valid file"
         fi
     done
+}
+
+# make directory and change to it
+mkcd() {
+    [[ $1 ]] || return 0
+    [[ ! -d $1 ]] && mkdir -vp "$1"
+    [[ -d $1 ]] && builtin cd "$1"
+}
+
+# move up specified number of direcotires
+up() {
+    declare -i x=$1
+    local traverse
+
+    [[ $1 ]] || { cd ..; return; } # default to 1 level
+    (( x == 0 )) && return # noop
+
+    while (( x-- )); do
+        traverse+='../'
+    done
+
+    cd $traverse
 }
