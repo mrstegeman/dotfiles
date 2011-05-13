@@ -166,7 +166,10 @@
                     <execute>lxappearance</execute>
                 </action> </item>
                 <item label="Manage Printing"> <action name="Execute">
-                    <execute>xdg-open http://localhost:631/</execute>
+                    <execute>exo-open http://localhost:631/</execute>
+                </action> </item>
+                <item label="Orta Settings Manager"> <action name="Execute">
+                    <execute>orta-settings-manager</execute>
                 </action> </item>
                 <item label="Qt Config"> <action name="Execute">
                     <execute>qtconfig</execute>
