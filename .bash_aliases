@@ -6,6 +6,9 @@ alias vidmerge="mencoder -forceidx -oac copy -ovc copy -o"
 alias vga-off="xrandr --output VGA --off"
 alias vga-on="xrandr --output VGA --mode 1280x1024"
 alias upgrade="yaourt -Syyu --aur --devel"
+# vim habits...
+alias :q="exit"
+alias :wq="exit"
 
 # Extract files from any archive
 # Usage: extract <archive_name>
