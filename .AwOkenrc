@@ -17,8 +17,9 @@
 
 iconset_type='clear'
 folder_type='sonetto'
+folder_sub_type='sonetto02'
 start_here='arch4'
-trash_type='trash1'
+trash_type='trash4'
 
 color_type='no-color'
 applications='clear'
@@ -27,7 +28,7 @@ gedit_type='gedit2'
 computer_type='computer2'
 home_type='home2'
 
-misc='change'
+misc='nothing'
 emesene='nothing'
 cpufreq='nothing'
 liferea='nothing'
