@@ -73,6 +73,9 @@
             <item label="Lynx"> <action name="Execute">
                 <execute>sakura -e lynx</execute>
             </action> </item>
+            <item label="Opera"> <action name="Execute">
+                <execute>opera</execute>
+            </action> </item>
             <item label="Remmina Remote Desktop Client"> <action name="Execute">
                 <execute>remmina</execute>
             </action> </item>
