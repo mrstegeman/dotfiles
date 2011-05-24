@@ -22,9 +22,13 @@ export ${!HIST@}
 PS1='\u@\h:\w\$ '
 
 # if this is an xterm set the title to user@host:dir
+# merge history from all sessions
 case "$TERM" in
 xterm*|rxvt*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD/$HOME/~}\007"'
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD/$HOME/~}\007";history -a'
+    ;;
+*)
+    PROMPT_COMMAND="history -a"
     ;;
 esac
 
@@ -57,6 +61,3 @@ LESS_TERMCAP_so=$'\E[01;44;33m'
 LESS_TERMCAP_ue=$'\E[0m'
 LESS_TERMCAP_us=$'\E[01;32m'
 export ${!LESS@}
-
-# merge history from all sessions
-PROMPT_COMMAND="$PROMPT_COMMAND;history -a"
