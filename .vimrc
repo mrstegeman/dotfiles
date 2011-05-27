@@ -21,3 +21,8 @@ set softtabstop=4
 set tabstop=4
 set title
 syntax on
+
+" settings for vim-detectindent
+let g:detectindent_preferred_expandtab=1
+let g:detectindent_preferred_indent=4
+autocmd BufReadPost * :DetectIndent 
