@@ -39,7 +39,7 @@ set set_mode        = set mode =
 set set_status      = set status_message =
 
 # Spawn path shortcuts. In spawn the first dir+path match is used in "dir1:dir2:dir3:executable"
-set scripts_dir      = @config_home/uzbl:@prefix/share/uzbl/examples/data:scripts
+set scripts_dir      = @config_home/uzbl:scripts
 
 # === Hardcoded handlers =====================================================
 
@@ -62,7 +62,7 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 #   What to do when the user requests a new window:
 # If your the NEW_WINDOW handler opens the uri in the current window, you'll
 # probably want to change this handler to open a new window or tab.
-@on_event   REQ_NEW_WINDOW event NEW_WINDOW %s
+@on_event   REQ_NEW_WINDOW event NEW_TAB %s
 
 # Load start handler
 @on_event   LOAD_START     @set_status <span foreground="khaki">wait</span>
@@ -139,7 +139,7 @@ set progress.pending    =
 
 # === Useragent setup ========================================================
 
-set useragent         = Uzbl (Webkit @{WEBKIT_MAJOR}.@{WEBKIT_MINOR}) (@(+uname -sm)@ [@ARCH_UZBL])
+set useragent = Mozilla/5.0 (X11; @(+uname -sm)@) AppleWebKit/534.24 (KHTML, like Gecko) Uzbl
 
 # === Configure cookie blacklist ========================================================
 
@@ -277,10 +277,15 @@ set ebind     = @mode_bind global,-insert
 @cbind  <Ctrl>p = hardcopy
 
 # Web searching binds
-@cbind  gg<Google:>_         = uri http://www.google.com/search?q=\@<encodeURIComponent(%r)>\@
-@cbind  ddg<DuckDuckGo:>_    = uri http://duckduckgo.com/?q=%s
-@cbind  \\awiki<Archwiki:>_  = uri http://wiki.archlinux.org/index.php/Special:Search?search=\@<encodeURIComponent(%r)>\@&go=Go
-@cbind  \\wiki<Wikipedia:>_  = uri http://en.wikipedia.org/w/index.php?title=Special:Search&search=\@<encodeURIComponent(%r)>\@&go=Go
+@cbind  \\g<Google:>_         = uri http://www.google.com/search?q=\@<encodeURIComponent(%r)>\@
+@cbind  \\a<Archwiki:>_       = uri http://wiki.archlinux.org/index.php/Special:Search?search=\@<encodeURIComponent(%r)>\@&go=Go
+@cbind  \\w<Wikipedia:>_      = uri http://en.wikipedia.org/w/index.php?title=Special:Search&search=\@<encodeURIComponent(%r)>\@&go=Go
+@cbind  \\y<YouTube:>_        = uri http://www.youtube.com/results?search_query=\@<encodeURIComponent(%r)>\@&search_type=&aq=f
+@cbind  \\i<Google Images:>_  = uri http://images.google.com/images?q=\@<encodeURIComponent(%r)>\@
+@cbind  \\z<Amazon:>_         = uri http://www.amazon.com/s/ref=nb_ss_gw?url=search-alias%3Daps&field-keywords=\@<encodeURIComponent(%r)>\@
+@cbind  \\e<eBay:>_           = uri http://search.ebay.com/search/search.dll?from=R40&_trksid=m37.l1313&satitle=\@<encodeURIComponent(%r)>\@&=&category0=
+@cbind  \\b<IMDb:>_           = uri http://www.imdb.com/find?s=all&q=\@<encodeURIComponent(%r)>\@
+@cbind  \\m<Amazon MP3:>_     = uri http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Ddigital-music&field-keywords=\@<encodeURIComponent(%r)>\@
 
 # Handy binds
 # Set function shortcut
@@ -310,7 +315,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  gh  = uri http://www.uzbl.org
 
 # New window binds
-@cbind  gw  = event REQ_NEW_WINDOW
+@cbind  gw  = event NEW_WINDOW
 
 # SSL-ify bindings
 @cbind  zs  = uri \@(echo "$UZBL_URI" | sed -e 's/^http:/https:/')\@
