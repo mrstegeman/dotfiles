@@ -139,7 +139,7 @@ set progress.pending    =
 
 # === Useragent setup ========================================================
 
-set useragent = Mozilla/5.0 (X11; @(+uname -sm)@) AppleWebKit/@(grep USER_AGENT_MAJOR /usr/include/webkit-1.0/webkit/webkitversion.h | pcregrep -o '\\d+')@.@(grep USER_AGENT_MINOR /usr/include/webkit-1.0/webkit/webkitversion.h | pcregrep -o '\\d+')@ (KHTML, like Gecko) Uzbl
+set useragent = Mozilla/5.0 (X11; @(+uname -sm)@) AppleWebKit/@{WEBKIT_UA_MAJOR}.@{WEBKIT_UA_MINOR} (KHTML, like Gecko) Uzbl
 
 # === Configure cookie blacklist ========================================================
 
@@ -250,11 +250,13 @@ set ebind     = @mode_bind global,-insert
 @cbind  <Space>      = scroll vertical end
 
 # Navigation binds
-@cbind  b   = back
-@cbind  m   = forward
-@cbind  S   = stop
-@cbind  r   = reload
-@cbind  R   = reload_ign_cache
+@cbind  b             = back
+@cbind  <Alt><Left>   = back
+@cbind  m             = forward
+@cbind  <Alt><Right>  = forward
+@cbind  S             = stop
+@cbind  r             = reload
+@cbind  R             = reload_ign_cache
 
 # Zoom binds
 @cbind  +   = zoom_in
@@ -274,7 +276,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  N   = search_reverse
 
 # Print pages to a printer
-@cbind  <Ctrl>p = hardcopy
+@cbind  <Ctrl>p = hardcopy
 
 # Web searching binds
 @cbind  \\g<Google:>_         = uri http://www.google.com/search?q=\@<encodeURIComponent(%r)>\@
@@ -306,6 +308,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  o<uri:>_       = uri %s
 # Or have it load the current uri into the keycmd for editing
 @cbind  O<uri:\@uri>_  = uri %s
+@cbind  <Ctrl>l<uri:\@uri>_  = uri %s
 
 # Mode setting binds
 @cbind  i        = @set_mode insert
@@ -340,7 +343,8 @@ set ebind     = @mode_bind global,-insert
 # Bookmark inserting binds
 @cbind <Ctrl>b<tags:>_  = sh 'echo `printf "$UZBL_URI %s"` >> "$XDG_DATA_HOME"/uzbl/bookmarks'
 # Or use a script to insert a bookmark.
-@cbind  B  = spawn @scripts_dir/insert_bookmark.sh
+@cbind  B               = spawn @scripts_dir/insert_bookmark.sh
+@cbind  <Ctrl>d         = spawn @scripts_dir/insert_bookmark.sh
 
 # Bookmark/history loading
 @cbind  U  = spawn @scripts_dir/load_url_from_history.sh
