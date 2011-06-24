@@ -221,7 +221,7 @@ set ebind     = @mode_bind global,-insert
 # --- Mouse bindings ---------------------------------------------------------
 
 # Middle click open in new window
-@bind  <Button2>  = sh 'if [ "$1" ]; then echo "event REQ_NEW_WINDOW $1" > "$UZBL_FIFO"; else echo "uri $(xclip -o | sed s/\\\@/%40/g)" > "$UZBL_FIFO"; fi' '\@SELECTED_URI'
+@bind  <Button2>  = sh 'if [ "$1" ]; then echo "event REQ_NEW_WINDOW $1" > "$UZBL_FIFO"; else echo "uri $(xclip -o -selection clipboard | sed s/\\\@/%40/g)" > "$UZBL_FIFO"; fi' '\@SELECTED_URI'
 
 # --- Keyboard bindings ------------------------------------------------------
 
@@ -325,20 +325,20 @@ set ebind     = @mode_bind global,-insert
 @cbind  zS  = event REQ_NEW_WINDOW \@(echo "$UZBL_URI" | sed -e 's/^http:/https:/')\@
 
 # Yanking & pasting binds
-@cbind  yu  = sh 'echo -n "$UZBL_URI" | xclip'
-@cbind  yU  = sh 'echo -n "$1" | xclip' \@SELECTED_URI
-@cbind  yy  = sh 'echo -n "$UZBL_TITLE" | xclip'
+@cbind  yu  = sh 'echo -n "$UZBL_URI" | xclip -selection clipboard'
+@cbind  yU  = sh 'echo -n "$1" | xclip -selection clipboard' '\@SELECTED_URI'
+@cbind  yy  = sh 'echo -n "$UZBL_TITLE" | xclip -selection clipboard'
 
 # Clone current window
 @cbind  c   = event REQ_NEW_WINDOW \@uri
 # Go the page from primary selection
-@cbind  p   = sh 'echo "uri $(xclip -o | sed s/\\\@/%40/g)" > "$UZBL_FIFO"'
+@cbind  p   = sh 'echo "uri $(xclip -o -selection clipboard | sed s/\\\@/%40/g)" > "$UZBL_FIFO"'
 # Go to the page in clipboard
-@cbind  P   = sh 'echo "uri $(xclip -selection clipboard -o | sed s/\\\@/%40/g)" > "$UZBL_FIFO"'
+@cbind  P   = sh 'echo "uri $(xclip -o -selection clipboard | sed s/\\\@/%40/g)" > "$UZBL_FIFO"'
 # Start a new uzbl instance from the page in primary selection
-@cbind  'p  = sh 'echo "event REQ_NEW_WINDOW $(xclip -o)" > "$UZBL_FIFO"'
+@cbind  'p  = sh 'echo "event REQ_NEW_WINDOW $(xclip -o -selection clipboard)" > "$UZBL_FIFO"'
 # paste primary selection into keycmd at the cursor position
-@bind <Shift-Insert> = sh 'echo "event INJECT_KEYCMD $(xclip -o | sed s/\\\@/%40/g)" > "$UZBL_FIFO"'
+@bind <Shift-Insert> = sh 'echo "event INJECT_KEYCMD $(xclip -o -selection clipboard | sed s/\\\@/%40/g)" > "$UZBL_FIFO"'
 
 # Bookmark inserting binds
 @cbind <Ctrl>b<tags:>_  = sh 'echo `printf "$UZBL_URI %s"` >> "$XDG_DATA_HOME"/uzbl/bookmarks'
