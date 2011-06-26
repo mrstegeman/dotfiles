@@ -61,7 +61,7 @@ do
     case "$opt" in
         bills)
             for tsk in $(task conky tags.has:Bills due${day} | \
-                        head -n -2 | tail -n +4 | \
+                        sed -r -e '/^$/d' -e '/^[- ]*$/d' -e '/^[0-9]+ *tasks?$/d' -e '/^Due *Description$/d' -e '/^No *matches\.$/d' | \
                         perl -e 'while(<>){my $line = $_; $line =~ s/^\d{8}(\d{2})(\d{2})/\1:\2/; print $line;}')
             do
                 due=("${due[@]}" "$tsk")
@@ -69,7 +69,7 @@ do
             ;;
         tv)
             for tsk in $(task conky tags.has:TV due${day} | \
-                        head -n -2 | tail -n +4 | \
+                        sed -r -e '/^$/d' -e '/^[- ]*$/d' -e '/^[0-9]+ *tasks?$/d' -e '/^Due *Description$/d' -e '/^No *matches\.$/d' | \
                         perl -e 'while(<>){my $line = $_; $line =~ s/^\d{8}(\d{2})(\d{2})/\1:\2/; print $line;}')
             do
                 due=("${due[@]}" "$tsk")
@@ -77,7 +77,7 @@ do
             ;;
         other)
             for tsk in $(task conky tags.hasnt:Bills tags.hasnt:TV due${day} | \
-                        head -n -2 | tail -n +4 | \
+                        sed -r -e '/^$/d' -e '/^[- ]*$/d' -e '/^[0-9]+ *tasks?$/d' -e '/^Due *Description$/d' -e '/^No *matches\.$/d' | \
                         perl -e 'while(<>){my $line = $_; $line =~ s/^\d{8}(\d{2})(\d{2})/\1:\2/; print $line;}')
             do
                 due=("${due[@]}" "$tsk")
