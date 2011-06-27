@@ -41,10 +41,6 @@ function print_due_list() {
             date=$(date --date="today + 6 days" "+%a, %b %d")
             title="Tasks Due on $date"
             ;;
-        ":7d")
-            date=$(date --date="today + 7 days" "+%a, %b %d")
-            title="Tasks Due on $date"
-            ;;
     esac
 
     echo "\${$title_color}$title"
@@ -55,30 +51,30 @@ function print_due_list() {
     done
 }
 
-for day in .before:today :today :tomorrow :2d :3d :4d :5d :6d :7d
+for day in .before:today :today :tomorrow :2d :3d :4d :5d :6d
 do
     due=()
     case "$opt" in
         bills)
             for tsk in $(task conky tags.has:Bills due${day} | \
-                        sed -r -e '/^$/d' -e '/^[- ]*$/d' -e '/^[0-9]+ *tasks?$/d' -e '/^Due *Description$/d' -e '/^No *matches\.$/d' | \
-                        perl -e 'while(<>){my $line = $_; $line =~ s/^\d{8}(\d{2})(\d{2})/\1:\2/; print $line;}')
+                sed -r -e '/^$/d' -e '/^[- ]+$/d' -e '/^[0-9]+ tasks?$/d' -e '/^No matches\.$/d' \
+                       -e '/^Due *Description$/d' -e 's/^[0-9]{8}([0-9]{2})([0-9]{2})/\1:\2/')
             do
                 due=("${due[@]}" "$tsk")
             done
             ;;
         tv)
             for tsk in $(task conky tags.has:TV due${day} | \
-                        sed -r -e '/^$/d' -e '/^[- ]*$/d' -e '/^[0-9]+ *tasks?$/d' -e '/^Due *Description$/d' -e '/^No *matches\.$/d' | \
-                        perl -e 'while(<>){my $line = $_; $line =~ s/^\d{8}(\d{2})(\d{2})/\1:\2/; print $line;}')
+                sed -r -e '/^$/d' -e '/^[- ]+$/d' -e '/^[0-9]+ tasks?$/d' -e '/^No matches\.$/d' \
+                       -e '/^Due *Description$/d' -e 's/^[0-9]{8}([0-9]{2})([0-9]{2})/\1:\2/')
             do
                 due=("${due[@]}" "$tsk")
             done
             ;;
         other)
             for tsk in $(task conky tags.hasnt:Bills tags.hasnt:TV due${day} | \
-                        sed -r -e '/^$/d' -e '/^[- ]*$/d' -e '/^[0-9]+ *tasks?$/d' -e '/^Due *Description$/d' -e '/^No *matches\.$/d' | \
-                        perl -e 'while(<>){my $line = $_; $line =~ s/^\d{8}(\d{2})(\d{2})/\1:\2/; print $line;}')
+                sed -r -e '/^$/d' -e '/^[- ]+$/d' -e '/^[0-9]+ tasks?$/d' -e '/^No matches\.$/d' \
+                       -e '/^Due *Description$/d' -e 's/^[0-9]{8}([0-9]{2})([0-9]{2})/\1:\2/')
             do
                 due=("${due[@]}" "$tsk")
             done
