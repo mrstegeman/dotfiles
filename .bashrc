@@ -19,8 +19,6 @@ HISTSIZE=1000000
 HISTFILESIZE=1000000000
 export ${!HIST@}
 
-PS1='\u@\h:\w\$ '
-
 # if this is an xterm set the title to user@host:dir
 # merge history from all sessions
 case "$TERM" in
@@ -37,8 +35,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable color support of ls and grep
+# enable color support of ls and grep, set PS1
 if [ "$TERM" != "dumb" ]; then
+    PS1='┌──[\e[0;33m\u\e[0m@\e[0;34m\h\e[0m]─[\e[2;37m\w\e[0m]\n└─\$ '
     if [ -f ~/.dircolors ]; then
         eval "`dircolors -b ~/.dircolors`"
     else
@@ -49,6 +48,9 @@ if [ "$TERM" != "dumb" ]; then
     alias egrep='egrep --color=auto'
     alias zgrep='zgrep --color=auto'
     alias pcregrep='pcregrep --color=auto'
+else
+    PS1='┌──[\u@\h]─[\w]\n└─\$ '
+    alias ls='ls -A'
 fi
 
 # enable programmable completion features
