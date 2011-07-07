@@ -12,8 +12,8 @@ double_buffer yes
 no_buffers yes
 text_buffer_size 1024
 override_utf8_locale yes
-minimum_size 300 50
-maximum_width 300
+minimum_size 400 50
+maximum_width 400
 draw_shades no
 draw_outline no
 draw_borders no
@@ -22,13 +22,14 @@ border_inner_margin 0
 border_outer_margin 0
 alignment bottom_left
 gap_x 10
-gap_y 10
+gap_y -240
 cpu_avg_samples 2
 default_color ffffff
 color1 999999
+default_bar_size 1 100
 
 
 TEXT
-${voffset 60}${color1}${font Candara:size=48}${time %H:%M}
-${goto 160}${voffset -82}${font Candara:size=18}${time %A}
-${goto 160}${time %b. %d}
+${color1}${font NovaMono:size=60}${time %H %M}
+${voffset -70}${goto 105}${execbar echo 1}
+${voffset -100}${goto 125}${font NovaMono:size=18}${time %A, %B %d}
