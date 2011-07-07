@@ -2,4 +2,4 @@ MAILDIR=/home/michael/
 VERBOSE=on
 
 :0
-Mail/
+mail/
