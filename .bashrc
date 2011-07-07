@@ -39,7 +39,11 @@ fi
 
 # enable color support of ls and grep
 if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
+    if [ -f ~/.dircolors ]; then
+        eval "`dircolors -b ~/.dircolors`"
+    else
+        eval "`dircolors -b`"
+    fi
     alias ls='ls --color=auto -A'
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
