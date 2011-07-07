@@ -255,3 +255,12 @@ EXEC 01;32 # This is for files with execute permission:
 .xltm 00;31
 .xltx 00;31
 .xlw 00;31
+
+# backup and log files
+*# 01;37
+*~ 01;37
+.aux 01;37
+.bak 01;37
+.bbl 01;37
+.blg 01;37
+.log 01;37
