@@ -239,9 +239,7 @@ EXEC 01;32 # This is for files with execute permission:
 .std 00;31
 .sti 00;31
 .stw 00;31
-.stw 00;31
 .sxc 00;31
-.sxd 00;31
 .sxd 00;31
 .sxg 00;31
 .sxi 00;31
