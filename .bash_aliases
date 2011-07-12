@@ -1,5 +1,4 @@
 # some good aliases
-alias date='date "+%A, %B %d, %Y   %R:%S"'
 alias extip="wget -qO - http://www.whatismyip.com/automation/n09230945.asp && echo"
 alias vidmerge="mencoder -forceidx -oac copy -ovc copy -o"
 alias vga-off="xrandr --output VGA --off"
