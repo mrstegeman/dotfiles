@@ -5,7 +5,7 @@ alias vidmerge="mencoder -forceidx -oac copy -ovc copy -o"
 alias vga-off="xrandr --output VGA --off"
 alias vga-on="xrandr --output VGA --mode 1280x1024"
 alias upgrade="yaourt -Syyu --aur --devel"
-alias vimdiff='vimdiff -c "set wrap" -c "wincmd w" -c "set wrap"'
+alias vimdiff='vimdiff -c "set wrap" -c "wincmd w" -c "set wrap" -c "wincmd w"'
 # vim habits...
 alias :q="exit"
 alias :wq="exit"
