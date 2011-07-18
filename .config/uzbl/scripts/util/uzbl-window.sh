@@ -9,3 +9,4 @@ UZBL_WIN_POS_X="$( echo "$UZBL_WIN_POS" | cut -d ' ' -f 1 )"
 UZBL_WIN_POS_Y="$( echo "$UZBL_WIN_POS" | cut -d ' ' -f 2 )"
 UZBL_WIN_WIDTH="$( echo "$UZBL_WIN_SIZE" | cut -d ' ' -f 1 )"
 UZBL_WIN_HEIGHT="$( echo "$UZBL_WIN_SIZE" | cut -d ' ' -f 2 )"
+

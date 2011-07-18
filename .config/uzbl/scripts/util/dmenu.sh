@@ -30,6 +30,13 @@ case "$DMENU_SCHEME" in
         SB="#ccffaa"
         SF="#303030"
         ;;
+    # Temps
+    "temps" )
+        NB="#303030"
+        NF="khaki"
+        SB="#ccffaa"
+        SF="#303030"
+        ;;
     # Default
     * )
         NB="#303030"
@@ -107,3 +114,4 @@ if dmenu --help 2>&1 | grep -q '\[-x <\?xoffset>\?\]'; then
 fi
 
 DMENU="dmenu $DMENU_ARGS $DMENU_COLORS"
+
