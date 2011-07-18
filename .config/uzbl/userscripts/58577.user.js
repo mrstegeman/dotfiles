@@ -4,7 +4,7 @@
 // @description    Allows user to choose certain page elements to be hidden, resized or modified
 // @include        http://www.google.*/reader/*
 // @include        https://www.google.*/reader/*
-// @version        2.1.2011.0624
+// @version        2.1.2011.0627
 // ==/UserScript==
 
 // Manually included UserScript
@@ -584,7 +584,8 @@ var cssDefault = "#entries .entry-body, \
 #GM_config { \
     width: 500px !important; }";
 
-var cssTopNav = "#top-bar, \
+var cssTopNav = "#top-bar { \
+    height: 0 !important; } \
 #logo-container, \
 #gb, \
 #gbar, \
