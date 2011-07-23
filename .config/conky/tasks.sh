@@ -53,6 +53,7 @@ function print_due_list() {
 
 for day in .before:today :today :tomorrow :2d :3d :4d :5d :6d
 do
+    while ps -C task > /dev/null; do sleep .5; done
     due=()
     case "$opt" in
         bills)
