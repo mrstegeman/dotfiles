@@ -3,6 +3,7 @@
 opt="$1"
 title_color="$2"
 task_color="$3"
+lockfile="/tmp/.task.lock"
 
 IFS='
 '
@@ -51,9 +52,11 @@ function print_due_list() {
     done
 }
 
+while [ -f "$lockfile" ]; do sleep .5; done
+touch "$lockfile"
+
 for day in .before:today :today :tomorrow :2d :3d :4d :5d :6d
 do
-    while ps -C task > /dev/null; do sleep .5; done
     due=()
     case "$opt" in
         bills)
@@ -85,3 +88,5 @@ do
         print_due_list "$day"
     fi
 done
+
+rm "$lockfile"
