@@ -321,7 +321,6 @@
         # Launch some apps.
         [key] mod = {"Control", "Alt"} key = "e" func = "spawn" cmd = "leafpad" [/key]
         [key] mod = {"Control", "Alt"} key = "c" func = "spawn" cmd = "gcalctool" [/key]
-        [key] mod = {"Control", "Alt"} key = "r" func = "spawn" cmd = "sakura" [/key]
         [key] mod = {"Control", "Alt"} key = "p" func = "spawn" cmd = "thunar" [/key]
         [key] mod = {"Control", "Alt"} key = "g" func = "spawn" cmd = "chromium" [/key]
         [key] mod = {"Control", "Alt"} key = "f" func = "spawn" cmd = "firefox" [/key]
