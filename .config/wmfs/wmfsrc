@@ -81,18 +81,18 @@
         # layout_button_width = x
 
         # Tiling layouts.
-        [layout] type = "tile_right"         symbol = "RIGHT"    [/layout]
-        [layout] type = "tile_left"          symbol = "LEFT"     [/layout]
-        [layout] type = "tile_top"           symbol = "TOP"      [/layout]
-        [layout] type = "tile_bottom"        symbol = "BOTTOM"   [/layout]
-        [layout] type = "tile_grid"          symbol = "GRID_H"   [/layout]
-        [layout] type = "tile_grid_vertical" symbol = "GRID_V"   [/layout]
-        [layout] type = "mirror_vertical"    symbol = "MIRROR_V" [/layout]
-        [layout] type = "mirror_horizontal"  symbol = "MIRROR_H" [/layout]
+        [layout] type = "tile_right"         symbol = "right"    [/layout]
+        [layout] type = "tile_left"          symbol = "left"     [/layout]
+        [layout] type = "tile_top"           symbol = "top"      [/layout]
+        [layout] type = "tile_bottom"        symbol = "bottom"   [/layout]
+        [layout] type = "tile_grid"          symbol = "grid_h"   [/layout]
+        [layout] type = "tile_grid_vertical" symbol = "grid_v"   [/layout]
+        [layout] type = "mirror_vertical"    symbol = "mirror_v" [/layout]
+        [layout] type = "mirror_horizontal"  symbol = "mirror_h" [/layout]
 
         # Other layouts.
-        [layout] type = "max"   symbol = "MAX"  [/layout]
-        [layout] type = "free"  symbol = "FREE" [/layout]
+        [layout] type = "max"   symbol = "max"  [/layout]
+        [layout] type = "free"  symbol = "free" [/layout]
 
 [/layouts]
 
@@ -101,15 +101,15 @@
              name             = "new tag"
              mwfact           = 0.5
              nmaster          = 1
-             layout           = "tile"
+             layout           = "tile_right"
              resizehint       = false
-             infobar_position = "hide"
+             infobar_position = "top"
              split            = false
         [/default_tag]
 
         # whether client_next on the last tag will send you on the first
         # and client_prev on the first tag will send you on the last one
-        tag_round      = false
+        tag_round      = true
 
         # Going twice on the same tag will bring you back on the previous one
         tag_auto_prev  = true
@@ -144,14 +144,14 @@
 
         [tag]
                 name             = "one"
-                screen           = 0
-                mwfact           = 0.65
-                nmaster          = 1
-                layout           = "tile_right"
-                resizehint       = false
-                infobar_position = "hide"
+                #screen           = 0
+                #mwfact           = 0.5
+                #nmaster          = 1
+                #layout           = "tile_right"
+                #resizehint       = false
+                #infobar_position = "top"
                 above_fc         = false
-                split            = false
+                #split            = false
                 #[mouse] [/mouse] Possible multi mouse section
         [/tag]
 
@@ -330,31 +330,33 @@
 
         # Kill the selected client.
         [key] mod = {"Control"} key = "q" func = "client_kill" [/key]
+        [key] mod = {"Alt"} key = "F4" func = "client_kill" [/key]
 
         # Quit wmfs.
         [key] mod = {"Control", "Alt", "Shift"} key = "q" func = "quit" [/key]
 
         # Swap current client with the next.
-        [key] mod = {"Alt"} key = "t" func = "client_swap_next" [/key]
+        [key] mod = {"Super"} key = "t" func = "client_swap_next" [/key]
 
         # Swap current client with the previous.
-        [key] mod = {"Alt", "Shift"} key = "t" func = "client_swap_prev" [/key]
+        [key] mod = {"Super", "Shift"} key = "t" func = "client_swap_prev" [/key]
 
         # Set the selected client as Master
         [key] mod = {"Control"} key = "m" func = "client_set_master" [/key]
 
         # Toggle maximum the selected client
-        [key] mod = {"Alt"} key = "m" func = "toggle_max" [/key]
+        [key] mod = {"Super"} key = "m" func = "toggle_max" [/key]
+        [key] mod = {"Alt"} key = "F10" func = "toggle_max" [/key]
 
         # Toggle free the selected client.
-        [key] mod = {"Alt"} key = "f" func = "toggle_free" [/key]
+        [key] mod = {"Super"} key = "f" func = "toggle_free" [/key]
 
         # Toggle the position of the infobar.
-        [key] mod = {"Alt"} key = "b" func = "toggle_infobar_position" [/key]
-        [key] mod = {"Alt", "Shift"} key = "b" func = "toggle_infobar_display" [/key]
+        [key] mod = {"Super"} key = "b" func = "toggle_infobar_position" [/key]
+        [key] mod = {"Super", "Shift"} key = "b" func = "toggle_infobar_display" [/key]
 
         # Toggle the resizehint of the current tag/screen
-        [key] mod = {"Shift", "Control"} key = "r" func = "toggle_resizehint" [/key]
+        #[key] mod = {"Shift", "Control"} key = "r" func = "toggle_resizehint" [/key]
 
         # Toggle the tag_autohide mode
         #[key] mod = {"Shift", "Control"} key = "t" func = "toggle_tagautohide" [/key]
@@ -366,10 +368,10 @@
         [key] mod = {"Alt","Shift"} key = "Tab" func = "client_prev" [/key]
 
         # Select the next tag.
-        [key] mod = {"Control"} key = "Right" func = "tag_next" [/key]
+        [key] mod = {"Super"} key = "Right" func = "tag_next" [/key]
 
         # Select the previous tag.
-        [key] mod = {"Control"} key = "Left" func = "tag_prev" [/key]
+        [key] mod = {"Super"} key = "Left" func = "tag_prev" [/key]
 
         # Select the next visible tag.
         [key] mod = {"Control","Alt"} key = "Right" func = "tag_next_visible" [/key]
@@ -384,32 +386,32 @@
         [key] mod = {"Alt", "Shift"} key = "space" func = "layout_prev" [/key]
 
         # Increase nmaster.
-        [key] mod = {"Alt"} key = "d" func = "set_nmaster" cmd = "+1" [/key]
+        [key] mod = {"Super"} key = "d" func = "set_nmaster" cmd = "+1" [/key]
 
         # Decease nmaster.
-        [key] mod = {"Alt", "Shift"} key = "d" func = "set_nmaster" cmd = "-1" [/key]
+        [key] mod = {"Super", "Shift"} key = "d" func = "set_nmaster" cmd = "-1" [/key]
 
         # Set the tag x.
-        [key] mod = {"Alt"} key = "F1" func = "tag" cmd = "1" [/key]
-        [key] mod = {"Alt"} key = "F2" func = "tag" cmd = "2" [/key]
-        [key] mod = {"Alt"} key = "F3" func = "tag" cmd = "3" [/key]
-        [key] mod = {"Alt"} key = "F4" func = "tag" cmd = "4" [/key]
-        #[key] mod = {"Alt"} key = "F5" func = "tag" cmd = "5" [/key]
-        #[key] mod = {"Alt"} key = "F6" func = "tag" cmd = "6" [/key]
-        #[key] mod = {"Alt"} key = "F7" func = "tag" cmd = "7" [/key]
-        #[key] mod = {"Alt"} key = "F8" func = "tag" cmd = "8" [/key]
-        #[key] mod = {"Alt"} key = "F9" func = "tag" cmd = "9" [/key]
+        [key] mod = {"Super"} key = "F1" func = "tag" cmd = "1" [/key]
+        [key] mod = {"Super"} key = "F2" func = "tag" cmd = "2" [/key]
+        [key] mod = {"Super"} key = "F3" func = "tag" cmd = "3" [/key]
+        [key] mod = {"Super"} key = "F4" func = "tag" cmd = "4" [/key]
+        #[key] mod = {"Super"} key = "F5" func = "tag" cmd = "5" [/key]
+        #[key] mod = {"Super"} key = "F6" func = "tag" cmd = "6" [/key]
+        #[key] mod = {"Super"} key = "F7" func = "tag" cmd = "7" [/key]
+        #[key] mod = {"Super"} key = "F8" func = "tag" cmd = "8" [/key]
+        #[key] mod = {"Super"} key = "F9" func = "tag" cmd = "9" [/key]
 
         # Transfert selected client to x.
-        [key] mod = {"Alt", "Shift"} key = "F1" func = "tag_transfert" cmd ="1" [/key]
-        [key] mod = {"Alt", "Shift"} key = "F2" func = "tag_transfert" cmd ="2" [/key]
-        [key] mod = {"Alt", "Shift"} key = "F3" func = "tag_transfert" cmd ="3" [/key]
-        [key] mod = {"Alt", "Shift"} key = "F4" func = "tag_transfert" cmd ="4" [/key]
-        #[key] mod = {"Alt", "Shift"} key = "F5" func = "tag_transfert" cmd ="5" [/key]
-        #[key] mod = {"Alt", "Shift"} key = "F6" func = "tag_transfert" cmd ="6" [/key]
-        #[key] mod = {"Alt", "Shift"} key = "F7" func = "tag_transfert" cmd ="7" [/key]
-        #[key] mod = {"Alt", "Shift"} key = "F8" func = "tag_transfert" cmd ="8" [/key]
-        #[key] mod = {"Alt", "Shift"} key = "F9" func = "tag_transfert" cmd ="9" [/key]
+        [key] mod = {"Super", "Shift"} key = "F1" func = "tag_transfert" cmd ="1" [/key]
+        [key] mod = {"Super", "Shift"} key = "F2" func = "tag_transfert" cmd ="2" [/key]
+        [key] mod = {"Super", "Shift"} key = "F3" func = "tag_transfert" cmd ="3" [/key]
+        [key] mod = {"Super", "Shift"} key = "F4" func = "tag_transfert" cmd ="4" [/key]
+        #[key] mod = {"Super", "Shift"} key = "F5" func = "tag_transfert" cmd ="5" [/key]
+        #[key] mod = {"Super", "Shift"} key = "F6" func = "tag_transfert" cmd ="6" [/key]
+        #[key] mod = {"Super", "Shift"} key = "F7" func = "tag_transfert" cmd ="7" [/key]
+        #[key] mod = {"Super", "Shift"} key = "F8" func = "tag_transfert" cmd ="8" [/key]
+        #[key] mod = {"Super", "Shift"} key = "F9" func = "tag_transfert" cmd ="9" [/key]
 
         # Toggle additional tags (x) on the current tag
         [key] mod = {"Alt", "Super"} key = "F1" func = "tag_toggle_additional" cmd ="1" [/key]
@@ -431,10 +433,10 @@
         [key] mod = {"Super", "Shift"} key = "z" func = "client_screen_prev" [/key]
 
         # Toggle tag expose
-        [key] mod = {"Alt"} key = "e" func = "toggle_tag_expose" [/key]
+        [key] mod = {"Super"} key = "e" func = "toggle_tag_expose" [/key]
 
         # Toggle split mode
-        [key] mod = {"Alt"} key = "s" func = "split_toggle" [/key]
+        [key] mod = {"Super"} key = "s" func = "split_toggle" [/key]
 
         # Focus next client with direction
         [key] mod = {"Alt"} key = "h" func = "client_focus_left"   [/key]
@@ -443,10 +445,10 @@
         [key] mod = {"Alt"} key = "j" func = "client_focus_bottom" [/key]
 
         # Swap next client with direction
-        [key] mod = {"Control"} key = "h" func = "client_swap_left"   [/key]
-        [key] mod = {"Control"} key = "l" func = "client_swap_right"  [/key]
-        [key] mod = {"Control"} key = "k" func = "client_swap_top"    [/key]
-        [key] mod = {"Control"} key = "j" func = "client_swap_bottom" [/key]
+        [key] mod = {"Alt", "Shift"} key = "h" func = "client_swap_left"   [/key]
+        [key] mod = {"Alt", "Shift"} key = "l" func = "client_swap_right"  [/key]
+        [key] mod = {"Alt", "Shift"} key = "k" func = "client_swap_top"    [/key]
+        [key] mod = {"Alt", "Shift"} key = "j" func = "client_swap_bottom" [/key]
 
         # Move next splitted client with direction
         [key] mod = {"Control", "Shift"} key = "h" func = "split_move_left"   [/key]
