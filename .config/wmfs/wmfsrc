@@ -8,7 +8,7 @@
 
 [misc]
         use_xft               = true
-        font                  = "dejavu-10"
+        font                  = "sans-10"
         raisefocus            = true
         focus_follow_mouse    = true
         focus_follow_movement = false
@@ -43,7 +43,7 @@
         # Remove this section to disable the selbar.
         [selbar]
                 bg = "#191919"
-                fg = "#D4D4ff"
+                fg = "#5879E6"
 
                 # Cut title length
                 # max_length = 25
@@ -57,7 +57,7 @@
 
 [layouts]
         fg = "#191919"
-        bg = "#7E89A2"
+        bg = "#5879E6"
 
         # Border around the layout button.
         border = true
@@ -114,10 +114,10 @@
         # Going twice on the same tag will bring you back on the previous one
         tag_auto_prev  = true
 
-        occupied_bg    = "#003366"
+        occupied_bg    = "#2455F5"
         occupied_fg    = "#D4D4D4"
         sel_fg         = "#191919"
-        sel_bg         = "#7E89A2"
+        sel_bg         = "#5879E6"
         urgent_bg      = "#DD1111"
         urgent_fg      = "#000000"
 
@@ -263,8 +263,8 @@
                 # Available "center", "left", "right" menu align. Default: "center".
                 align = "left"
 
-                fg_focus  = "#191919" bg_focus  = "#7E89A2"
-                fg_normal = "#9F9AB3" bg_normal = "#191919"
+                fg_focus  = "#191919" bg_focus  = "#5879E6"
+                fg_normal = "#5879E6" bg_normal = "#191919"
 
                 [item] name = "Terminal"        func = "spawn" cmd = "sakura"      [/item]
                 [item] name = "Applications" submenu = "appmenu"                   [/item]
@@ -280,8 +280,8 @@
                 name = "appmenu"
                 align = "left"
 
-                fg_focus  = "#191919" bg_focus  = "#7E89A2"
-                fg_normal = "#9F9AB3" bg_normal = "#191919"
+                fg_focus  = "#191919" bg_focus  = "#5879E6"
+                fg_normal = "#5879E6" bg_normal = "#191919"
 
                 [item] name = "Browser"         func = "spawn" cmd = "firefox"     [/item]
                 [item] name = "Calculator"      func = "spawn" cmd = "gcalctool"   [/item]
@@ -327,6 +327,7 @@
         [key] mod = {"Control", "Alt"} key = "v" func = "spawn" cmd = "VirtualBox" [/key]
         [key] mod = {"Control", "Alt"} key = "l" func = "spawn" cmd = "xscreensaver-command -lock" [/key]
         [key] mod = {"Alt"} key = "p" func = "spawn" cmd = "dmenu_run -b" [/key]
+        [key] mod = {"Alt"} key = "F2" func = "spawn" cmd = "dmenu_run -b" [/key]
 
         # Kill the selected client.
         [key] mod = {"Control"} key = "q" func = "client_kill" [/key]
