@@ -1,5 +1,6 @@
 Xcursor.theme: Bluecurve
 
+URxvt.background: #000000
 URxvt.foreground: #c0c0c0
 URxvt.transparent: true
 URxvt.shading: 15
@@ -11,6 +12,7 @@ URxvt.urlLauncher: /usr/bin/firefox
 URxvt.matcher.button: 1
 URxvt.iso14755: false
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.cutchars: "\\ `\"\'()*;<>[]{|}&,=?@^\:"
 
 ! black

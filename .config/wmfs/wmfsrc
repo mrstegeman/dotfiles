@@ -143,21 +143,54 @@
         mouse_button_tag_prev      = "5"
 
         [tag]
-                name             = "one"
-                #screen           = 0
-                #mwfact           = 0.5
-                #nmaster          = 1
-                #layout           = "tile_right"
-                #resizehint       = false
-                #infobar_position = "top"
+                name             = "www"
+                screen           = 0
+                mwfact           = 0.5
+                nmaster          = 1
+                layout           = "max"
+                resizehint       = false
+                infobar_position = "top"
                 above_fc         = false
-                #split            = false
+                split            = false
                 #[mouse] [/mouse] Possible multi mouse section
         [/tag]
 
-        [tag] name = "two"   [/tag]
-        [tag] name = "three" [/tag]
-        [tag] name = "four"  [/tag]
+        [tag]
+                name             = "scratch1"
+                screen           = 0
+                mwfact           = 0.5
+                nmaster          = 1
+                layout           = "tile_right"
+                resizehint       = false
+                infobar_position = "top"
+                above_fc         = false
+                split            = false
+                #[mouse] [/mouse] Possible multi mouse section
+        [/tag]
+        [tag]
+                name             = "scratch2"
+                screen           = 0
+                mwfact           = 0.5
+                nmaster          = 1
+                layout           = "tile_right"
+                resizehint       = false
+                infobar_position = "top"
+                above_fc         = false
+                split            = false
+                #[mouse] [/mouse] Possible multi mouse section
+        [/tag]
+        [tag]
+                name             = "tasks"
+                screen           = 0
+                mwfact           = 0.5
+                nmaster          = 1
+                layout           = "tile_grid"
+                resizehint       = false
+                infobar_position = "top"
+                above_fc         = false
+                split            = false
+                #[mouse] [/mouse] Possible multi mouse section
+        [/tag]
         #[tag] name = "five"  [/tag]
         #[tag] name = "six"   [/tag]
         #[tag] name = "seven" [/tag]
@@ -169,9 +202,9 @@
         # Command you can execute to set the background.
         background_command = "/home/michael/.config/wmfs/autostart.sh"
 
+        [mouse] button = "3" func = "menu" cmd = "rootmenu" [/mouse]
         [mouse] button = "4" func = "tag_next"              [/mouse]
         [mouse] button = "5" func = "tag_prev"              [/mouse]
-        [mouse] button = "3" func = "menu" cmd = "rootmenu" [/mouse]
 [/root]
 
 [client]
@@ -249,6 +282,12 @@
                max           = false      # Set automatic maximized client
                follow_client = false      # follow the client
                ignore_tags   = false      # ignore tag (free mode)
+       [/rule]
+       [rule]
+               instance      = "oblogout"
+               class         = "Oblogout"
+               max           = false
+               free          = true
        [/rule]
 [/rules]
 

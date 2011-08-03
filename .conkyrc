@@ -1,0 +1,10 @@
+background no
+update_interval 1
+total_run_times 0
+cpu_avg_samples 2
+out_to_console yes
+out_to_x no
+
+
+TEXT
+cpu: \\#2455F5\${cpu cpu0}% \\#FFFFFF\| mem: \\#2455F5\${memperc}% \\#FFFFFF\| updates: \\#2455F5\${execi 3600 /home/michael/bin/updates.sh} \\#FFFFFF\| \\#2455F5\${time %H:%M}  \\#5879E6\${time %A, %B %d}
