@@ -3,7 +3,6 @@
 xmodmap ~/.Xmodmap &
 xbindkeys &
 /home/michael/git/nullfs/nul1fs /home/michael/.Skype/Logs &
-#sh /home/michael/bin/start_conky.sh &
 nm-applet --sm-disable &
 blueman-applet &
 mpd &
