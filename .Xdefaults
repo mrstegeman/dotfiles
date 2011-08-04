@@ -13,6 +13,10 @@ URxvt.matcher.button: 1
 URxvt.iso14755: false
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
 URxvt.cutchars: "\\ `\"\'()*;<>[]{|}&,=?@^\:"
 
 ! black
