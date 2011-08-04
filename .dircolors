@@ -162,6 +162,7 @@ EXEC 01;32 # This is for files with execute permission:
 .yuv 01;35
 
 # video formats
+.3gp 00;33
 .anx 00;33
 .asf 00;33
 .avi 00;33

@@ -352,10 +352,11 @@
 
 [keys]
         # Reload the configuration of wmfs.
-        [key] mod = {"Alt", "Control"} key = "r" func = "reload" [/key]
+        [key] mod = {"Super", "Control"} key = "r" func = "reload" [/key]
 
         # Open a terminal.
         [key] mod = {"Control"} key = "Return" func = "spawn" cmd = "urxvt" [/key]
+        [key] mod = {"Control", "Alt"} key = "r" func = "spawn" cmd = "urxvt" [/key]
 
         # Launch some apps.
         [key] mod = {"Control", "Alt"} key = "e" func = "spawn" cmd = "leafpad" [/key]
