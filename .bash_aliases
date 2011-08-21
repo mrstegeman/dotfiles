@@ -1,5 +1,5 @@
 # some good aliases
-alias extip="wget -qO - http://www.whatismyip.com/automation/n09230945.asp && echo"
+alias extip="wget -qO - http://automation.whatismyip.com/n09230945.asp && echo"
 alias vidmerge="mencoder -forceidx -oac copy -ovc copy -o"
 alias vga-off="xrandr --output VGA --off"
 alias vga-on="xrandr --output VGA --mode 1280x1024"
