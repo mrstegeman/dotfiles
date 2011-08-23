@@ -67,6 +67,12 @@ servers = (
     ssl_verify = "no";
     autoconnect = "yes";
   },
+  {
+    address = "irc.foonetic.net";
+    chatnet = "Foonetic";
+    port = "6667";
+    autoconnect = "no";
+  },
 );
 
 chatnets = {
@@ -138,6 +144,9 @@ chatnets = {
     type = "IRC";
     autosendcmd = "/msg nickserv identify <password> ;wait 2000";
   };
+  Foonetic = {
+    type = "IRC";
+  };
 };
 
 channels = (
@@ -165,6 +174,21 @@ channels = (
     name = "#archlinux-bugs";
     chatnet = "Freenode";
     autojoin = "yes";
+  },
+  {
+    name = "#xkcd";
+    chatnet = "Foonetic";
+    autojoin = "No";
+  },
+  {
+    name = "#xkcd-love";
+    chatnet = "Foonetic";
+    autojoin = "No";
+  },
+  {
+    name = "#xkcd-pub";
+    chatnet = "Foonetic";
+    autojoin = "No";
   },
 );
 
