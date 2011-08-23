@@ -3,7 +3,6 @@
 xmodmap ~/.Xmodmap &
 xbindkeys &
 /home/michael/git/nullfs/nul1fs /home/michael/.Skype/Logs &
-nm-applet --sm-disable &
 blueman-applet &
 mpd &
 feh --bg-tile /home/michael/wallpapers/current.jpg

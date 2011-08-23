@@ -6,7 +6,6 @@ URxvt.transparent: true
 URxvt.shading: 15
 URxvt.scrollBar: false
 URxvt.font: xft:Monospace:pixelsize=12
-URxvt.internalBorder: 0
 URxvt.perl-ext-common: default,matcher,vtwheel,clipboard
 URxvt.urlLauncher: /usr/bin/firefox
 URxvt.matcher.button: 1
