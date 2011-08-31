@@ -72,7 +72,7 @@ servers = (
     chatnet = "Foonetic";
     port = "6667";
     autoconnect = "no";
-  },
+  }
 );
 
 chatnets = {
@@ -392,5 +392,8 @@ settings = {
   };
   "fe-text" = {
     actlist_sort = "refnum";
+  };
+  "fe-common/core" = {
+    theme = "default";
   };
 };
