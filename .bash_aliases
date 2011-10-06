@@ -58,3 +58,8 @@ up() {
 
     cd $traverse
 }
+
+# find what package owns a given executable
+pkgown() {
+    pacman -Qo $(which $1)
+}
