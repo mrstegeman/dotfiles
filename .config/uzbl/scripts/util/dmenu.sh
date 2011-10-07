@@ -114,4 +114,3 @@ if dmenu --help 2>&1 | grep -q '\[-x <\?xoffset>\?\]'; then
 fi
 
 DMENU="dmenu $DMENU_ARGS $DMENU_COLORS"
-

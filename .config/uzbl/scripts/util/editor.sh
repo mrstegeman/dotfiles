@@ -13,4 +13,3 @@ if [ -z "$UZBL_EDITOR" ]; then
         UZBL_EDITOR="$VTERM -e $EDITOR"
     fi
 fi
-
