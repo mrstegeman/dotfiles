@@ -5,6 +5,7 @@ URxvt.foreground: #c0c0c0
 URxvt.transparent: true
 URxvt.shading: 15
 URxvt.scrollBar: false
+URxvt.saveLines: 100000
 URxvt.font: xft:Monospace:pixelsize=12
 URxvt.perl-ext-common: default,matcher,vtwheel,clipboard
 URxvt.urlLauncher: /usr/bin/firefox
