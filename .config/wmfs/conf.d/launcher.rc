@@ -1,0 +1,8 @@
+[launcher]
+    [set_launcher]
+        width_limit = 300
+        name        = "launcher_exec"
+        prompt      = "Run: "
+        command     = "exec"
+    [/set_launcher]
+[/launcher]

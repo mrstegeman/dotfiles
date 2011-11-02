@@ -1,0 +1,9 @@
+[misc]
+    use_xft               = true
+    font                  = "sans-10"
+    raisefocus            = true
+    focus_follow_mouse    = true
+    focus_follow_movement = false
+    focus_pointer_click   = true
+    opacity               = 255
+[/misc]
