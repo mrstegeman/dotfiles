@@ -1,6 +1,5 @@
 #!/bin/bash
 
-xmodmap ~/.Xmodmap &
 xbindkeys &
 /home/michael/git/nullfs/nul1fs /home/michael/.Skype/Logs &
 blueman-applet &
