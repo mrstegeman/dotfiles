@@ -10,6 +10,26 @@ require("naughty")
 -- Widgets library
 require("vicious")
 
+require("io")
+
+
+-- {{{ Custom functions
+function have_battery(bat)
+   bat = bat or "BAT0"
+   local fh = io.open("/sys/class/power_supply/"..bat.."/present", "r")
+   if fh == nil then
+      return(false)
+   end
+   local stat = fh:read()
+   fh:close()
+   if tonumber(stat) < 1 then
+      return(false)
+   end
+   return(true)
+end
+-- }}}
+
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -108,8 +128,11 @@ cpuwidget = widget({ type = "textbox" })
 vicious.register(cpuwidget, vicious.widgets.cpu, "| cpu: $1% | ")
 memwidget = widget({ type = "textbox" })
 vicious.register(memwidget, vicious.widgets.mem, "mem: $1% | ")
---batwidget = widget({ type = "textbox" })
---vicious.register(batwidget, vicious.widgets.bat, "bat: $2% | ", 30)
+batwidget = nil
+if have_battery() then
+   batwidget = widget({ type = "textbox" })
+   vicious.register(batwidget, vicious.widgets.bat, "bat: $2% | ", 30, "BAT0")
+end
 pkgwidget = widget({ type = "textbox" })
 vicious.register(pkgwidget, vicious.widgets.pkg, "pkg: $1 |", 3600, "Arch")
 
@@ -190,7 +213,7 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         pkgwidget,
-        --batwidget,
+        batwidget,
         memwidget,
         cpuwidget,
         s == 1 and mysystray or nil,
