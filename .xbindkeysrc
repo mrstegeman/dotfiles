@@ -1,19 +1,59 @@
-# vol dn
+# volume down
 "amixer set Master 5%- unmute"
     m:0x0 + c:122
     XF86AudioLowerVolume 
 
-# vol up
+# volume up
 "amixer set Master 5%+ unmute"
     m:0x0 + c:123
     XF86AudioRaiseVolume 
 
-# vol mute
+# mute
 "amixer set Master mute"
     m:0x0 + c:121
     XF86AudioMute 
 
-#power
+# power
 "oblogout"
     m:0x0 + c:124
     XF86PowerOff 
+
+# display
+#"(Scheme function)"
+#    m:0x40 + c:33
+#    Mod4 + p
+
+# touchpad
+"/home/michael/bin/touchtoggle.sh"
+    m:0x0 + c:199
+    XF86TouchpadToggle
+
+# brightness down
+"xbacklight -dec 10"
+    m:0x0 + c:232
+    XF86MonBrightnessDown
+
+# brightness up
+"xbacklight -inc 10"
+    m:0x0 + c:233
+    XF86MonBrightnessUp
+
+# prev
+"ncmpcpp prev"
+    m:0x0 + c:173
+    XF86AudioPrev
+
+# play/pause
+"ncmpcpp toggle"
+    m:0x0 + c:172
+    XF86AudioPlay
+
+# next
+"ncmpcpp next"
+    m:0x0 + c:171
+    XF86AudioNext
+
+# gears
+#"(Scheme function)"
+#    m:0x40 + c:53
+#    Mod4 + x
