@@ -396,5 +396,7 @@ settings = {
   };
   "fe-common/core" = {
     theme = "default";
+    bell_beeps = "yes";
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
   };
 };
