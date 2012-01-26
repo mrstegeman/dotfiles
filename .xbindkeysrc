@@ -14,14 +14,14 @@
     XF86AudioMute 
 
 # power
-"oblogout"
-    m:0x0 + c:124
-    XF86PowerOff 
+#"oblogout"
+#    m:0x0 + c:124
+#    XF86PowerOff 
 
 # display
-#"(Scheme function)"
-#    m:0x40 + c:33
-#    Mod4 + p
+"/home/michael/bin/dispswitch.sh"
+    m:0x40 + c:33
+    Mod4 + p
 
 # touchpad
 "/home/michael/bin/touchtoggle.sh"
