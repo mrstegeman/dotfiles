@@ -43,14 +43,14 @@ if [ "$TERM" != "dumb" ]; then
     else
         eval "`dircolors -b`"
     fi
-    alias ls='ls --color=auto -A'
+    alias ls='ls --color=auto -Av'
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
     alias zgrep='zgrep --color=auto'
     alias pcregrep='pcregrep --color=auto'
 else
     PS1='┌──[\u@\h]─[\w]\n└─\$ '
-    alias ls='ls -A'
+    alias ls='ls -Av'
 fi
 
 # enable programmable completion features
@@ -67,3 +67,5 @@ LESS_TERMCAP_so=$'\E[01;44;33m'
 LESS_TERMCAP_ue=$'\E[0m'
 LESS_TERMCAP_us=$'\E[01;32m'
 export ${!LESS@}
+
+[ -f ~/.bash_extra ] && . ~/.bash_extra
