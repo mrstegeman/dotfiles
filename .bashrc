@@ -58,7 +58,7 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-LESS=-R
+LESS='-R -c'
 LESS_TERMCAP_mb=$'\E[01;31m'
 LESS_TERMCAP_md=$'\E[01;31m'
 LESS_TERMCAP_me=$'\E[0m'
