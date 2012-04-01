@@ -1,4 +1,4 @@
-# [Created by task 1.9.4 6/24/2011 21:51:20]
+# [Created by task 2.0.0 4/1/2012 08:21:46]
 # Taskwarrior program configuration file.
 # For more documentation, see http://taskwarrior.org or try 'man task', 'man task-faq',
 # 'man task-tutorial', 'man task-color', 'man task-sync' or 'man taskrc'
@@ -23,18 +23,15 @@ data.location=/home/michael/.task
 #include /usr/share/doc/task/rc/dark-blue-256.theme
 #include /usr/share/doc/task/rc/dark-violets-256.theme
 #include /usr/share/doc/task/rc/dark-yellow-green.theme
+#include /usr/share/doc/task/rc/dark-gray-256.theme
 
-include /usr/share/doc/task/rc/holidays-US.rc
+include /usr/share/doc/task/rc/holidays.en-US.rc
 
 dateformat=m/d/y H:N
-
 dateformat.report=M/D/y H:N
 
-
-report.list.columns=id,priority,active,due,recur,countdown,tags,description
-
+report.list.columns=id,priority,start.active,due,recur,due.countdown,tags,description
 report.list.labels=ID,Pri,Active,Due,Recur,Countdown,Tags,Description
-
 report.list.sort=due+,priority-,active-,description+
 
 report.conky.description=Shows the newest tasks

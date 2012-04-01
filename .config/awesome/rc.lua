@@ -304,7 +304,7 @@ globalkeys = awful.util.table.join(
     awful.key({ "Control", "Mod1", }, "r",  function () awful.util.spawn(terminal) end),
     awful.key({ "Control", "Mod1", }, "e",  function () awful.util.spawn("leafpad") end),
     awful.key({ "Control", "Mod1", }, "c",  function () awful.util.spawn("gcalctool") end),
-    awful.key({ "Control", "Mod1", }, "g",  function () awful.util.spawn("chromium") end),
+    awful.key({ "Control", "Mod1", }, "g",  function () awful.util.spawn("google-chrome") end),
     awful.key({ "Control", "Mod1", }, "f",  function () awful.util.spawn("firefox") end),
     awful.key({ "Control", "Mod1", }, "v",  function () awful.util.spawn("virt-manager") end),
     awful.key({ "Control", "Mod1", }, "l",  function () awful.util.spawn("xscreensaver-command -lock") end),
