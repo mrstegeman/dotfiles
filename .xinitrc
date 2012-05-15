@@ -1,6 +1,5 @@
 #!/bin/sh
 
-xscreensaver -no-splash &
 [ -f ~/.Xresources ] && xrdb -load ~/.Xresources &
 [ -f ~/.xbindkeysrc ] && xbindkeys &
 [ -d ~/.Skype/Logs ] && /home/michael/git/nullfs/nul1fs /home/michael/.Skype/Logs &
