@@ -6,4 +6,4 @@
 [ -d ~/.mpd ] && mpd &
 rc.d list bluetooth | grep -q STARTED && blueman-applet &
 export DE=xfce
-exec ck-launch-session dbus-launch awesome
+exec dbus-launch --exit-with-session awesome
