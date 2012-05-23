@@ -4,7 +4,7 @@
 [ -z "$PS1" ] && return
 
 # set some nice options
-shopt -s checkwinsize cmdhist dotglob histappend no_empty_cmd_completion
+shopt -s checkwinsize cmdhist dotglob histappend no_empty_cmd_completion globstar
 
 # notify of completed background jobs immediately
 set -o notify
@@ -54,9 +54,8 @@ else
 fi
 
 # enable programmable completion features
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+[ -r /usr/share/bash-completion/bash_completion ] && \
+    . /usr/share/bash-completion/bash_completion
 
 LESS='-R -c'
 LESS_TERMCAP_mb=$'\E[01;31m'
