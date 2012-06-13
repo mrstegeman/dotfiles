@@ -73,7 +73,16 @@ servers = (
     chatnet = "Foonetic";
     port = "6667";
     autoconnect = "no";
-  }
+  },
+  {
+    address = "irc.mindcry.org";
+    chatnet = "bitrig";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    ssl_cafile = "/home/michael/.irssi/certs/bitrig.pem";
+    autoconnect = "yes";
+   },
 );
 
 chatnets = {
@@ -148,23 +157,26 @@ chatnets = {
   Foonetic = {
     type = "IRC";
   };
+  bitrig = {
+    type = "IRC";
+  };
 };
 
 channels = (
   {
     name = "#irssi";
     chatnet = "ircnet";
-    autojoin = "No";
+    autojoin = "no";
   },
   {
     name = "silc";
     chatnet = "silc";
-    autojoin = "No";
+    autojoin = "no";
   },
   {
     name = "#uzbl";
     chatnet = "Freenode";
-    autojoin = "No";
+    autojoin = "no";
   },
   {
     name = "#archlinux";
@@ -174,22 +186,22 @@ channels = (
   {
     name = "#archlinux-bugs";
     chatnet = "Freenode";
-    autojoin = "yes";
+    autojoin = "no";
   },
   {
     name = "#xkcd";
     chatnet = "Foonetic";
-    autojoin = "No";
-  },
-  {
-    name = "#xkcd-love";
-    chatnet = "Foonetic";
-    autojoin = "No";
+    autojoin = "no";
   },
   {
     name = "#xkcd-pub";
     chatnet = "Foonetic";
-    autojoin = "No";
+    autojoin = "no";
+  },
+  {
+    name = "#bitrig";
+    chatnet = "bitrig";
+    autojoin = "yes";
   },
 );
 
