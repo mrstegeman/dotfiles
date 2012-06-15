@@ -81,7 +81,7 @@ servers = (
     use_ssl = "yes";
     ssl_verify = "yes";
     ssl_cafile = "/home/michael/.irssi/certs/bitrig.pem";
-    autoconnect = "yes";
+    autoconnect = "no";
    },
 );
 
@@ -201,7 +201,7 @@ channels = (
   {
     name = "#bitrig";
     chatnet = "bitrig";
-    autojoin = "yes";
+    autojoin = "no";
   },
 );
 
