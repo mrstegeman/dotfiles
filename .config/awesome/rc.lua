@@ -8,7 +8,7 @@ require("beautiful")
 require("naughty")
 
 -- Widgets library
-require("vicious")
+vicious = require("vicious")
 
 require("io")
 
