@@ -3,6 +3,6 @@
 [ -f ~/.Xresources ] && xrdb -load ~/.Xresources &
 [ -f ~/.xbindkeysrc ] && xbindkeys &
 [ -d ~/.mpd ] && mpd &
-rc.d list bluetooth | grep -q STARTED && blueman-applet &
+systemctl status bluetooth.service | grep -q 'Active: active' && blueman-applet &
 export DE=xfce
 exec dbus-launch --exit-with-session awesome

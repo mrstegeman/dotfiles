@@ -107,10 +107,10 @@ myawesomemenu = {
 }
 
 mypowermenu = {
-   { "shutdown", "dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop" },
-   { "restart", "dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart" },
-   { "suspend", "dbus-send --system --print-reply --dest=\"org.freedesktop.UPower\" /org/freedesktop/UPower org.freedesktop.UPower.Suspend" },
-   { "hibernate", "dbus-send --system --print-reply --dest=\"org.freedesktop.UPower\" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate" },
+   { "shutdown", "poweroff" },
+   { "restart", "reboot" },
+   { "suspend", "pm-suspend" },
+   { "hibernate", "pm-hibernate" },
    { "logout", awesome.quit }
 }
 
