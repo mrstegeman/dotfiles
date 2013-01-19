@@ -115,9 +115,16 @@ mypowermenu = {
    { "logout", awesome.quit }
 }
 
+configmenu = {
+   { "display", "arandr" },
+   { "sound prefs", "paprefs" },
+   { "volume", "pavucontrol" }
+}
+
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu },
                                     { "power", mypowermenu },
-                                    { "open terminal", terminal }
+                                    { "open terminal", terminal },
+                                    { "system config", configmenu }
                                   }
                         })
 

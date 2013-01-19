@@ -41,7 +41,7 @@ theme.taglist_squares_unsel = "/usr/share/awesome/themes/default/taglist/squarew
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = "/usr/share/awesome/themes/default/submenu.png"
 theme.menu_height = 15
-theme.menu_width  = 100
+theme.menu_width  = 125
 
 -- You can add as many variables as
 -- you wish and access them by using
