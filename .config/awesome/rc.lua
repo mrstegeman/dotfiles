@@ -116,7 +116,6 @@ mypowermenu = {
 }
 
 configmenu = {
-   { "display", "arandr" },
    { "sound prefs", "paprefs" },
    { "volume", "pavucontrol" }
 }
