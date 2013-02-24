@@ -14,4 +14,5 @@ export DE=xfce
 systemctl status bluetooth.service | grep -q 'Active: active' && blueman-applet &
 nm-applet --sm-disable &
 start-pulseaudio-x11 &
+gmixer -d &
 exec awesome
