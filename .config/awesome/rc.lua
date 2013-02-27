@@ -10,9 +10,14 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 -- Widgets library
 local vicious = require("vicious")
+vicious.contrib = require("vicious.contrib")
 -- IO library
 local io = require("io")
-
+-- Applications menu
+local freedesktop = {}
+freedesktop.utils = require('freedesktop.utils')
+freedesktop.utils.icon_theme = 'gnome'
+freedesktop.menu = require('freedesktop.menu')
 
 -- {{{ Custom functions
 function have_battery(bat)
@@ -62,6 +67,7 @@ beautiful.init("/home/michael/.config/awesome/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
+freedesktop.utils.terminal = terminal
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -100,12 +106,15 @@ end
 -- }}}
 
 -- {{{ Menu
+menu_items = freedesktop.menu.new()
+
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart }
 }
+table.insert(menu_items, { "awesome", myawesomemenu, beautiful.awesome_icon })
 
 mypowermenu = {
    { "shutdown", "poweroff" },
@@ -114,18 +123,19 @@ mypowermenu = {
    { "hibernate", "pm-hibernate" },
    { "logout", awesome.quit }
 }
+table.insert(menu_items, {
+    "Power",
+    mypowermenu,
+    freedesktop.utils.lookup_icon({ icon = 'system-shutdown-panel' })
+})
 
-configmenu = {
-   { "sound prefs", "paprefs" },
-   { "volume", "pavucontrol" }
-}
+table.insert(menu_items, {
+    "Open Terminal",
+    terminal,
+    freedesktop.utils.lookup_icon({icon = 'terminal'})
+})
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu },
-                                    { "power", mypowermenu },
-                                    { "open terminal", terminal },
-                                    { "system config", configmenu }
-                                  }
-                        })
+mymainmenu = awful.menu.new({ items = menu_items, width = 250 })
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -136,8 +146,16 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 mytextclock = awful.widget.textclock()
 
 -- Add some vicious widgets
+pulsewidget = wibox.widget.textbox()
+vicious.register(pulsewidget, vicious.contrib.pulse, "| vol: $1% | ")
+pulsewidget:buttons(awful.util.table.join(
+   awful.button({ }, 1, function () awful.util.spawn("pavucontrol") end),
+   awful.button({ }, 3, function () vicious.contrib.pulse.toggle("alsa_output.pci-0000_00_1b.0.analog-stereo") end),
+   awful.button({ }, 4, function () vicious.contrib.pulse.add(5,"alsa_output.pci-0000_00_1b.0.analog-stereo") end),
+   awful.button({ }, 5, function () vicious.contrib.pulse.add(-5,"alsa_output.pci-0000_00_1b.0.analog-stereo") end)
+))
 cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, "| cpu: $1% | ")
+vicious.register(cpuwidget, vicious.widgets.cpu, "cpu: $1% | ")
 memwidget = wibox.widget.textbox()
 vicious.register(memwidget, vicious.widgets.mem, "mem: $1% | ")
 batwidget = nil
@@ -150,7 +168,6 @@ vicious.register(pkgwidget, vicious.widgets.pkg, "pkg: $1 |", 3600, "Arch")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
-mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
@@ -197,8 +214,6 @@ mytasklist.buttons = awful.util.table.join(
                                           end))
 
 for s = 1, screen.count() do
-    -- Create a promptbox for each screen
-    mypromptbox[s] = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
@@ -220,11 +235,11 @@ for s = 1, screen.count() do
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(mylauncher)
     left_layout:add(mytaglist[s])
-    left_layout:add(mypromptbox[s])
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(pulsewidget)
     right_layout:add(cpuwidget)
     right_layout:add(memwidget)
     right_layout:add(batwidget)
@@ -300,17 +315,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
-
-    -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
-
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
-                  awful.util.eval, nil,
-                  awful.util.getdir("cache") .. "/history_eval")
-              end),
 
     awful.key({ "Control", "Mod1", }, "r",  function () awful.util.spawn(terminal) end),
     awful.key({ "Control", "Mod1", }, "e",  function () awful.util.spawn("leafpad") end),
