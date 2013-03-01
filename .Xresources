@@ -8,7 +8,7 @@ URxvt.scrollBar: false
 URxvt.saveLines: 100000
 URxvt.font: xft:Monospace:pixelsize=12
 URxvt.perl-ext-common: default,matcher,vtwheel,clipboard
-URxvt.urlLauncher: /usr/bin/firefox
+URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
 URxvt.iso14755: false
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
