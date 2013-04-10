@@ -3,7 +3,7 @@ alias extip="wget -qO - http://automation.whatismyip.com/n09230945.asp && echo"
 alias vidmerge="mencoder -forceidx -oac copy -ovc copy -o"
 alias vga-off="xrandr --output VGA --off"
 alias vga-on="xrandr --output VGA --mode 1280x1024"
-alias upgrade="yaourt -Syyu --aur --devel"
+alias upgrade="sudo pacman -Syyu; meat -u"
 alias vimdiff='vimdiff -c "set wrap" -c "wincmd w" -c "set wrap" -c "wincmd w"'
 # vim habits...
 alias :q="exit"
@@ -62,4 +62,8 @@ up() {
 # find what package owns a given executable
 pkgown() {
     pacman -Qo $(which $1)
+}
+
+pkgsearch() {
+    pacman -Ss "$1"; meat -s "$1"
 }
