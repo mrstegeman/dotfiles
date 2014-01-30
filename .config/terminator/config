@@ -1,0 +1,16 @@
+[global_config]
+  borderless = True
+  window_state = maximise
+
+[profiles]
+  [[default]]
+    background_darkness = 0.75
+    background_type = transparent
+    cursor_blink = False
+    scrollbar_position = disabled
+    scroll_on_output = False
+    scrollback_lines = 100000
+    word_chars = '-A-Za-z0-9./%#_'
+    palette = '#000000:#C42B2B:#3BD93B:#E3E336:#4747BB:#CB40CB:#6FD2D2:#C0C0C0:#2C2C2C:#FF2929:#28FC28:#FFEA1E:#2121DE:#FF00FF:#00FFFF:#FFFFFF'
+
+# vim: ts=2 sts=2 sw=2 et ft=dosini
