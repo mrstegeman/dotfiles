@@ -1,16 +1,28 @@
 [global_config]
   borderless = True
+  enabled_plugins = ,
+  title_hide_sizetext = True
   window_state = maximise
-
+[keybindings]
 [profiles]
   [[default]]
     background_darkness = 0.75
+    background_image = None
     background_type = transparent
     cursor_blink = False
-    scrollbar_position = disabled
+    palette = "#000000:#c42b2b:#3bd93b:#e3e336:#4747bb:#cb40cb:#6fd2d2:#c0c0c0:#2c2c2c:#ff2929:#28fc28:#ffea1e:#2121de:#ff00ff:#00ffff:#ffffff"
     scroll_on_output = False
     scrollback_lines = 100000
-    word_chars = '-A-Za-z0-9./%#_'
-    palette = '#000000:#C42B2B:#3BD93B:#E3E336:#4747BB:#CB40CB:#6FD2D2:#C0C0C0:#2C2C2C:#FF2929:#28FC28:#FFEA1E:#2121DE:#FF00FF:#00FFFF:#FFFFFF'
+    scrollbar_position = hidden
+    word_chars = "-A-Za-z0-9./%#_~"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
 
 # vim: ts=2 sts=2 sw=2 et ft=dosini

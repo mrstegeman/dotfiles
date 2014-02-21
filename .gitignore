@@ -40,6 +40,7 @@
 .esd_auth
 .freerdp/
 .gimp*
+.gksu.lock
 .gnupg/
 .gstreamer-0.10/
 .icedtea/
