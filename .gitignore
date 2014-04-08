@@ -41,6 +41,7 @@
 .freerdp/
 .gimp*
 .gksu.lock
+.gnome/
 .gnupg/
 .gstreamer-0.10/
 .icedtea/
@@ -52,16 +53,21 @@
 .mozilla/
 .pki/
 .remmina/
+.repoconfig/
+.repopickle_.gitconfig
 .ssh/
 .subversion/README.txt
 .subversion/servers
+.thumbnails/
 .vim/.netrwhist
 .viminfo
 Desktop/
 Documents/
 Downloads/
 Music/
+PDF/
 Pictures/
 VirtualBox VMs/
 bin/
+chromiumos/
 git/
