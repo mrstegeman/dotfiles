@@ -33,6 +33,7 @@
 .config/monitors.xml
 .config/nautilus/
 .config/pulse/
+.config/rygel.conf
 .config/spotify/
 .config/totem/
 .config/user-dirs.dirs
@@ -64,9 +65,10 @@
 Desktop/
 Documents/
 Downloads/
-Music/
+Music
 PDF/
-Pictures/
+Pictures
+Videos
 VirtualBox VMs/
 bin/
 chromiumos/

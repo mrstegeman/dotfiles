@@ -13,6 +13,7 @@ set formatoptions=l
 set ignorecase
 set incsearch
 set lbr
+set modeline
 set mouse=a
 set ruler
 set scrolloff=5
