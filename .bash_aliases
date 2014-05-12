@@ -1,14 +1,3 @@
-# some good aliases
-alias extip="wget -qO - http://automation.whatismyip.com/n09230945.asp && echo"
-alias vidmerge="mencoder -forceidx -oac copy -ovc copy -o"
-alias vga-off="xrandr --output VGA --off"
-alias vga-on="xrandr --output VGA --mode 1280x1024"
-alias upgrade="sudo pacman -Syyu; meat -u"
-alias vimdiff='vimdiff -c "set wrap" -c "wincmd w" -c "set wrap" -c "wincmd w"'
-# vim habits...
-alias :q="exit"
-alias :wq="exit"
-
 # Extract files from any archive
 # Usage: extract <archive_name>
 extract () {
@@ -59,11 +48,51 @@ up() {
     cd $traverse
 }
 
-# find what package owns a given executable
+# find what package owns a given executable or file
 pkgown() {
-    pacman -Qo $(which $1)
+    DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+    if [[ $1 =~ ^/ ]]; then
+        file="$1"
+    else
+        file=$(which "$1")
+    fi
+
+    case "$DISTRIB_ID" in
+        Arch)
+            pacman -Qo "$file"
+            ;;
+        Ubuntu)
+            dpkg -S "$file"
+            ;;
+    esac
 }
 
+# search for a package
 pkgsearch() {
-    pacman -Ss "$1"; meat -s "$1"
+    DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    case "$DISTRIB_ID" in
+        Arch)
+            pacman -Ss "$1"
+            meat -s "$1"
+            ;;
+        Ubuntu)
+            apt-cache search "$1"
+            ;;
+    esac
+}
+
+# update packages
+upgrade() {
+    DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    case "$DISTRIB_ID" in
+        Arch)
+            sudo pacman -Syyu
+            meat -u
+            ;;
+        Ubuntu)
+            sudo apt-get update && sudo apt-get dist-upgrade
+            ;;
+    esac
 }

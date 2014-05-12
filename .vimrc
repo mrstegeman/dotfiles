@@ -28,6 +28,13 @@ set tabstop=4
 set title
 syntax on
 
+" vimdiff/non-vimdiff specific things
+if &diff
+    windo set wrap
+else
+    set cc=80
+endif
+
 " settings for vim-detectindent
 let g:detectindent_preferred_expandtab=1
 let g:detectindent_preferred_indent=4
