@@ -96,3 +96,31 @@ upgrade() {
             ;;
     esac
 }
+
+# get installed packages
+getinstalled() {
+    DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    case "$DISTRIB_ID" in
+        Arch)
+            pacman -Q
+            ;;
+        Ubuntu)
+            dpkg --get-selections | grep '\sinstall$'
+            ;;
+    esac
+}
+
+# get information about a packagae
+pkginfo() {
+    DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    case "$DISTRIB_ID" in
+        Arch)
+            pacman -Qi "$1" 2>/dev/null || pacman -Si "$1"
+            ;;
+        Ubuntu)
+            apt-cache show "$1"
+            ;;
+    esac
+}
