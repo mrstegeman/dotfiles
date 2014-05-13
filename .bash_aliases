@@ -88,11 +88,20 @@ upgrade() {
 
     case "$DISTRIB_ID" in
         Arch)
-            sudo pacman -Syyu
-            meat -u
+            if [ $(id -u) = "0" ]; then
+                pacman -Syyu
+                su -c "meat -u" michael
+            else
+                sudo pacman -Syyu
+                meat -u
+            fi
             ;;
         Ubuntu)
-            sudo apt-get update && sudo apt-get dist-upgrade
+            if [ $(id -u) = "0" ]; then
+                apt-get update && apt-get dist-upgrade
+            else
+                sudo apt-get update && sudo apt-get dist-upgrade
+            fi
             ;;
     esac
 }
