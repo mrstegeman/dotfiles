@@ -133,3 +133,16 @@ pkginfo() {
             ;;
     esac
 }
+
+pkgprovides() {
+    DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    case "$DISTRIB_ID" in
+        Arch)
+            pkgfile "$1"
+            ;;
+        Ubuntu)
+            apt-file search "$1"
+            ;;
+    esac
+}
