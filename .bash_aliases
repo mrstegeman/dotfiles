@@ -1,30 +1,4 @@
-# Extract files from any archive
-# Usage: extract <archive_name>
-extract () {
-    for file in "$@"
-    do
-        if [ -f "$file" ] ; then
-            case "$file" in
-                *.tar.bz2) tar xjf "$file" ;;
-                *.tar.gz) tar xzf "$file" ;;
-                *.bz2) bunzip2 "$file" ;;
-                *.rar) unrar x "$file" ;;
-                *.gz) gunzip "$file" ;;
-                *.tar) tar xf "$file" ;;
-                *.tbz2) tar xjf "$file" ;;
-                *.tgz) tar xzf "$file" ;;
-                *.zip) unzip "$file" ;;
-                *.jar) unzip "$file" ;;
-                *.Z) uncompress "$file" ;;
-                *.7z) 7z x "$file" ;;
-                *.lzma) unlzma "$file" ;;
-                *) echo "'$file' cannot be extracted via extract()" ;;
-            esac
-        else
-            echo "'$file' is not a valid file"
-        fi
-    done
-}
+alias extract='bsdtar xf'
 
 # make directory and change to it
 mkcd() {
