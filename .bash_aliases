@@ -3,11 +3,11 @@ alias extract='bsdtar xf'
 # make directory and change to it
 mkcd() {
     [[ $1 ]] || return 0
-    [[ ! -d $1 ]] && mkdir -vp "$1"
+    [[ ! -d $1 ]] && mkdir -p "$1"
     [[ -d $1 ]] && builtin cd "$1"
 }
 
-# move up specified number of direcotires
+# move up specified number of directories
 up() {
     declare -i x=$1
     local traverse
@@ -25,6 +25,7 @@ up() {
 # find what package owns a given executable or file
 pkgown() {
     DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
     if [[ $1 =~ ^/ ]]; then
         file="$1"
     else

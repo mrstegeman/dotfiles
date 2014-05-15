@@ -54,8 +54,11 @@ else
 fi
 
 # enable programmable completion features
-[ -r /usr/share/bash-completion/bash_completion ] && \
+if [ -r /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
+elif [ -r /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
 
 LESS='-R -c'
 LESS_TERMCAP_mb=$'\E[01;31m'
