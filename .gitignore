@@ -57,6 +57,7 @@
 .remmina/
 .repoconfig/
 .repopickle_.gitconfig
+.sqlite_history
 .ssh/
 .subversion/README.txt
 .subversion/servers
