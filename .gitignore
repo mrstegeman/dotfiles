@@ -5,8 +5,6 @@
 .VirtualBox/
 .adobe/
 .android/
-.audacity-data/
-.bash_extra
 .bash_history
 .bash_logout
 .cache/
@@ -34,7 +32,6 @@
 .config/nautilus/
 .config/pulse/
 .config/rygel.conf
-.config/spotify/
 .config/totem/
 .config/user-dirs.dirs
 .dvdcss/
@@ -45,9 +42,7 @@
 .gnome/
 .gnupg/
 .gstreamer-0.10/
-.icedtea/
 .iscan_preference
-.java/
 .lesshst
 .local/
 .macromedia/
@@ -73,5 +68,4 @@ Pictures
 Videos
 VirtualBox VMs/
 bin/
-chromiumos/
 git/
