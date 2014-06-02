@@ -1,14 +1,6 @@
-# locale
-export LC_COLLATE=C
-
-# programs
-export EDITOR=vim
-export VISUAL=$EDITOR
-export BROWSER=google-chrome-stable
-export PAGER=less
-
-# path
-export PATH=$HOME/bin:$PATH
+if [ "$PROFILE_IMPORTED" != "1" ]; then
+    . ~/.profile
+fi
 
 # include .bashrc if it exists and session is interactive
 if [[ -n $PS1 && -f ~/.bashrc ]]; then

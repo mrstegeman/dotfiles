@@ -26,6 +26,8 @@ set softtabstop=4
 set t_Co=256
 set tabstop=4
 set title
+set wildmenu
+set wildmode=longest,list
 syntax on
 
 " vimdiff/non-vimdiff specific things

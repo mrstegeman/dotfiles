@@ -90,7 +90,7 @@ getinstalled() {
             pacman -Q
             ;;
         Ubuntu)
-            dpkg --get-selections | grep '\sinstall$'
+            dpkg --get-selections | grep '\sinstall$' | awk '{print $1}'
             ;;
     esac
 }
@@ -118,6 +118,19 @@ pkgprovides() {
             ;;
         Ubuntu)
             apt-file search "$1"
+            ;;
+    esac
+}
+
+pkglist() {
+    DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    case "$DISTRIB_ID" in
+        Arch)
+            pacman -Ql "$1"
+            ;;
+        Ubuntu)
+            dpkg-query -L "$1"
             ;;
     esac
 }
