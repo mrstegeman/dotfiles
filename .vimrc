@@ -42,5 +42,7 @@ let g:detectindent_preferred_expandtab=1
 let g:detectindent_preferred_indent=4
 autocmd BufReadPost * :DetectIndent 
 
+autocmd FileType make set cc=0
+
 " maps
 nnoremap <silent> ,b :TagbarToggle<CR>
