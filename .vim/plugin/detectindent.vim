@@ -38,7 +38,7 @@ fun! <SID>IsCommentStart(line)
 endfun
 
 fun! <SID>IsCommentEnd(line)
-    return <SID>HasCStyleComments() && a:line =~ '\*/'
+    return <SID>HasCStyleComments() && a:line =~ '\*/' && a:line !~ '\*/.*/\*'
 endfun
 
 fun! <SID>IsCommentLine(line)
