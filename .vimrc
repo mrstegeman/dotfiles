@@ -6,6 +6,7 @@ colorscheme desert
 filetype plugin indent on
 set autoindent
 set backspace=indent,eol,start
+set cino=(0
 set completeopt=longest,menuone
 set expandtab
 set ff=unix
