@@ -101,7 +101,9 @@ pkginfo() {
 
     case "$DISTRIB_ID" in
         Arch)
-            pacman -Qi "$1" 2>/dev/null || pacman -Si "$1"
+            pacman -Qi "$1" 2>/dev/null || \
+                pacman -Si "$1" 2>/dev/null || \
+                meat -i "$1"
             ;;
         Ubuntu)
             apt-cache show "$1"
