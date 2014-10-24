@@ -14,6 +14,7 @@
 .config/brasero/
 .config/dconf/
 .config/deluge/
+.config/dleyna-server-service.conf
 .config/enchant/
 .config/epiphany/
 .config/evince/
@@ -34,6 +35,7 @@
 .config/rygel.conf
 .config/totem/
 .config/user-dirs.dirs
+.config/VirtualBox/
 .dbus/
 .dvdcss/
 .esd_auth
