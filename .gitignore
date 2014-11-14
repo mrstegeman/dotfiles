@@ -10,10 +10,12 @@
 .cache/
 .config/Empathy/
 .config/Trolltech.conf
+.config/VirtualBox/
 .config/autostart/
 .config/brasero/
 .config/dconf/
 .config/deluge/
+.config/dleyna-renderer-service.conf
 .config/dleyna-server-service.conf
 .config/enchant/
 .config/epiphany/
@@ -35,7 +37,6 @@
 .config/rygel.conf
 .config/totem/
 .config/user-dirs.dirs
-.config/VirtualBox/
 .dbus/
 .dvdcss/
 .esd_auth
@@ -45,6 +46,7 @@
 .gnome/
 .gnupg/
 .gstreamer-0.10/
+.gtickrc
 .iscan_preference
 .lesshst
 .local/
@@ -72,4 +74,3 @@ Videos
 VirtualBox VMs/
 bin/
 git/
-.gtickrc
