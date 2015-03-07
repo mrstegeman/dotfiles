@@ -47,6 +47,7 @@
 .gnupg/
 .gstreamer-0.10/
 .gtickrc
+.ipython/
 .iscan_preference
 .lesshst
 .local/
