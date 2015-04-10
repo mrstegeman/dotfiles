@@ -44,6 +44,7 @@
 .gimp*
 .gksu.lock
 .gnome/
+.gnome2/
 .gnupg/
 .gstreamer-0.10/
 .gtickrc

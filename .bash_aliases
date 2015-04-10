@@ -49,7 +49,11 @@ pkgsearch() {
     case "$DISTRIB_ID" in
         Arch)
             pacman -Ss "$1"
-            meat -s "$1"
+            if [ $(id -u) = "0" ]; then
+                su -c "meat -s \"$1\"" michael
+            else
+                meat -s "$1"
+            fi
             ;;
         Ubuntu)
             apt-cache search "$1"
@@ -101,9 +105,15 @@ pkginfo() {
 
     case "$DISTRIB_ID" in
         Arch)
-            pacman -Qi "$1" 2>/dev/null || \
-                pacman -Si "$1" 2>/dev/null || \
-                meat -i "$1"
+            if [ $(id -u) = "0" ]; then
+                pacman -Qi "$1" 2>/dev/null || \
+                    pacman -Si "$1" 2>/dev/null || \
+                    su -c "meat -i \"$1\"" michael
+            else
+                pacman -Qi "$1" 2>/dev/null || \
+                    pacman -Si "$1" 2>/dev/null || \
+                    meat -i "$1"
+            fi
             ;;
         Ubuntu)
             apt-cache show "$1"
