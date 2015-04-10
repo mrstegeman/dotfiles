@@ -29,6 +29,7 @@
 .config/google*
 .config/gtk-*
 .config/ibus/
+.config/libvirt/
 .config/meat/
 .config/menus/
 .config/monitors.xml
@@ -56,6 +57,7 @@
 .mozilla/
 .mplayer/
 .pki/
+.python-eggs/
 .remmina/
 .repoconfig/
 .repopickle_.gitconfig
