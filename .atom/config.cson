@@ -1,0 +1,12 @@
+"*":
+  "exception-reporting":
+    userId: "efd98819-92ba-0d5d-5454-37c5ebd9bc95"
+  welcome:
+    showOnStartup: false
+  core: {}
+  editor:
+    invisibles: {}
+    fontSize: 12
+    tabLength: 4
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false

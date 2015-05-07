@@ -5,12 +5,20 @@
 .VirtualBox/
 .adobe/
 .android/
+.atom/.apm/
+.atom/.npm/
+.atom/atom-shell/
+.atom/compile-cache/
+.atom/nohup.out
+.atom/storage/
 .bash_history
 .bash_logout
 .cache/
+.config/Atom/
 .config/Empathy/
 .config/Trolltech.conf
 .config/VirtualBox/
+.config/anjuta/
 .config/autostart/
 .config/brasero/
 .config/dconf/
@@ -24,6 +32,7 @@
 .config/gconf/
 .config/gedit/
 .config/ghb/
+.config/gnome-builder/
 .config/gnome-control-center/
 .config/goa-1.0/
 .config/google*
@@ -56,6 +65,7 @@
 .macromedia/
 .mozilla/
 .mplayer/
+.node-gyp/
 .pki/
 .python-eggs/
 .remmina/
