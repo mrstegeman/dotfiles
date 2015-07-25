@@ -4,7 +4,7 @@ export LC_COLLATE=C
 # programs
 export EDITOR=vim
 export VISUAL=$EDITOR
-export BROWSER=google-chrome-stable
+export BROWSER=firefox
 export PAGER=less
 
 # path

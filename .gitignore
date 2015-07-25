@@ -29,6 +29,7 @@
 .config/epiphany/
 .config/evince/
 .config/evolution/
+.config/freshwrapper-data/
 .config/gconf/
 .config/gedit/
 .config/ghb/
@@ -41,6 +42,7 @@
 .config/libvirt/
 .config/meat/
 .config/menus/
+.config/mimeapps.list
 .config/monitors.xml
 .config/nautilus/
 .config/pulse/
