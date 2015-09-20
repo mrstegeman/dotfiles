@@ -14,8 +14,10 @@
 .bash_history
 .bash_logout
 .cache/
+.config/.mono/
 .config/Atom/
 .config/Empathy/
+.config/KeePass/
 .config/Trolltech.conf
 .config/VirtualBox/
 .config/anjuta/
@@ -26,6 +28,7 @@
 .config/dleyna-renderer-service.conf
 .config/dleyna-server-service.conf
 .config/enchant/
+.config/eog/
 .config/epiphany/
 .config/evince/
 .config/evolution/
@@ -65,11 +68,14 @@
 .lesshst
 .local/
 .macromedia/
+.mono/
 .mozilla/
 .mplayer/
 .node-gyp/
+.openvpn/
 .pki/
 .python-eggs/
+.recently-used
 .remmina/
 .repoconfig/
 .repopickle_.gitconfig
