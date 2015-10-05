@@ -9,6 +9,7 @@
 .atom/.npm/
 .atom/atom-shell/
 .atom/compile-cache/
+.atom/electron/
 .atom/nohup.out
 .atom/storage/
 .bash_history
