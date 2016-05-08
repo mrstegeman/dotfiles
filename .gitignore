@@ -40,6 +40,7 @@
 .config/gnome-builder/
 .config/gnome-control-center/
 .config/goa-1.0/
+.config/goobox/
 .config/google*
 .config/gtk-*
 .config/ibus/
@@ -51,6 +52,7 @@
 .config/nautilus/
 .config/pulse/
 .config/rygel.conf
+.config/systemd/
 .config/totem/
 .config/user-dirs.dirs
 .dbus/
