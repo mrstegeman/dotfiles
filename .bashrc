@@ -38,9 +38,29 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -r /usr/share/git/completion/git-prompt.sh ]; then
+    . /usr/share/git/completion/git-prompt.sh
+fi
+
+__custom_git_ps1()
+{
+    __ps1=$(__git_ps1 | sed -e 's/)//' -e 's/(//' -e 's/ //')
+
+    if [ "$__ps1" = "" ]; then
+        return
+    fi
+
+    changes=$(git status --porcelain 2>/dev/null | wc -l)
+    if [ "$changes" = "0" ]; then
+        echo -e -n "─[\e[0;32m$__ps1\e[0m]"
+    else
+        echo -e -n "─[\e[0;31m$__ps1\e[0m]"
+    fi
+}
+
 # enable color support of ls and grep, set PS1
 if [ "$TERM" != "dumb" ]; then
-    PS1='┌──[\e[0;33m\u\e[0m@\e[0;34m\h\e[0m]─[\e[2;37m\w\e[0m]\n└─\$ '
+    PS1="┌──[\e[0;33m\u\e[0m@\e[0;34m\h\e[0m]─[\e[2;37m\w\e[0m]\$(__custom_git_ps1)\n└─\$ "
     if [ -f ~/.dircolors ]; then
         eval "`dircolors -b ~/.dircolors`"
     else
@@ -65,7 +85,7 @@ elif [ -r /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 fi
 
-LESS='-R -c'
+LESS='-R -c -i'
 LESS_TERMCAP_mb=$'\E[01;31m'
 LESS_TERMCAP_md=$'\E[01;31m'
 LESS_TERMCAP_me=$'\E[0m'

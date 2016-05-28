@@ -189,6 +189,7 @@ EXEC 01;32 # This is for files with execute permission:
 .rmvb 00;33
 .vob 00;33
 .wmv 00;33
+.webm 00;33
 
 # audio formats
 .aac 00;36

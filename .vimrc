@@ -24,6 +24,7 @@ set showmatch
 set showmode
 set smartindent
 set softtabstop=4
+set spelllang=en_us
 set t_Co=256
 set tabstop=4
 set title
