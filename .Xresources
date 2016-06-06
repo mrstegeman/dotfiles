@@ -1,5 +1,3 @@
-Xcursor.theme: Bluecurve
-
 URxvt.background: #000000
 URxvt.foreground: #c0c0c0
 URxvt.transparent: true
