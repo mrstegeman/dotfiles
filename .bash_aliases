@@ -50,9 +50,9 @@ pkgsearch() {
         Arch)
             pacman -Ss "$1"
             if [ $(id -u) = "0" ]; then
-                su -c "meat -s \"$1\"" michael
+                su -c "pacaur -s \"$1\"" michael
             else
-                meat -s "$1"
+                pacaur -s "$1"
             fi
             ;;
         Ubuntu)
@@ -69,10 +69,10 @@ upgrade() {
         Arch)
             if [ $(id -u) = "0" ]; then
                 pacman -Syyu
-                su -c "meat -u" michael
+                su -c "pacaur -u" michael
             else
                 sudo pacman -Syyu
-                meat -u
+                pacaur -u
             fi
             ;;
         Ubuntu)
@@ -108,11 +108,11 @@ pkginfo() {
             if [ $(id -u) = "0" ]; then
                 pacman -Qi "$1" 2>/dev/null || \
                     pacman -Si "$1" 2>/dev/null || \
-                    su -c "meat -i \"$1\"" michael
+                    su -c "pacaur -i \"$1\"" michael
             else
                 pacman -Qi "$1" 2>/dev/null || \
                     pacman -Si "$1" 2>/dev/null || \
-                    meat -i "$1"
+                    pacaur -i "$1"
             fi
             ;;
         Ubuntu)
