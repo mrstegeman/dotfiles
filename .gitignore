@@ -90,6 +90,7 @@
 .thumbnails/
 .vim/.netrwhist
 .viminfo
+.xsel.log
 Desktop/
 Documents/
 Downloads/
