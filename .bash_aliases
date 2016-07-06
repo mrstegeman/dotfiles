@@ -50,9 +50,9 @@ pkgsearch() {
         Arch)
             pacman -Ss "$1"
             if [ $(id -u) = "0" ]; then
-                su -c "pacaur -s \"$1\"" michael
+                su -c "pacaur --sort name -s \"$1\"" michael
             else
-                pacaur -s "$1"
+                pacaur --sort name -s "$1"
             fi
             ;;
         Ubuntu)
