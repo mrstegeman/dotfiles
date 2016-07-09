@@ -83,6 +83,7 @@
 .remmina/
 .repoconfig/
 .repopickle_.gitconfig
+.rnd
 .sqlite_history
 .ssh/
 .subversion/README.txt
