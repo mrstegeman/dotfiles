@@ -83,6 +83,10 @@ elif [ -r /etc/bash_completion ]; then
     . /etc/bash_completion
 elif [ -r /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
+elif [ -d /etc/bash_completion.d ]; then
+    for file in $(find /etc/bash_completion.d -maxdepth 1 -type f); do
+        . "${file}"
+    done
 fi
 
 LESS='-R -c -i'
