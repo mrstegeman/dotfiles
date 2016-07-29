@@ -88,6 +88,7 @@ elif [ -d /etc/bash_completion.d ]; then
         . "${file}"
     done
 fi
+complete -cf sudo
 
 LESS='-R -c -i'
 LESS_TERMCAP_mb=$'\E[01;31m'

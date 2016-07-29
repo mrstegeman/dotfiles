@@ -26,6 +26,10 @@ up() {
 pkgown() {
     DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
 
+    if [ -z "${DISTRIB_ID}" ] && [ -f /etc/redhat-release ]; then
+        DISTRIB_ID='RHEL'
+    fi
+
     if [[ $1 =~ ^/ ]]; then
         file="$1"
     else
@@ -39,12 +43,19 @@ pkgown() {
         Ubuntu)
             dpkg -S "$file"
             ;;
+        RHEL)
+            rpm -qf "$file" --queryformat '%{NAME}\n'
+            ;;
     esac
 }
 
 # search for a package
 pkgsearch() {
     DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    if [ -z "${DISTRIB_ID}" ] && [ -f /etc/redhat-release ]; then
+        DISTRIB_ID='RHEL'
+    fi
 
     case "$DISTRIB_ID" in
         Arch)
@@ -58,12 +69,19 @@ pkgsearch() {
         Ubuntu)
             apt-cache search "$1"
             ;;
+        RHEL)
+            yum search "$1"
+            ;;
     esac
 }
 
 # update packages
 upgrade() {
     DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    if [ -z "${DISTRIB_ID}" ] && [ -f /etc/redhat-release ]; then
+        DISTRIB_ID='RHEL'
+    fi
 
     case "$DISTRIB_ID" in
         Arch)
@@ -82,12 +100,23 @@ upgrade() {
                 sudo apt-get update && sudo apt-get dist-upgrade
             fi
             ;;
+        RHEL)
+            if [ $(id -u) = "0" ]; then
+                yum update
+            else
+                sudo yum update
+            fi
+            ;;
     esac
 }
 
 # get installed packages
 getinstalled() {
     DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    if [ -z "${DISTRIB_ID}" ] && [ -f /etc/redhat-release ]; then
+        DISTRIB_ID='RHEL'
+    fi
 
     case "$DISTRIB_ID" in
         Arch)
@@ -96,12 +125,19 @@ getinstalled() {
         Ubuntu)
             dpkg --get-selections | grep '\sinstall$' | awk '{print $1}'
             ;;
+        RHEL)
+            yum list installed | awk '{print $1}'
+            ;;
     esac
 }
 
 # get information about a packagae
 pkginfo() {
     DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    if [ -z "${DISTRIB_ID}" ] && [ -f /etc/redhat-release ]; then
+        DISTRIB_ID='RHEL'
+    fi
 
     case "$DISTRIB_ID" in
         Arch)
@@ -118,11 +154,18 @@ pkginfo() {
         Ubuntu)
             apt-cache show "$1"
             ;;
+        RHEL)
+            yum info "$1"
+            ;;
     esac
 }
 
 pkgprovides() {
     DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    if [ -z "${DISTRIB_ID}" ] && [ -f /etc/redhat-release ]; then
+        DISTRIB_ID='RHEL'
+    fi
 
     case "$DISTRIB_ID" in
         Arch)
@@ -131,11 +174,18 @@ pkgprovides() {
         Ubuntu)
             apt-file search "$1"
             ;;
+        RHEL)
+            yum whatprovides "$1"
+            ;;
     esac
 }
 
 pkglist() {
     DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+
+    if [ -z "${DISTRIB_ID}" ] && [ -f /etc/redhat-release ]; then
+        DISTRIB_ID='RHEL'
+    fi
 
     case "$DISTRIB_ID" in
         Arch)
@@ -143,6 +193,9 @@ pkglist() {
             ;;
         Ubuntu)
             dpkg-query -L "$1"
+            ;;
+        RHEL)
+            rpm -ql "$1"
             ;;
     esac
 }

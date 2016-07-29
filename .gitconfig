@@ -1,6 +1,6 @@
 [user]
     name = Mike Stegeman
-    email = mrstegeman@gmail.com
+	email = mstegema@qti.qualcomm.com
 [color]
     diff = true
     branch = true
@@ -15,4 +15,4 @@
 [merge]
     tool = vimdiff
 [push]
-	default = simple
+	#default = simple
