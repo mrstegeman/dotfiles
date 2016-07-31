@@ -1,5 +1,6 @@
 *.swp
 *~
+.AndroidStudio*/
 .ICEauthority
 .Skype/
 .VirtualBox/
@@ -66,6 +67,7 @@
 .dbus/
 .dmrc
 .dvdcss/
+.emulator_console_auth_token
 .esd_auth
 .freerdp/
 .gconf/
@@ -74,10 +76,12 @@
 .gnome/
 .gnome2/
 .gnupg/
+.gradle/
 .gstreamer-0.10/
 .gtickrc
 .ipython/
 .iscan_preference
+.java/
 .lesshst
 .local/
 .macromedia/
