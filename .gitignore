@@ -17,6 +17,7 @@
 .bash_extra
 .bash_history
 .bash_logout
+.bzr.log
 .cache/
 .compiz/
 .config/.mono/
@@ -49,6 +50,7 @@
 .config/google*
 .config/gtk-*
 .config/ibus/
+.config/inkscape/
 .config/libaccounts-glib/
 .config/libvirt/
 .config/meat/
@@ -91,6 +93,7 @@
 .node-gyp/
 .nv/
 .openvpn/
+.parallel/
 .pki/
 .python-eggs/
 .recently-used
