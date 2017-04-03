@@ -60,6 +60,7 @@
 .config/nautilus/
 .config/pulse/
 .config/rygel.conf
+.config/spotify/
 .config/systemd/
 .config/totem/
 .config/unity/
