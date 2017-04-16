@@ -29,6 +29,7 @@
 .config/anjuta/
 .config/autostart/
 .config/brasero/
+.config/chromium/
 .config/compiz-1/
 .config/dconf/
 .config/deluge/
@@ -85,6 +86,7 @@
 .ipython/
 .iscan_preference
 .java/
+.lastpass/
 .lesshst
 .local/
 .macromedia/
