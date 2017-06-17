@@ -24,6 +24,7 @@
 .config/Atom/
 .config/Empathy/
 .config/KeePass/
+.config/QtProject.conf
 .config/Trolltech.conf
 .config/VirtualBox/
 .config/anjuta/
