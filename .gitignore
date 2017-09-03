@@ -62,6 +62,7 @@
 .config/nautilus/
 .config/pulse/
 .config/rygel.conf
+.config/skypeforlinux/
 .config/spotify/
 .config/systemd/
 .config/totem/
@@ -128,3 +129,4 @@ Videos
 VirtualBox VMs/
 bin/
 git/
+skypeforlinux/
