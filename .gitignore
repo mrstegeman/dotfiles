@@ -26,6 +26,7 @@
 .config/KeePass/
 .config/QtProject.conf
 .config/Trolltech.conf
+.config/Vidyo/
 .config/VirtualBox/
 .config/anjuta/
 .config/autostart/
@@ -58,6 +59,7 @@
 .config/meat/
 .config/menus/
 .config/mimeapps.list
+.config/monitors-v1-backup.xml
 .config/monitors.xml
 .config/nautilus/
 .config/pulse/
@@ -114,6 +116,7 @@
 .subversion/servers
 .thumbnails/
 .vas*
+.vidyo/
 .vim/.netrwhist
 .viminfo
 .xsel.log
@@ -130,5 +133,3 @@ VirtualBox VMs/
 bin/
 git/
 skypeforlinux/
-.vidyo/
-.config/Vidyo/
