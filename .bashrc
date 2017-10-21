@@ -100,4 +100,16 @@ LESS_TERMCAP_ue=$'\E[0m'
 LESS_TERMCAP_us=$'\E[01;32m'
 export ${!LESS@}
 
+# locale
+export LC_COLLATE=C
+
+# programs
+export EDITOR=vim
+export VISUAL=$EDITOR
+export BROWSER=firefox
+export PAGER=less
+
+# path
+export PATH=$HOME/bin:$PATH
+
 [ -f ~/.bash_extra ] && . ~/.bash_extra
