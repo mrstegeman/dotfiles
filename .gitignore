@@ -1,6 +1,8 @@
+**/.DS_Store
 *.swp
 *~
 .AndroidStudio*/
+.CFUserTextEncoding
 .ICEauthority
 .Skype/
 .VirtualBox/
@@ -17,6 +19,7 @@
 .bash_extra
 .bash_history
 .bash_logout
+.bash_sessions/
 .bzr.log
 .cache/
 .compiz/
@@ -122,12 +125,16 @@
 .xsel.log
 .xsession-errors
 .xsession-errors.old
+Applications/
 Desktop/
 Documents/
 Downloads/
+Library/
+Movies/
 Music
 PDF/
 Pictures
+Public/
 Videos
 VirtualBox VMs/
 bin/

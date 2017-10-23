@@ -42,6 +42,12 @@ if [ -r /usr/share/git/completion/git-prompt.sh ]; then
     . /usr/share/git/completion/git-prompt.sh
 fi
 
+if [ -d /usr/local/opt/git/etc/bash_completion.d ]; then
+    for f in /usr/local/opt/git/etc/bash_completion.d/*.sh; do
+        . "$f"
+    done
+fi
+
 __custom_git_ps1()
 {
     __ps1=$(__git_ps1 | sed -e 's/)//' -e 's/(//' -e 's/ //')
@@ -52,20 +58,28 @@ __custom_git_ps1()
 
     changes=$(git status --porcelain 2>/dev/null | wc -l)
     if [ "$changes" = "0" ]; then
-        echo -e -n "─[\e[0;32m$__ps1\e[0m]"
+        printf "─[\e[0;32m$__ps1\e[0m]"
     else
-        echo -e -n "─[\e[0;31m$__ps1\e[0m]"
+        printf "─[\e[0;31m$__ps1\e[0m]"
     fi
 }
 
 # enable color support of ls and grep, set PS1
 if [ "$TERM" != "dumb" ]; then
     PS1="┌──[\e[0;33m\u\e[0m@\e[0;34m\h\e[0m]─[\e[2;37m\w\e[0m]\$(__custom_git_ps1)\n└─\$ "
+
+    if [ $(uname) = "Darwin" ]; then
+        export CLICOLOR=YES
+        export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+        export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    fi
+
     if [ -f ~/.dircolors ]; then
         eval "`dircolors -b ~/.dircolors`"
     else
         eval "`dircolors -b`"
     fi
+
     alias ls='ls --color=auto -Av'
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
