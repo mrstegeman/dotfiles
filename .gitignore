@@ -105,6 +105,7 @@
 .mplayer/
 .multirust
 .node-gyp/
+.npm/
 .nv/
 .openvpn/
 .parallel/
@@ -126,6 +127,8 @@
 .vas*
 .vidyo/
 .vim/.netrwhist
+.vim/autoload/plug.vim
+.vim/plugged/*/
 .viminfo
 .xsel.log
 .xsession-errors

@@ -39,13 +39,38 @@ else
     set cc=80
 endif
 
+" fixes for certain file types
+autocmd FileType make set cc=0
+
+" auto-install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" Plugins...
+Plug 'vim-syntastic/syntastic'
+Plug 'rust-lang/rust.vim'
+
+" Initialize plugin system
+call plug#end()
+
 " settings for vim-detectindent
 let g:detectindent_preferred_expandtab=1
 let g:detectindent_preferred_indent=4
 autocmd BufReadPost * :DetectIndent 
 
-" maps
-nnoremap <silent> ,b :TagbarToggle<CR>
-
-" fixes for certain file types
-autocmd FileType make set cc=0
+" settings for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_rust_checkers = ['rustc']
