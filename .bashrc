@@ -124,6 +124,7 @@ export BROWSER=firefox
 export PAGER=less
 
 # path
-export PATH=$HOME/bin:$PATH
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 [ -f ~/.bash_extra ] && . ~/.bash_extra

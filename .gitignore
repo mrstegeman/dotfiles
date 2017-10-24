@@ -1,11 +1,11 @@
 **/.DS_Store
-.config/configstore/
 *.swp
 *~
 .AndroidStudio*/
 .CFUserTextEncoding
 .ICEauthority
 .Skype/
+.Trash/
 .VirtualBox/
 .Xauthority
 .adobe/
@@ -23,6 +23,7 @@
 .bash_sessions/
 .bzr.log
 .cache/
+.cargo/
 .compiz/
 .config/.mono/
 .config/Atom/
@@ -37,6 +38,7 @@
 .config/brasero/
 .config/chromium/
 .config/compiz-1/
+.config/configstore/
 .config/dconf/
 .config/deluge/
 .config/dleyna-renderer-service.conf
@@ -101,6 +103,7 @@
 .mono/
 .mozilla/
 .mplayer/
+.multirust
 .node-gyp/
 .nv/
 .openvpn/
@@ -113,6 +116,7 @@
 .repoconfig/
 .repopickle_.gitconfig
 .rnd
+.rustup/
 .snapshot/
 .sqlite_history
 .ssh/
