@@ -77,9 +77,12 @@
 .config/unity/
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.config/yarn/
 .cshrc
+.cups/
 .dbus/
 .dmrc
+.docker/
 .dvdcss/
 .emulator_console_auth_token
 .esd_auth
@@ -130,9 +133,11 @@
 .vim/autoload/plug.vim
 .vim/plugged/*/
 .viminfo
+.wget-hsts
 .xsel.log
 .xsession-errors
 .xsession-errors.old
+.yarnrc
 Applications/
 Desktop/
 Documents/
@@ -147,5 +152,7 @@ Videos
 VirtualBox VMs/
 bin/
 git/
+node_modules/
+package-lock.json
 skypeforlinux/
 workspace/

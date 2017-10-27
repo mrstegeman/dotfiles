@@ -125,6 +125,7 @@ export PAGER=less
 
 # path
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+[ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
+[ -d "$HOME/node_modules/.bin" ] && export PATH="$HOME/node_modules/.bin:$PATH"
 
 [ -f ~/.bash_extra ] && . ~/.bash_extra
