@@ -55,6 +55,7 @@ call plug#begin('~/.vim/plugged')
 " Plugins...
 Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
+Plug 'ciaranm/detectindent'
 
 " Initialize plugin system
 call plug#end()
