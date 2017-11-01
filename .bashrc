@@ -1,5 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -38,13 +36,26 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# enable programmable completion features
+if [ -r /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+elif [ -r /etc/bash_completion ]; then
+    . /etc/bash_completion
+elif [ -r /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
+elif [ -d /etc/bash_completion.d ]; then
+    for file in $(find /etc/bash_completion.d -maxdepth 1 -type f); do
+        . "${file}"
+    done
+fi
+
 if [ -r /usr/share/git/completion/git-prompt.sh ]; then
     . /usr/share/git/completion/git-prompt.sh
 fi
 
 if [ -d /usr/local/opt/git/etc/bash_completion.d ]; then
-    for f in /usr/local/opt/git/etc/bash_completion.d/*.sh; do
-        . "$f"
+    for file in $(find /usr/local/opt/git/etc/bash_completion.d -maxdepth 1 -type f); do
+        . "${file}"
     done
 fi
 
@@ -90,20 +101,9 @@ else
     alias ls='ls -Av'
 fi
 
-# enable programmable completion features
-if [ -r /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-elif [ -r /etc/bash_completion ]; then
-    . /etc/bash_completion
-elif [ -r /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
-elif [ -d /etc/bash_completion.d ]; then
-    for file in $(find /etc/bash_completion.d -maxdepth 1 -type f); do
-        . "${file}"
-    done
-fi
 complete -cf sudo
 
+# colors for less
 LESS='-R -c -i'
 LESS_TERMCAP_mb=$'\E[01;31m'
 LESS_TERMCAP_md=$'\E[01;31m'
@@ -128,4 +128,5 @@ export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
 [ -d "$HOME/node_modules/.bin" ] && export PATH="$HOME/node_modules/.bin:$PATH"
 
+# extra, private stuff
 [ -f ~/.bash_extra ] && . ~/.bash_extra
