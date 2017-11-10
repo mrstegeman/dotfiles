@@ -41,6 +41,7 @@ endif
 
 " fixes for certain file types
 autocmd FileType make set cc=0
+autocmd FileType rust set cc=100
 
 " auto-install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -56,6 +57,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
 Plug 'ciaranm/detectindent'
+Plug 'cespare/vim-toml'
 
 " Initialize plugin system
 call plug#end()
@@ -74,4 +76,4 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_rust_checkers = ['rustc']
+let g:syntastic_rust_checkers = ['cargo']

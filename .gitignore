@@ -61,6 +61,7 @@
 .config/gtk-*
 .config/ibus/
 .config/inkscape/
+.config/karabiner/
 .config/libaccounts-glib/
 .config/libvirt/
 .config/meat/
@@ -78,6 +79,7 @@
 .config/unity/
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.config/wireshark/
 .config/yarn/
 .cshrc
 .cups/
@@ -134,6 +136,7 @@
 .vim/autoload/plug.vim
 .vim/plugged/*/
 .viminfo
+.vscode/
 .wget-hsts
 .xsel.log
 .xsession-errors
