@@ -2,9 +2,9 @@
 set nocompatible
 
 " general settings
-colorscheme desert
 filetype plugin indent on
 set autoindent
+set background=dark
 set backspace=indent,eol,start
 set cino=(0
 set completeopt=longest,menuone
@@ -25,8 +25,8 @@ set showmode
 set smartindent
 set softtabstop=4
 set spelllang=en_us
-set t_Co=256
 set tabstop=4
+set termguicolors
 set title
 set wildmenu
 set wildmode=longest,list
@@ -56,11 +56,16 @@ call plug#begin('~/.vim/plugged')
 " Plugins...
 Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'crusoexia/vim-javascript-lib'
 Plug 'ciaranm/detectindent'
 Plug 'cespare/vim-toml'
+Plug 'crusoexia/vim-monokai'
 
 " Initialize plugin system
 call plug#end()
+
+colorscheme monokai
 
 " settings for vim-detectindent
 let g:detectindent_preferred_expandtab=1
