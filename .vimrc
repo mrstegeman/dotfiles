@@ -61,6 +61,7 @@ Plug 'crusoexia/vim-javascript-lib'
 Plug 'ciaranm/detectindent'
 Plug 'cespare/vim-toml'
 Plug 'crusoexia/vim-monokai'
+Plug 'leafgarland/typescript-vim'
 
 " Initialize plugin system
 call plug#end()
