@@ -71,9 +71,9 @@ pkgsearch() {
         Arch)
             pacman -Ss "$1"
             if [ $(id -u) = "0" ]; then
-                su -c "pacaur --sort name -s \"$1\"" michael
+                su -c "trizen -Ss --aur \"$1\"" michael
             else
-                pacaur --sort name -s "$1"
+                trizen -Ss --aur "$1"
             fi
             ;;
         Ubuntu)
@@ -102,10 +102,10 @@ upgrade() {
         Arch)
             if [ $(id -u) = "0" ]; then
                 pacman -Syyu
-                su -c "pacaur -u" michael
+                su -c "trizen -Su --aur" michael
             else
                 sudo pacman -Syyu
-                pacaur -u
+                trizen -Su --aur
             fi
             ;;
         Ubuntu)
@@ -169,11 +169,11 @@ pkginfo() {
             if [ $(id -u) = "0" ]; then
                 pacman -Qi "$1" 2>/dev/null || \
                     pacman -Si "$1" 2>/dev/null || \
-                    su -c "pacaur -i \"$1\"" michael
+                    su -c "trizen -Si --aur \"$1\"" michael
             else
                 pacman -Qi "$1" 2>/dev/null || \
                     pacman -Si "$1" 2>/dev/null || \
-                    pacaur -i "$1"
+                    trizen -Si --aur "$1"
             fi
             ;;
         Ubuntu)
