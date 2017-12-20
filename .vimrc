@@ -16,6 +16,7 @@ set incsearch
 set lbr
 set modeline
 set mouse=a
+set number
 set ruler
 set scrolloff=5
 set shell=/bin/bash
@@ -62,6 +63,7 @@ Plug 'ciaranm/detectindent'
 Plug 'cespare/vim-toml'
 Plug 'crusoexia/vim-monokai'
 Plug 'leafgarland/typescript-vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Initialize plugin system
 call plug#end()
