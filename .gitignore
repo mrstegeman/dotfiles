@@ -130,6 +130,7 @@
 .subversion/README.txt
 .subversion/servers
 .thumbnails/
+.thunderbird/
 .vas*
 .vidyo/
 .vim/.netrwhist
