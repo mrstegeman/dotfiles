@@ -1,6 +1,7 @@
 [user]
     name = Mike Stegeman
     email = mrstegeman@gmail.com
+	signingKey = FEDD596D296F7400
 [color]
     diff = true
     branch = true

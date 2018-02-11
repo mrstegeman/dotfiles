@@ -30,6 +30,7 @@
 .config/Atom/
 .config/Empathy/
 .config/KeePass/
+.config/Keybase/
 .config/QtProject.conf
 .config/Trolltech.conf
 .config/Vidyo/
@@ -62,6 +63,7 @@
 .config/ibus/
 .config/inkscape/
 .config/karabiner/
+.config/keybase/
 .config/libaccounts-glib/
 .config/libvirt/
 .config/meat/
