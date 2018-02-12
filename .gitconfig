@@ -1,7 +1,7 @@
 [user]
     name = Mike Stegeman
     email = mrstegeman@gmail.com
-	signingKey = C1B2DF99809504447B2C7209FEDD596D296F7400
+    signingKey = C1B2DF99809504447B2C7209FEDD596D296F7400
 [color]
     diff = true
     branch = true
@@ -16,6 +16,6 @@
 [merge]
     tool = vimdiff
 [push]
-	default = simple
+    default = simple
 [commit]
-	gpgsign = true
+    gpgsign = true

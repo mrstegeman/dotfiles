@@ -158,6 +158,7 @@ Videos/
 VirtualBox VMs/
 bin/
 git/
+mozilla-iot/
 node_modules/
 package-lock.json
 skypeforlinux/
