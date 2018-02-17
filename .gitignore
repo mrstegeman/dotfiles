@@ -118,6 +118,7 @@
 .openvpn/
 .parallel/
 .pki/
+.pylint.d/
 .python-eggs/
 .recently-used
 .remmina/
