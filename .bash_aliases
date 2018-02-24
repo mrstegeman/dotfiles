@@ -29,7 +29,7 @@ pkgown() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     if [[ $1 =~ ^/ ]]; then
@@ -64,7 +64,7 @@ pkgsearch() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -95,7 +95,7 @@ upgrade() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -135,7 +135,7 @@ getinstalled() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -161,7 +161,7 @@ pkginfo() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -194,7 +194,7 @@ pkgprovides() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -219,7 +219,7 @@ pkglist() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
