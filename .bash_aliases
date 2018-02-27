@@ -237,3 +237,20 @@ pkglist() {
             ;;
     esac
 }
+
+download_youtube() {
+    fname_in=$(youtube-dl --get-filename "$1")
+    fname_out="${fname_in/-[[:alnum:]]*.mp4/.mp4}"
+
+    youtube-dl \
+        --merge-output-format mp4 \
+        --postprocessor-args '-strict -2' \
+        "$1" || return 1
+    ffmpeg \
+        -i "${fname_in}" \
+        -c:v copy \
+        -c:a aac \
+        -b:a 160k \
+        "${fname_out}" || return 1
+    rm -f "${fname_in}"
+}
