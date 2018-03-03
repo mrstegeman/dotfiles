@@ -73,6 +73,7 @@
 .config/monitors.xml
 .config/nautilus/
 .config/pulse/
+.config/rclone/
 .config/rygel.conf
 .config/skypeforlinux/
 .config/spotify/
@@ -121,6 +122,7 @@
 .pki/
 .pylint.d/
 .python-eggs/
+.python_history
 .recently-used
 .remmina/
 .repo_.gitconfig.json
