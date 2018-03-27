@@ -48,6 +48,7 @@
 .config/enchant/
 .config/eog/
 .config/epiphany/
+.config/etcher-electron/
 .config/evince/
 .config/evolution/
 .config/freshwrapper-data/
@@ -115,6 +116,7 @@
 .mplayer/
 .multirust
 .node-gyp/
+.node_repl_history
 .npm/
 .nv/
 .openvpn/
@@ -161,6 +163,7 @@ Public/
 Videos/
 VirtualBox VMs/
 bin/
+dead.letter
 git/
 mozilla-iot/
 node_modules/
