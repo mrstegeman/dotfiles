@@ -29,7 +29,7 @@ pkgown() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     if [[ $1 =~ ^/ ]]; then
@@ -64,7 +64,7 @@ pkgsearch() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -95,7 +95,7 @@ upgrade() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -135,7 +135,7 @@ getinstalled() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -161,7 +161,7 @@ pkginfo() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -194,7 +194,7 @@ pkgprovides() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -219,7 +219,7 @@ pkglist() {
     elif [ -f /etc/redhat-release ]; then
         DISTRIB_ID='RHEL'
     else
-        DISTRIB_ID=$(grep '^DISTRIB_ID=' /etc/lsb-release | cut -d '=' -f 2)
+        DISTRIB_ID=$(lsb_release -is)
     fi
 
     case "$DISTRIB_ID" in
@@ -236,4 +236,21 @@ pkglist() {
             brew list "$1"
             ;;
     esac
+}
+
+download_youtube() {
+    fname_in=$(youtube-dl --get-filename "$1")
+    fname_out="${fname_in/-[[:alnum:]]*.mp4/.mp4}"
+
+    youtube-dl \
+        --merge-output-format mp4 \
+        --postprocessor-args '-strict -2' \
+        "$1" || return 1
+    ffmpeg \
+        -i "${fname_in}" \
+        -c:v copy \
+        -c:a aac \
+        -b:a 160k \
+        "${fname_out}" || return 1
+    rm -f "${fname_in}"
 }
