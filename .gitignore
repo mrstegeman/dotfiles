@@ -110,6 +110,7 @@
 /.lastpass/
 /.lesshst
 /.local/
+/.m2/
 /.macromedia/
 /.mono/
 /.mozilla-iot/
@@ -119,11 +120,13 @@
 /.node-gyp/
 /.node_repl_history
 /.npm/
+/.npmrc
 /.nv/
 /.openvpn/
 /.parallel/
 /.pki/
 /.pylint.d/
+/.pypirc
 /.python-eggs/
 /.python_history
 /.recently-used
@@ -171,3 +174,4 @@
 /package-lock.json
 /skypeforlinux/
 /workspace/
+/.oracle_jre_usage/
