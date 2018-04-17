@@ -96,6 +96,7 @@
 /.esd_auth
 /.freerdp/
 /.gconf/
+/.gem/
 /.gimp*
 /.gksu.lock
 /.gnome/
@@ -123,6 +124,7 @@
 /.npmrc
 /.nv/
 /.openvpn/
+/.oracle_jre_usage/
 /.parallel/
 /.pki/
 /.pylint.d/
@@ -143,6 +145,7 @@
 /.subversion/servers
 /.thumbnails/
 /.thunderbird/
+/.travis/
 /.vas*
 /.vidyo/
 /.vim/.netrwhist
@@ -174,4 +177,3 @@
 /package-lock.json
 /skypeforlinux/
 /workspace/
-/.oracle_jre_usage/
