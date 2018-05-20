@@ -1,3 +1,20 @@
+__get_os_type() {
+    if [ "$(uname)" = "Darwin" ]; then
+        echo 'Darwin'
+    elif [ -f /etc/redhat-release ]; then
+        echo 'RHEL'
+    elif [ -f /etc/debian_version ]; then
+        echo 'Debian'
+    else
+        DISTRIB_ID=$(lsb_release -is)
+        if [ "$DISTRIB_ID" = "Ubuntu" ]; then
+            echo 'Debian'
+        fi
+
+        echo "$DISTRIB_ID"
+    fi
+}
+
 alias extract='bsdtar xf'
 
 # make directory and change to it
@@ -24,25 +41,17 @@ up() {
 
 # find what package owns a given executable or file
 pkgown() {
-    if [ "$(uname)" = "Darwin" ]; then
-        DISTRIB_ID='Darwin'
-    elif [ -f /etc/redhat-release ]; then
-        DISTRIB_ID='RHEL'
-    else
-        DISTRIB_ID=$(lsb_release -is)
-    fi
-
     if [[ $1 =~ ^/ ]]; then
         file="$1"
     else
         file=$(which "$1")
     fi
 
-    case "$DISTRIB_ID" in
+    case "$(__get_os_type)" in
         Arch)
             pacman -Qo "$file"
             ;;
-        Ubuntu)
+        Debian)
             dpkg -S "$file"
             ;;
         RHEL)
@@ -59,15 +68,7 @@ pkgown() {
 
 # search for a package
 pkgsearch() {
-    if [ "$(uname)" = "Darwin" ]; then
-        DISTRIB_ID='Darwin'
-    elif [ -f /etc/redhat-release ]; then
-        DISTRIB_ID='RHEL'
-    else
-        DISTRIB_ID=$(lsb_release -is)
-    fi
-
-    case "$DISTRIB_ID" in
+    case "$(__get_os_type)" in
         Arch)
             pacman -Ss "$1"
             if [ $(id -u) = "0" ]; then
@@ -76,7 +77,7 @@ pkgsearch() {
                 trizen -Ss --aur "$1"
             fi
             ;;
-        Ubuntu)
+        Debian)
             apt-cache search "$1"
             ;;
         RHEL)
@@ -90,15 +91,7 @@ pkgsearch() {
 
 # update packages
 upgrade() {
-    if [ "$(uname)" = "Darwin" ]; then
-        DISTRIB_ID='Darwin'
-    elif [ -f /etc/redhat-release ]; then
-        DISTRIB_ID='RHEL'
-    else
-        DISTRIB_ID=$(lsb_release -is)
-    fi
-
-    case "$DISTRIB_ID" in
+    case "$(__get_os_type)" in
         Arch)
             if [ $(id -u) = "0" ]; then
                 pacman -Syyu
@@ -108,7 +101,7 @@ upgrade() {
                 trizen -Su --aur
             fi
             ;;
-        Ubuntu)
+        Debian)
             if [ $(id -u) = "0" ]; then
                 apt-get update && apt-get dist-upgrade
             else
@@ -130,19 +123,11 @@ upgrade() {
 
 # get installed packages
 getinstalled() {
-    if [ "$(uname)" = "Darwin" ]; then
-        DISTRIB_ID='Darwin'
-    elif [ -f /etc/redhat-release ]; then
-        DISTRIB_ID='RHEL'
-    else
-        DISTRIB_ID=$(lsb_release -is)
-    fi
-
-    case "$DISTRIB_ID" in
+    case "$(__get_os_type)" in
         Arch)
             pacman -Q
             ;;
-        Ubuntu)
+        Debian)
             dpkg --get-selections | grep '\sinstall$' | awk '{print $1}'
             ;;
         RHEL)
@@ -156,15 +141,7 @@ getinstalled() {
 
 # get information about a packagae
 pkginfo() {
-    if [ "$(uname)" = "Darwin" ]; then
-        DISTRIB_ID='Darwin'
-    elif [ -f /etc/redhat-release ]; then
-        DISTRIB_ID='RHEL'
-    else
-        DISTRIB_ID=$(lsb_release -is)
-    fi
-
-    case "$DISTRIB_ID" in
+    case "$(__get_os_type)" in
         Arch)
             if [ $(id -u) = "0" ]; then
                 pacman -Qi "$1" 2>/dev/null || \
@@ -176,7 +153,7 @@ pkginfo() {
                     trizen -Si --aur "$1"
             fi
             ;;
-        Ubuntu)
+        Debian)
             apt-cache show "$1"
             ;;
         RHEL)
@@ -189,19 +166,11 @@ pkginfo() {
 }
 
 pkgprovides() {
-    if [ "$(uname)" = "Darwin" ]; then
-        DISTRIB_ID='Darwin'
-    elif [ -f /etc/redhat-release ]; then
-        DISTRIB_ID='RHEL'
-    else
-        DISTRIB_ID=$(lsb_release -is)
-    fi
-
-    case "$DISTRIB_ID" in
+    case "$(__get_os_type)" in
         Arch)
             pkgfile "$1"
             ;;
-        Ubuntu)
+        Debian)
             apt-file search "$1"
             ;;
         RHEL)
@@ -214,19 +183,11 @@ pkgprovides() {
 }
 
 pkglist() {
-    if [ "$(uname)" = "Darwin" ]; then
-        DISTRIB_ID='Darwin'
-    elif [ -f /etc/redhat-release ]; then
-        DISTRIB_ID='RHEL'
-    else
-        DISTRIB_ID=$(lsb_release -is)
-    fi
-
-    case "$DISTRIB_ID" in
+    case "$(__get_os_type)" in
         Arch)
             pacman -Ql "$1"
             ;;
-        Ubuntu)
+        Debian)
             dpkg-query -L "$1"
             ;;
         RHEL)
