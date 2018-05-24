@@ -84,6 +84,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_python_checkers =
+  \ ['flake8', 'pycodestyle', 'pydocstyle', 'python']
 let g:syntastic_rust_checkers = ['cargo']
 let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_flake8_exec = 'python3 -m flake8'
