@@ -94,6 +94,8 @@
 /.dmrc
 /.docker/
 /.dvdcss/
+/.electron-gyp/
+/.electron/
 /.emulator_console_auth_token
 /.esd_auth
 /.freerdp/
@@ -125,6 +127,7 @@
 /.npm/
 /.npmrc
 /.nv/
+/.nvm/
 /.openvpn/
 /.oracle_jre_usage/
 /.parallel/
