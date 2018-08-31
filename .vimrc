@@ -89,6 +89,7 @@ let g:syntastic_python_checkers =
 let g:syntastic_rust_checkers = ['cargo']
 let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_flake8_exec = 'python3 -m flake8'
+let g:syntastic_html_tidy_args = '--custom-tags blocklevel'
 
 " enable italicized comments
 let &t_ZH="\e[3m"
