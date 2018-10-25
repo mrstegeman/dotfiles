@@ -82,6 +82,7 @@
 /.config/spotify/
 /.config/systemd/
 /.config/totem/
+/.config/transmission/
 /.config/unity/
 /.config/user-dirs.dirs
 /.config/user-dirs.locale
