@@ -25,6 +25,7 @@
 /.cache/
 /.cargo/
 /.ccache/
+/.cocoapods/
 /.compiz/
 /.config/.mono/
 /.config/Atom/
@@ -110,11 +111,13 @@
 /.gradle/
 /.gstreamer-0.10/
 /.gtickrc
+/.homebridge/
 /.ipython/
 /.iscan_preference
 /.java/
 /.lastpass/
 /.lesshst
+/.lldb/
 /.local/
 /.m2/
 /.macromedia/
@@ -164,6 +167,7 @@
 /.xsession-errors
 /.xsession-errors.old
 /.yarnrc
+/.zoomus/
 /Applications/
 /Desktop/
 /Documents/

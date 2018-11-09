@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# extra, private stuff
+[ -f ~/.bash_extra ] && . ~/.bash_extra
+
 # set some nice options
 shopt -s checkwinsize cmdhist dotglob histappend no_empty_cmd_completion
 if shopt | grep -q globstar; then
@@ -81,8 +84,6 @@ if [ "$TERM" != "dumb" ]; then
 
     if [ $(uname) = "Darwin" ]; then
         export CLICOLOR=YES
-        export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-        export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
     fi
 
     if [ -f ~/.dircolors ]; then
@@ -127,6 +128,3 @@ export PAGER=less
 export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
 [ -d "$HOME/node_modules/.bin" ] && export PATH="$HOME/node_modules/.bin:$PATH"
-
-# extra, private stuff
-[ -f ~/.bash_extra ] && . ~/.bash_extra

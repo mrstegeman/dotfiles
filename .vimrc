@@ -43,6 +43,7 @@ endif
 " fixes for certain file types
 autocmd FileType make set cc=0
 autocmd FileType rust set cc=100
+autocmd FileType swift set cc=120
 
 " auto-install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -57,6 +58,7 @@ call plug#begin('~/.vim/plugged')
 " Plugins...
 Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
+Plug 'keith/swift.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'crusoexia/vim-javascript-lib'
 Plug 'ciaranm/detectindent'
@@ -87,6 +89,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers =
   \ ['flake8', 'pycodestyle', 'pydocstyle', 'python']
 let g:syntastic_rust_checkers = ['cargo']
+let g:syntastic_swift_checkers = ['swiftlint']
 let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_flake8_exec = 'python3 -m flake8'
 let g:syntastic_html_tidy_args = '--custom-tags blocklevel'
