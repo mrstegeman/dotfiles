@@ -94,10 +94,10 @@ upgrade() {
     case "$(__get_os_type)" in
         Arch)
             if [ $(id -u) = "0" ]; then
-                pacman -Syyu
+                pacman -Syu
                 su -P -c "trizen -Su --aur" michael
             else
-                sudo pacman -Syyu
+                sudo pacman -Syu
                 trizen -Su --aur
             fi
             ;;
