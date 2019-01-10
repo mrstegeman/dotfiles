@@ -116,7 +116,7 @@ upgrade() {
             fi
             ;;
         Darwin)
-            brew upgrade --cleanup
+            brew upgrade
             ;;
     esac
 }
