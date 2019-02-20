@@ -56,6 +56,7 @@
 /.config/evolution/
 /.config/freshwrapper-data/
 /.config/gconf/
+/.config/geary/
 /.config/gedit/
 /.config/ghb/
 /.config/gnome-builder/
