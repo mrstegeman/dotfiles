@@ -5,6 +5,8 @@ __get_os_type() {
         echo 'RHEL'
     elif [ -f /etc/debian_version ]; then
         echo 'Debian'
+    elif [ -f /etc/openwrt_version ]; then
+        echo 'OpenWrt'
     else
         DISTRIB_ID=$(lsb_release -is)
         if [ "$DISTRIB_ID" = "Ubuntu" ]; then
@@ -63,6 +65,9 @@ pkgown() {
                 echo "$path" | cut -d/ -f5
             fi
             ;;
+        OpenWrt)
+            opkg search "$file"
+            ;;
     esac
 }
 
@@ -85,6 +90,9 @@ pkgsearch() {
             ;;
         Darwin)
             brew search "$1"
+            ;;
+        OpenWrt)
+            opkg list | grep "$1"
             ;;
     esac
 }
@@ -118,6 +126,9 @@ upgrade() {
         Darwin)
             brew upgrade
             ;;
+        OpenWrt)
+            opkg list-upgradable | cut -f 1 -d ' ' | xargs opkg upgrade
+            ;;
     esac
 }
 
@@ -135,6 +146,9 @@ getinstalled() {
             ;;
         Darwin)
             brew list
+            ;;
+        OpenWrt)
+            opkg list-installed
             ;;
     esac
 }
@@ -162,6 +176,9 @@ pkginfo() {
         Darwin)
             brew info "$1"
             ;;
+        OpenWrt)
+            opkg info "$1"
+            ;;
     esac
 }
 
@@ -179,6 +196,9 @@ pkgprovides() {
         Darwin)
             echo "Function unimplemented on Darwin"
             ;;
+        OpenWrt)
+            echo "Function unimplemented on OpenWrt"
+            ;;
     esac
 }
 
@@ -195,6 +215,9 @@ pkglist() {
             ;;
         Darwin)
             brew list "$1"
+            ;;
+        OpenWrt)
+            opkg files "$1"
             ;;
     esac
 }
