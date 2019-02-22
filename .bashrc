@@ -64,6 +64,10 @@ fi
 
 __custom_git_ps1()
 {
+    if ! type __git_ps1 >/dev/null 2>&1; then
+        return
+    fi
+
     __ps1=$(__git_ps1 | sed -e 's/)//' -e 's/(//' -e 's/ //')
 
     if [ "$__ps1" = "" ]; then
@@ -86,10 +90,12 @@ if [ "$TERM" != "dumb" ]; then
         export CLICOLOR=YES
     fi
 
-    if [ -f ~/.dircolors ]; then
-        eval "`dircolors -b ~/.dircolors`"
-    else
-        eval "`dircolors -b`"
+    if type dircolors >/dev/null 2>&1; then
+        if [ -f ~/.dircolors ]; then
+            eval "`dircolors -b ~/.dircolors`"
+        else
+            eval "`dircolors -b`"
+        fi
     fi
 
     alias ls='ls --color=auto -Av'
