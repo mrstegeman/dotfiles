@@ -99,10 +99,14 @@ if [ "$TERM" != "dumb" ]; then
     fi
 
     alias ls='ls --color=auto -Av'
-    alias grep='grep --color=auto'
-    alias egrep='egrep --color=auto'
-    alias zgrep='zgrep --color=auto'
-    alias pcregrep='pcregrep --color=auto'
+
+    _link=$(readlink $(which grep))
+    if [ "$_link" != "busybox" ]; then
+        alias grep='grep --color=auto'
+        alias egrep='egrep --color=auto'
+        alias zgrep='zgrep --color=auto'
+        alias pcregrep='pcregrep --color=auto'
+    fi
 else
     PS1='┌──[\u@\h]─[\w]\n└─\$ '
     alias ls='ls -Av'
