@@ -66,6 +66,7 @@ Plug 'cespare/vim-toml'
 Plug 'crusoexia/vim-monokai'
 Plug 'leafgarland/typescript-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'projectfluent/fluent.vim'
 
 " Initialize plugin system
 call plug#end()
