@@ -194,3 +194,5 @@
 /package-lock.json
 /skypeforlinux/
 /workspace/
+/.config/freerdp/
+/.config/gnome-boxes/
