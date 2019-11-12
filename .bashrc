@@ -146,4 +146,6 @@ if [ "$(uname -s)" = "Darwin" ]; then
     if [ -d "/usr/local/opt/coreutils/libexec/gnuman" ]; then
         export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
     fi
+
+    export PATH="/usr/local/sbin:$PATH"
 fi

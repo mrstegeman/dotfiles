@@ -142,6 +142,7 @@ EXEC 01;32 # This is for files with execute permission:
 .cgm 01;35
 .emf 01;35
 .gif 01;35
+.heic 01;35
 .jpeg 01;35
 .jpg 01;35
 .mng 01;35

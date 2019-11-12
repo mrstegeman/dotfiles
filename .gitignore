@@ -19,6 +19,7 @@
 /.atom/electron/
 /.atom/nohup.out
 /.atom/storage/
+/.aws/
 /.bash_extra
 /.bash_history
 /.bash_logout
@@ -56,11 +57,13 @@
 /.config/etcher-electron/
 /.config/evince/
 /.config/evolution/
+/.config/freerdp/
 /.config/freshwrapper-data/
 /.config/gconf/
 /.config/geary/
 /.config/gedit/
 /.config/ghb/
+/.config/gnome-boxes/
 /.config/gnome-builder/
 /.config/gnome-control-center/
 /.config/goa-1.0/
@@ -194,5 +197,3 @@
 /package-lock.json
 /skypeforlinux/
 /workspace/
-/.config/freerdp/
-/.config/gnome-boxes/
