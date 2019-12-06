@@ -232,6 +232,7 @@ download_youtube() {
         "$1" || return 1
     ffmpeg \
         -i "${fname_in}" \
+        -map_metadata -1 \
         -c:v copy \
         -c:a aac \
         -b:a 160k \
