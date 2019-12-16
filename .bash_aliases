@@ -1,7 +1,7 @@
 __get_os_type() {
     if [ "$(uname)" = "Darwin" ]; then
         echo 'Darwin'
-    elif [ -l /etc/fedora-release ]; then
+    elif [ -L /etc/fedora-release ]; then
         echo 'Fedora'
     elif [ -f /etc/redhat-release ]; then
         echo 'RHEL'
