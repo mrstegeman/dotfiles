@@ -1,6 +1,8 @@
 __get_os_type() {
     if [ "$(uname)" = "Darwin" ]; then
         echo 'Darwin'
+    elif [ -l /etc/fedora-release ]; then
+        echo 'Fedora'
     elif [ -f /etc/redhat-release ]; then
         echo 'RHEL'
     elif [ -f /etc/debian_version ]; then
@@ -56,7 +58,7 @@ pkgown() {
         Debian)
             dpkg -S "$file"
             ;;
-        RHEL)
+        RHEL|Fedora)
             rpm -qf "$file" --queryformat '%{NAME}\n'
             ;;
         Darwin)
@@ -84,6 +86,9 @@ pkgsearch() {
             ;;
         Debian)
             apt-cache search "$1"
+            ;;
+        Fedora)
+            dnf search "$1"
             ;;
         RHEL)
             yum search "$1"
@@ -116,6 +121,13 @@ upgrade() {
                 sudo apt-get update && sudo apt-get dist-upgrade
             fi
             ;;
+        Fedora)
+            if [ $(id -u) = "0" ]; then
+                dnf update
+            else
+                sudo dnf update
+            fi
+            ;;
         RHEL)
             if [ $(id -u) = "0" ]; then
                 yum update
@@ -140,6 +152,9 @@ getinstalled() {
             ;;
         Debian)
             dpkg --get-selections | grep '\sinstall$' | awk '{print $1}'
+            ;;
+        Fedora)
+            dnf list installed | awk '{print $1}'
             ;;
         RHEL)
             yum list installed | awk '{print $1}'
@@ -170,6 +185,9 @@ pkginfo() {
         Debian)
             apt-cache show "$1"
             ;;
+        Fedora)
+            dnf info "$1"
+            ;;
         RHEL)
             yum info "$1"
             ;;
@@ -189,6 +207,9 @@ pkgprovides() {
             ;;
         Debian)
             apt-file search "$1"
+            ;;
+        Fedora)
+            dnf whatprovides "$1"
             ;;
         RHEL)
             yum whatprovides "$1"
@@ -210,7 +231,7 @@ pkglist() {
         Debian)
             dpkg-query -L "$1"
             ;;
-        RHEL)
+        RHEL|Fedora)
             rpm -ql "$1"
             ;;
         Darwin)
