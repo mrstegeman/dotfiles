@@ -142,6 +142,7 @@ export PATH="$HOME/bin:$PATH"
 # platform-specific
 if [ "$(uname -s)" = "Darwin" ]; then
     export HOMEBREW_INSTALL_CLEANUP=1
+    export HOMEBREW_NO_ANALYTICS=1
 
     if [ -d "/usr/local/opt/coreutils/libexec/gnuman" ]; then
         export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"

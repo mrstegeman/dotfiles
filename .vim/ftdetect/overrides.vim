@@ -7,3 +7,4 @@ au! BufRead,BufNewFile  *.kv            set filetype=kivy
 au! BufRead,BufNewFile  *.lnk           set filetype=ld
 au! BufRead,BufNewFile  *.brs           set filetype=vb
 au! BufRead,BufNewFile  *SConscript     set filetype=python
+au! BufRead,BufNewFile  *.ino           set filetype=cpp
