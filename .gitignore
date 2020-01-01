@@ -12,6 +12,7 @@
 /.Xauthority
 /.adobe/
 /.android/
+/.arduino15/
 /.atom/.apm/
 /.atom/.npm/
 /.atom/atom-shell/
@@ -181,6 +182,7 @@
 /.yarnrc
 /.zoomus/
 /Applications/
+/Arduino/
 /Desktop/
 /Documents/
 /Downloads/
