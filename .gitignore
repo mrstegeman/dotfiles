@@ -121,6 +121,7 @@
 /.gradle/
 /.gstreamer-0.10/
 /.gtickrc
+/.gtk-bookmarks
 /.homebridge/
 /.ipython/
 /.iscan_preference
