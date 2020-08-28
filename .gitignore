@@ -87,6 +87,7 @@
 /.config/nautilus/
 /.config/pulse/
 /.config/rclone/
+/.config/remmina/
 /.config/rygel.conf
 /.config/skypeforlinux/
 /.config/spotify/
