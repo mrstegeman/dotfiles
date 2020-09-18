@@ -101,6 +101,7 @@
 /.config/wireshark/
 /.config/yarn/
 /.config/yelp/
+/.config/zoomus.conf
 /.cshrc
 /.cups/
 /.dbus/
@@ -184,6 +185,7 @@
 /.xsession-errors
 /.xsession-errors.old
 /.yarnrc
+/.zoom/
 /.zoomus/
 /Applications/
 /Arduino/
