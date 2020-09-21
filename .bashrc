@@ -139,6 +139,8 @@ export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
 [ -d "$HOME/node_modules/.bin" ] && export PATH="$HOME/node_modules/.bin:$PATH"
 
+export GPG_TTY=$(tty)
+
 # platform-specific
 if [ "$(uname -s)" = "Darwin" ]; then
     export HOMEBREW_INSTALL_CLEANUP=1
