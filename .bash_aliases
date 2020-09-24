@@ -136,7 +136,7 @@ upgrade() {
             fi
             ;;
         Darwin)
-            brew upgrade && brew cask upgrade
+            brew upgrade
             ;;
         OpenWrt)
             opkg list-upgradable | cut -f 1 -d ' ' | xargs opkg upgrade
