@@ -180,6 +180,7 @@
 /.vim/plugged/*/
 /.viminfo
 /.vscode/
+/.webthings/
 /.wget-hsts
 /.xsel.log
 /.xsession-errors
