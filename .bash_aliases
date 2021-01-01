@@ -136,7 +136,7 @@ upgrade() {
             fi
             ;;
         Darwin)
-            brew upgrade
+            brew update && brew upgrade
             ;;
         OpenWrt)
             opkg list-upgradable | cut -f 1 -d ' ' | xargs opkg upgrade
@@ -160,7 +160,7 @@ getinstalled() {
             yum list installed | awk '{print $1}'
             ;;
         Darwin)
-            brew list
+            brew list --formula
             ;;
         OpenWrt)
             opkg list-installed

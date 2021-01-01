@@ -98,7 +98,7 @@ if [ "$TERM" != "dumb" ]; then
         fi
     fi
 
-    alias ls='ls --color=auto -Av'
+    alias ls='ls --color=auto -Av --ignore=.DS_Store'
 
     _link=$(readlink $(which grep))
     if [ "$_link" != "busybox" ]; then
