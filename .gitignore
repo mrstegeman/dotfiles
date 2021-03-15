@@ -75,6 +75,7 @@
 /.config/gtk-*
 /.config/ibus/
 /.config/inkscape/
+/.config/iterm2/
 /.config/karabiner/
 /.config/keybase/
 /.config/libaccounts-glib/
