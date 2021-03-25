@@ -46,6 +46,8 @@ elif [ -r /etc/bash_completion ]; then
     . /etc/bash_completion
 elif [ -r /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
+elif [ -r /opt/brew/etc/bash_completion ]; then
+    . /opt/brew/etc/bash_completion
 elif [ -d /etc/bash_completion.d ]; then
     for file in $(find /etc/bash_completion.d -maxdepth 1 -type f); do
         . "${file}"
@@ -58,6 +60,10 @@ fi
 
 if [ -d /usr/local/opt/git/etc/bash_completion.d ]; then
     for file in $(find /usr/local/opt/git/etc/bash_completion.d -maxdepth 1 -type f); do
+        . "${file}"
+    done
+elif [ -d /opt/brew/opt/git/etc/bash_completion.d ]; then
+    for file in $(find /opt/brew/opt/git/etc/bash_completion.d -maxdepth 1 -type f); do
         . "${file}"
     done
 fi
@@ -98,7 +104,7 @@ if [ "$TERM" != "dumb" ]; then
         fi
     fi
 
-    alias ls='ls --color=auto -Av --ignore=.DS_Store'
+    alias ls='ls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
 
     _link=$(readlink $(which grep))
     if [ "$_link" != "busybox" ]; then
@@ -146,9 +152,13 @@ if [ "$(uname -s)" = "Darwin" ]; then
     export HOMEBREW_INSTALL_CLEANUP=1
     export HOMEBREW_NO_ANALYTICS=1
 
-    if [ -d "/usr/local/opt/coreutils/libexec/gnuman" ]; then
+    [ -d "/usr/local/opt/coreutils/libexec/gnuman" ] && \
         export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-    fi
+    [ -d "/opt/brew/opt/coreutils/libexec/gnuman" ] && \
+        export MANPATH="/opt/brew/opt/coreutils/libexec/gnuman:$MANPATH"
 
-    export PATH="/usr/local/sbin:$PATH"
+    [ -d "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
+    [ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"
+    [ -d "/opt/brew/bin" ] && export PATH="/opt/brew/bin:$PATH"
+    [ -d "/opt/brew/sbin" ] && export PATH="/opt/brew/sbin:$PATH"
 fi
