@@ -44,7 +44,7 @@ endif
 autocmd FileType javascript set cc=100
 autocmd FileType make set cc=0
 autocmd FileType rust set cc=100
-autocmd FileType swift set cc=120
+autocmd FileType swift set cc=100
 autocmd FileType typescript set cc=100
 
 " auto-install vim-plug
