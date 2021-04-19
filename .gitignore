@@ -29,6 +29,7 @@
 /.cache/
 /.cargo/
 /.ccache/
+/.cloudflared/
 /.cocoapods/
 /.compiz/
 /.config/.mono/
@@ -118,6 +119,7 @@
 /.gconf/
 /.gem/
 /.gimp*
+/.gitconfig-extra
 /.gksu.lock
 /.gnome/
 /.gnome2/
