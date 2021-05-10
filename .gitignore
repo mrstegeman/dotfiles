@@ -173,6 +173,7 @@
 /.ssh/
 /.subversion/README.txt
 /.subversion/servers
+/.swiftpm/
 /.thumbnails/
 /.thunderbird/
 /.travis/
