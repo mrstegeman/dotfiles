@@ -260,3 +260,7 @@ download_youtube() {
         "${fname_out}" || return 1
     rm -f "${fname_in}"
 }
+
+if which -s nvim; then
+    alias vim=nvim
+fi
