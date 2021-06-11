@@ -261,6 +261,6 @@ download_youtube() {
     rm -f "${fname_in}"
 }
 
-if which -s nvim; then
+if which nvim >/dev/null 2>&1; then
     alias vim=nvim
 fi
