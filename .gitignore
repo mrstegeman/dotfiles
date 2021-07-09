@@ -155,8 +155,10 @@
 /.oracle_jre_usage/
 /.parallel/
 /.particle/
+/.pcl/
 /.pki/
 /.platformio/
+/.psql_history
 /.pylint.d/
 /.pypirc
 /.python-eggs/

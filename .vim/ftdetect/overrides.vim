@@ -8,3 +8,4 @@ au! BufRead,BufNewFile  *.lnk           set filetype=ld
 au! BufRead,BufNewFile  *.brs           set filetype=vb
 au! BufRead,BufNewFile  *SConscript     set filetype=python
 au! BufRead,BufNewFile  *.ino           set filetype=cpp
+au! BufRead,BufNewFile  *.pcl           set filetype=groovy
