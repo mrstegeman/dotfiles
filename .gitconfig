@@ -28,3 +28,5 @@
 	ff = only
 [include]
 	path = ~/.gitconfig-extra
+[init]
+	defaultBranch = main

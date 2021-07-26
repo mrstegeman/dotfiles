@@ -1,9 +1,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# extra, private stuff
-[ -f ~/.bash_extra ] && . ~/.bash_extra
-
 # set some nice options
 shopt -s checkwinsize cmdhist dotglob histappend no_empty_cmd_completion
 if shopt | grep -q globstar; then
@@ -33,11 +30,6 @@ xterm*|rxvt*)
     PROMPT_COMMAND="history -a"
     ;;
 esac
-
-# alias definitions.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features
 if [ -r /usr/share/bash-completion/bash_completion ]; then
@@ -162,3 +154,11 @@ if [ "$(uname -s)" = "Darwin" ]; then
     [ -d "/opt/brew/bin" ] && export PATH="/opt/brew/bin:$PATH"
     [ -d "/opt/brew/sbin" ] && export PATH="/opt/brew/sbin:$PATH"
 fi
+
+# alias definitions.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# extra, private stuff
+[ -f ~/.bash_extra ] && . ~/.bash_extra

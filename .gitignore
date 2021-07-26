@@ -134,12 +134,14 @@
 /.itmstransporter/
 /.java/
 /.jssc/
+/.kube/
 /.lastpass/
 /.lesshst
 /.lldb/
 /.local/
 /.m2/
 /.macromedia/
+/.minikube/
 /.mono/
 /.mozilla-iot/
 /.mozilla/
@@ -212,6 +214,7 @@
 /bin/
 /dead.letter
 /git/
+/go/
 /mozilla-iot/
 /node_modules/
 /ownCloud

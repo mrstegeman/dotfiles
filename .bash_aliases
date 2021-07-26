@@ -264,3 +264,5 @@ download_youtube() {
 if which nvim >/dev/null 2>&1; then
     alias vim=nvim
 fi
+
+# vim: ft=sh
