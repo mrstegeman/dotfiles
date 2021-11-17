@@ -58,6 +58,9 @@ elif [ -d /opt/brew/opt/git/etc/bash_completion.d ]; then
     for file in $(find /opt/brew/opt/git/etc/bash_completion.d -maxdepth 1 -type f); do
         . "${file}"
     done
+elif [ -d /Applications/Xcode.app/Contents/Developer/usr/share/git-core ]; then
+    . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+    . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 fi
 
 __custom_git_ps1()
