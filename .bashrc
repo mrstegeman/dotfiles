@@ -40,6 +40,8 @@ elif [ -r /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 elif [ -r /opt/brew/etc/bash_completion ]; then
     . /opt/brew/etc/bash_completion
+elif [ -r /opt/homebrew/etc/bash_completion ]; then
+    . /opt/homebrew/etc/bash_completion
 elif [ -d /etc/bash_completion.d ]; then
     for file in $(find /etc/bash_completion.d -maxdepth 1 -type f); do
         . "${file}"
@@ -56,6 +58,10 @@ if [ -d /usr/local/opt/git/etc/bash_completion.d ]; then
     done
 elif [ -d /opt/brew/opt/git/etc/bash_completion.d ]; then
     for file in $(find /opt/brew/opt/git/etc/bash_completion.d -maxdepth 1 -type f); do
+        . "${file}"
+    done
+elif [ -d /opt/homebrew/opt/git/etc/bash_completion.d ]; then
+    for file in $(find /opt/homebrew/opt/git/etc/bash_completion.d -maxdepth 1 -type f); do
         . "${file}"
     done
 elif [ -d /Applications/Xcode.app/Contents/Developer/usr/share/git-core ]; then
@@ -151,11 +157,15 @@ if [ "$(uname -s)" = "Darwin" ]; then
         export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
     [ -d "/opt/brew/opt/coreutils/libexec/gnuman" ] && \
         export MANPATH="/opt/brew/opt/coreutils/libexec/gnuman:$MANPATH"
+    [ -d "/opt/homebrew/opt/coreutils/libexec/gnuman" ] && \
+        export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
     [ -d "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
     [ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"
     [ -d "/opt/brew/bin" ] && export PATH="/opt/brew/bin:$PATH"
     [ -d "/opt/brew/sbin" ] && export PATH="/opt/brew/sbin:$PATH"
+    [ -d "/opt/homebrew/bin" ] && export PATH="/opt/homebrew/bin:$PATH"
+    [ -d "/opt/homebrew/sbin" ] && export PATH="/opt/homebrew/sbin:$PATH"
 fi
 
 # alias definitions.
