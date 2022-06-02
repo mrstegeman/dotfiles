@@ -157,6 +157,7 @@ EXEC 01;32 # This is for files with execute permission:
 .tga 01;35
 .tif 01;35
 .tiff 01;35
+.webp 01;35
 .xbm 01;35
 .xcf 01;35
 .xpm 01;35
