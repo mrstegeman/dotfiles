@@ -31,37 +31,36 @@ xterm*|rxvt*)
     ;;
 esac
 
+if [ "$(uname -s)" = "Darwin" ]; then
+    HOMEBREW_PREFIX=""
+    if [ -d "/opt/brew" ]; then
+        HOMEBREW_PREFIX="/opt/brew"
+    elif [ -d "/opt/homebrew" ]; then
+        HOMEBREW_PREFIX="/opt/homebrew"
+    elif [ -d "/usr/local" ]; then
+        HOMEBREW_PREFIX="/usr/local"
+    fi
+fi
+
 # enable programmable completion features
 if [ -r /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
 elif [ -r /etc/bash_completion ]; then
     . /etc/bash_completion
-elif [ -r /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
-elif [ -r /opt/brew/etc/bash_completion ]; then
-    . /opt/brew/etc/bash_completion
-elif [ -r /opt/homebrew/etc/bash_completion ]; then
-    . /opt/homebrew/etc/bash_completion
-elif [ -d /etc/bash_completion.d ]; then
-    for file in $(find /etc/bash_completion.d -maxdepth 1 -type f); do
-        . "${file}"
-    done
+elif [ -r "${HOMEBREW_PREFIX}/etc/bash_completion" ]; then
+    . "${HOMEBREW_PREFIX}/etc/bash_completion"
 fi
 
 if [ -r /usr/share/git/completion/git-prompt.sh ]; then
     . /usr/share/git/completion/git-prompt.sh
 fi
 
-if [ -d /usr/local/opt/git/etc/bash_completion.d ]; then
-    for file in $(find /usr/local/opt/git/etc/bash_completion.d -maxdepth 1 -type f); do
+if [ -d /etc/bash_completion.d ]; then
+    for file in $(find /etc/bash_completion.d -maxdepth 1 -type f); do
         . "${file}"
     done
-elif [ -d /opt/brew/opt/git/etc/bash_completion.d ]; then
-    for file in $(find /opt/brew/opt/git/etc/bash_completion.d -maxdepth 1 -type f); do
-        . "${file}"
-    done
-elif [ -d /opt/homebrew/opt/git/etc/bash_completion.d ]; then
-    for file in $(find /opt/homebrew/opt/git/etc/bash_completion.d -maxdepth 1 -type f); do
+elif [ -d "${HOMEBREW_PREFIX}/opt/git/etc/bash_completion.d" ]; then
+    for file in $(find "${HOMEBREW_PREFIX}/opt/git/etc/bash_completion.d" -maxdepth 1 -type f); do
         . "${file}"
     done
 elif [ -d /Applications/Xcode.app/Contents/Developer/usr/share/git-core ]; then
@@ -69,8 +68,7 @@ elif [ -d /Applications/Xcode.app/Contents/Developer/usr/share/git-core ]; then
     . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 fi
 
-__custom_git_ps1()
-{
+__custom_git_ps1() {
     if ! type __git_ps1 >/dev/null 2>&1; then
         return
     fi
@@ -153,19 +151,23 @@ if [ "$(uname -s)" = "Darwin" ]; then
     export HOMEBREW_INSTALL_CLEANUP=1
     export HOMEBREW_NO_ANALYTICS=1
 
-    [ -d "/usr/local/opt/coreutils/libexec/gnuman" ] && \
-        export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-    [ -d "/opt/brew/opt/coreutils/libexec/gnuman" ] && \
-        export MANPATH="/opt/brew/opt/coreutils/libexec/gnuman:$MANPATH"
-    [ -d "/opt/homebrew/opt/coreutils/libexec/gnuman" ] && \
-        export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
+    # man pages
+    [ -d "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnuman" ] && \
+        export MANPATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnuman:$MANPATH"
 
-    [ -d "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
-    [ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"
-    [ -d "/opt/brew/bin" ] && export PATH="/opt/brew/bin:$PATH"
-    [ -d "/opt/brew/sbin" ] && export PATH="/opt/brew/sbin:$PATH"
-    [ -d "/opt/homebrew/bin" ] && export PATH="/opt/homebrew/bin:$PATH"
-    [ -d "/opt/homebrew/sbin" ] && export PATH="/opt/homebrew/sbin:$PATH"
+    # homebrew
+    [ -d "${HOMEBREW_PREFIX}/bin" ] && export PATH="${HOMEBREW_PREFIX}/bin:$PATH"
+    [ -d "${HOMEBREW_PREFIX}/sbin" ] && export PATH="${HOMEBREW_PREFIX}/sbin:$PATH"
+
+    # gnu utils
+    [ -d "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && \
+        export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:$PATH"
+    [ -d "${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin" ] && \
+        export PATH="${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:$PATH"
+    [ -d "${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && \
+        export PATH="${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin:$PATH"
+    [ -d "${HOMEBREW_PREFIX}/opt/gnu-tar/libexec/gnubin" ] && \
+        export PATH="${HOMEBREW_PREFIX}/opt/gnu-tar/libexec/gnubin:$PATH"
 fi
 
 # alias definitions.
