@@ -1,0 +1,51 @@
+#!/bin/bash
+
+set -eu
+
+RED='\033[0;31m'                          # Red.
+BBLACK='\033[1;30m'                       # Bright black (dark grey).
+NC='\033[0m'                              # No Color.
+
+TOPATH="${HOME}"                          # Where to write links to.
+FROMPATH=$(readlink -f $(dirname "${0}")) # Where to link from.
+BACKUP="${TOPATH}/backup"                 # Place to back up old files.
+
+run_cmd=${DRY_RUN:+echo}                  # Set DRY_RUN to echo what we would do.
+
+mkdir -p "${BACKUP}"
+
+printf "❯❯❯ Updating dotfile symlinks (linking from path: ${FROMPATH})\n\n"
+
+while read -r FILE; do
+  if [ "${FILE}" = "link" ]; then
+    continue
+  fi
+
+  ${run_cmd} mkdir -p "${TOPATH}/$(dirname "${FILE}")"
+  if [[ -d "${TOPATH}/${FILE}" && ! -L "${TOPATH}/${FILE}" ]]; then
+    # Directory -- this shouldn't happen.
+    printf "${RED}DIRSKIP: ${TOPATH}/${FILE} is a directory!${NC}\n"
+    continue
+  elif [ -L "${TOPATH}/${FILE}" ]; then
+    # Symlink.
+    if [ "$(readlink "${TOPATH}/${FILE}")" = "${FROMPATH}/${FILE}" ]; then
+      printf "${BBLACK}SKIP: ${TOPATH}/${FILE} already points to ${FROMPATH}/${FILE}.${NC}\n"
+      continue
+    fi
+    printf "CHANGE: '${TOPATH}/${FILE}' from '$(readlink "${TOPATH}/${FILE}")' -> '${FROMPATH}/${FILE}'\n"
+    ${run_cmd} mkdir -p "${BACKUP}/$(dirname "${FILE}")"
+    ${run_cmd} rm -f "${TOPATH}/${FILE}" "${BACKUP}/${FILE}"
+  elif [ -e "${TOPATH}/${FILE}" ]; then
+    # File.
+    printf "MOVE: '${TOPATH}/${FILE}' exists, moving to '${BACKUP}/${FILE}'\n"
+    ${run_cmd} mkdir -p "${BACKUP}/$(dirname "${FILE}")"
+    ${run_cmd} mv "${TOPATH}/${FILE}" "${BACKUP}/${FILE}"
+  else
+    # Nothing there.
+    printf "LINK: ${TOPATH}/${FILE} -> ${FROMPATH}/${FILE}\n"
+  fi
+  ${run_cmd} ln -s "${FROMPATH}/${FILE}" "${TOPATH}/${FILE}"
+done <<<"$(find . -mindepth 1 -type f -o -type l -printf '%P\n')"
+
+# Clean up backup folder if empty
+[[ "$(ls -A "${BACKUP}")" ]] || ${run_cmd} rm -r "${BACKUP}"
