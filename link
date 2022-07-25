@@ -45,7 +45,7 @@ while read -r FILE; do
     printf "LINK: ${TOPATH}/${FILE} -> ${FROMPATH}/${FILE}\n"
   fi
   ${run_cmd} ln -s "${FROMPATH}/${FILE}" "${TOPATH}/${FILE}"
-done <<<"$(find . -mindepth 1 -type f -o -type l -printf '%P\n')"
+done <<<"$(find . -mindepth 1 -type f -o -type l | sed 's|./||')"
 
 # Clean up backup folder if empty
 [[ "$(ls -A "${BACKUP}")" ]] || ${run_cmd} rm -r "${BACKUP}"
