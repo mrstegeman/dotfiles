@@ -17,7 +17,7 @@ mkdir -p "${BACKUP}"
 printf "❯❯❯ Updating dotfile symlinks (linking from path: ${FROMPATH})\n\n"
 
 while read -r FILE; do
-  if [ "${FILE}" = "link" ]; then
+  if [[ "${FILE}" == "link" || "${FILE}" == ".git" ]]; then
     continue
   fi
 
