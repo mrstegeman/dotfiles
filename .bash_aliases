@@ -160,7 +160,7 @@ getinstalled() {
             yum list installed | awk '{print $1}'
             ;;
         Darwin)
-            brew list --formula
+            brew list
             ;;
         OpenWrt)
             opkg list-installed
