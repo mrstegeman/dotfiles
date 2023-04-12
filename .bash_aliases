@@ -1,9 +1,7 @@
 __get_os_type() {
     if [ "$(uname)" = "Darwin" ]; then
         echo 'Darwin'
-    elif [ -L /etc/fedora-release ]; then
-        echo 'Fedora'
-    elif [ -f /etc/redhat-release ]; then
+    elif [ -L /etc/fedora-release -o -f /etc/redhat-release ]; then
         echo 'RHEL'
     elif [ -f /etc/debian_version ]; then
         echo 'Debian'
@@ -58,7 +56,7 @@ pkgown() {
         Debian)
             dpkg -S "$file"
             ;;
-        RHEL|Fedora)
+        RHEL)
             rpm -qf "$file" --queryformat '%{NAME}\n'
             ;;
         Darwin)
@@ -87,11 +85,8 @@ pkgsearch() {
         Debian)
             apt-cache search "$1"
             ;;
-        Fedora)
-            dnf search "$1"
-            ;;
         RHEL)
-            yum search "$1"
+            dnf search "$1"
             ;;
         Darwin)
             brew search "$1"
@@ -121,18 +116,11 @@ upgrade() {
                 sudo apt-get update && sudo apt-get dist-upgrade
             fi
             ;;
-        Fedora)
+        RHEL)
             if [ $(id -u) = "0" ]; then
                 dnf update
             else
                 sudo dnf update
-            fi
-            ;;
-        RHEL)
-            if [ $(id -u) = "0" ]; then
-                yum update
-            else
-                sudo yum update
             fi
             ;;
         Darwin)
@@ -153,11 +141,8 @@ getinstalled() {
         Debian)
             dpkg --get-selections | grep '\sinstall$' | awk '{print $1}'
             ;;
-        Fedora)
-            dnf list installed | awk '{print $1}'
-            ;;
         RHEL)
-            yum list installed | awk '{print $1}'
+            dnf list installed | awk '{print $1}'
             ;;
         Darwin)
             brew list
@@ -185,11 +170,8 @@ pkginfo() {
         Debian)
             apt-cache show "$1"
             ;;
-        Fedora)
-            dnf info "$1"
-            ;;
         RHEL)
-            yum info "$1"
+            dnf info "$1"
             ;;
         Darwin)
             brew info "$1"
@@ -208,11 +190,8 @@ pkgprovides() {
         Debian)
             apt-file search "$1"
             ;;
-        Fedora)
-            dnf whatprovides "$1"
-            ;;
         RHEL)
-            yum whatprovides "$1"
+            dnf whatprovides "$1"
             ;;
         Darwin)
             echo "Function unimplemented on Darwin"
@@ -231,7 +210,7 @@ pkglist() {
         Debian)
             dpkg-query -L "$1"
             ;;
-        RHEL|Fedora)
+        RHEL)
             rpm -ql "$1"
             ;;
         Darwin)

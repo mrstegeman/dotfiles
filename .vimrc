@@ -8,8 +8,10 @@ set background=dark
 set backspace=indent,eol,start
 set cino=(0
 set completeopt=longest,menuone
+set eol
 set expandtab
 set ff=unix
+set fixeol
 set formatoptions=l
 set ignorecase
 set incsearch
