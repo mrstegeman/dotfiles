@@ -145,6 +145,7 @@ if [ "$TERM" != "dumb" ]; then
 
     if [ "$(uname -s)" = "Darwin" ]; then
         if [ -z "$(which gls)" ]; then
+            export LSCOLORS=ExGxFxdaCxDaDahbadacec
             alias ls='ls --color=auto -Av'
         else
             alias ls='gls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
