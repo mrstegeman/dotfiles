@@ -79,7 +79,7 @@ __custom_git_ps1() {
         return
     fi
 
-    changes=$(git status --porcelain 2>/dev/null | wc -l)
+    changes=$(git status --porcelain 2>/dev/null | wc -l | awk '{ print $1 }')
     if [ "$changes" = "0" ]; then
         printf "─[\e[0;32m$__ps1\e[0m]"
     else
@@ -143,7 +143,15 @@ if [ "$TERM" != "dumb" ]; then
         fi
     fi
 
-    alias ls='ls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
+    if [ "$(uname -s)" = "Darwin" ]; then
+        if [ -z "$(which gls)" ]; then
+            alias ls='ls --color=auto -Av'
+        else
+            alias ls='gls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
+        fi
+    else
+        alias ls='ls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
+    fi
 
     _link=$(readlink $(which grep))
     if [ "$_link" != "busybox" ]; then
