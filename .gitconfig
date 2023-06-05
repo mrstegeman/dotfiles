@@ -1,7 +1,6 @@
 [user]
     name = Michael Stegeman
     email = michael@stegeman.me
-    signingKey = 89DE84A422DDE3C81EFFC111357DFA73EEF9EC25
 [color]
     diff = true
     branch = true
@@ -19,15 +18,15 @@
 [push]
     default = simple
 [commit]
-	gpgsign = true
+    gpgsign = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [pull]
-	ff = only
+    ff = only
 [include]
-	path = ~/.gitconfig-extra
+    path = ~/.gitconfig-extra
 [init]
-	defaultBranch = main
+    defaultBranch = main
