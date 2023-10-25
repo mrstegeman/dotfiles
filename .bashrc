@@ -49,23 +49,29 @@ elif [ -r /etc/bash_completion ]; then
     . /etc/bash_completion
 elif [ -r "${HOMEBREW_PREFIX}/etc/bash_completion" ]; then
     . "${HOMEBREW_PREFIX}/etc/bash_completion"
+elif [ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]; then
+    . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 fi
 
 if [ -r /usr/share/git/completion/git-prompt.sh ]; then
     . /usr/share/git/completion/git-prompt.sh
-fi
-
-if [ -d /etc/bash_completion.d ]; then
-    for file in $(find /etc/bash_completion.d -maxdepth 1 -type f); do
-        . "${file}"
-    done
-elif [ -d "${HOMEBREW_PREFIX}/opt/git/etc/bash_completion.d" ]; then
-    for file in $(find "${HOMEBREW_PREFIX}/opt/git/etc/bash_completion.d" -maxdepth 1 -type f); do
-        . "${file}"
-    done
 elif [ -d /Applications/Xcode.app/Contents/Developer/usr/share/git-core ]; then
     . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
     . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+fi
+
+if [ -d /etc/bash_completion.d ]; then
+    for completion in /etc/bash_completion.d/*; do
+        [[ -r "${completion}" ]] && source "${completion}"
+    done
+elif [ -d "${HOMEBREW_PREFIX}/etc/bash_completion.d" ]; then
+    for completion in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+        [[ -r "${completion}" ]] && source "${completion}"
+    done
+elif [ -d "${HOMEBREW_PREFIX}/opt/git/etc/bash_completion.d" ]; then
+    for completion in "${HOMEBREW_PREFIX}/opt/git/etc/bash_completion.d/"*; do
+        [[ -r "${completion}" ]] && source "${completion}"
+    done
 fi
 
 __custom_git_ps1() {
