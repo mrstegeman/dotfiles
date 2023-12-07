@@ -112,7 +112,7 @@ if [ "$TERM" != "dumb" ]; then
         alias ls='ls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
     fi
 
-    _link=$(readlink $(which grep))
+    _link=$(readlink $(which -p grep))
     if [ "$_link" != "busybox" ]; then
         alias grep='grep --color=auto'
         alias egrep='egrep --color=auto'
