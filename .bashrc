@@ -186,9 +186,9 @@ LESS_TERMCAP_us=$'\E[01;32m'
 export ${!LESS@}
 
 # alias definitions.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.sh_aliases ]; then
+    . ~/.sh_aliases
 fi
 
 # extra, private stuff
-[ -f ~/.bash_extra ] && . ~/.bash_extra
+[ -f ~/.sh_extra ] && . ~/.sh_extra
