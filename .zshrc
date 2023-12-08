@@ -129,4 +129,4 @@ if [ -f ~/.sh_aliases ]; then
 fi
 
 # extra, private stuff
-[ -f ~/.sh_extra ] && . ~/.sh_extra
+[ -f ~/.sh_extra ] && . ~/.sh_extra || true
