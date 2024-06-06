@@ -17,6 +17,7 @@ set ignorecase
 set incsearch
 set lbr
 set modeline
+set modelines=1
 set mouse=a
 set nohlsearch
 set number
