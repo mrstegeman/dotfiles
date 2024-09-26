@@ -58,7 +58,9 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugins...
-Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
 Plug 'keith/swift.vim'
 Plug 'pangloss/vim-javascript'
@@ -80,22 +82,11 @@ let g:detectindent_preferred_expandtab=1
 let g:detectindent_preferred_indent=4
 autocmd BufReadPost * :DetectIndent 
 
-" settings for syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_typescript_checkers = ['eslint']
-let g:syntastic_python_checkers = ['flake8', 'mypy', 'pydocstyle', 'python']
-let g:syntastic_rust_checkers = ['cargo']
-let g:syntastic_swift_checkers = ['swiftlint']
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_python_flake8_exec = 'python3 -m flake8'
-let g:syntastic_html_tidy_args = '--custom-tags blocklevel'
+" settings for airline
+let g:airline_theme='molokai'
+let g:airline#extensions#ale#enabled = 1
+
+" settings for ALE
 
 " enable italicized comments
 let &t_ZH="\e[3m"
