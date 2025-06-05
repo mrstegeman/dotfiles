@@ -71,6 +71,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'leafgarland/typescript-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'projectfluent/fluent.vim'
+Plug 'elzr/vim-json'
 
 " Initialize plugin system
 call plug#end()
