@@ -46,7 +46,7 @@ pkgown() {
     if [[ $1 =~ ^/ ]]; then
         file="$1"
     else
-        file=$(which "$1")
+        file="$(which "$1")"
     fi
 
     case "$(__get_os_type)" in
@@ -60,9 +60,9 @@ pkgown() {
             rpm -qf "$file" --queryformat '%{NAME}\n'
             ;;
         Darwin)
-            path="$(readlink -f "$file")"
-            if [[ "$path" =~ Cellar ]]; then
-                echo "$path" | cut -d/ -f5
+            _path="$(readlink -f "$file")"
+            if [[ "$_path" =~ Cellar ]]; then
+                echo "$_path" | cut -d/ -f5
             fi
             ;;
         OpenWrt)
@@ -220,24 +220,6 @@ pkglist() {
             opkg files "$1"
             ;;
     esac
-}
-
-download_youtube() {
-    fname_in=$(youtube-dl --get-filename "$1")
-    fname_out="${fname_in/-[[:alnum:]]*.mp4/.mp4}"
-
-    youtube-dl \
-        --merge-output-format mp4 \
-        --postprocessor-args '-strict -2' \
-        "$1" || return 1
-    ffmpeg \
-        -i "${fname_in}" \
-        -map_metadata -1 \
-        -c:v copy \
-        -c:a aac \
-        -b:a 160k \
-        "${fname_out}" || return 1
-    rm -f "${fname_in}"
 }
 
 if which nvim >/dev/null 2>&1; then
