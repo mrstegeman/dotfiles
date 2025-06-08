@@ -45,6 +45,8 @@ fi
 # enable programmable completion features
 if [ -r /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
+if [ -r /usr/local/share/bash-completion/bash_completion ]; then
+    . /usr/local/share/bash-completion/bash_completion
 elif [ -r /etc/bash_completion ]; then
     . /etc/bash_completion
 elif [ -r "${HOMEBREW_PREFIX}/etc/bash_completion" ]; then
@@ -58,6 +60,21 @@ if [ -r /usr/share/git/completion/git-prompt.sh ]; then
 elif [ -d /Applications/Xcode.app/Contents/Developer/usr/share/git-core ]; then
     . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
     . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+else
+    if [ ! -d /tmp/.bash.git-completion ]; then
+        mkdir /tmp/.bash.git-completion
+        curl \
+            -S -L \
+            -o /tmp/.bash.git-completion/git-completion.bash \
+            "https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-completion.bash"
+        curl \
+            -S -L \
+            -o /tmp/.bash.git-completion/git-prompt.sh \
+            "https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh"
+    fi
+
+    . /tmp/.bash.git-completion/git-completion.bash
+    . /tmp/.bash.git-completion/git-prompt.sh
 fi
 
 if [ -d /etc/bash_completion.d ]; then
@@ -156,12 +173,27 @@ if [ "$TERM" != "dumb" ]; then
         else
             alias ls='gls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
         fi
+    elif [ "$(uname -s)" = "OpenBSD" ]; then
+        if [ -n "$(which colorls)" ]; then
+            export LSCOLORS=ExGxFxdaCxDaDahbadacec
+            alias ls='colorls -AG'
+        elif [ -n "$(which gls)" ]; then
+            alias ls='gls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
+        else
+            alias ls='ls -AF'
+        fi
     else
         alias ls='ls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
     fi
 
-    _link=$(readlink $(which grep))
-    if [ "$_link" != "busybox" ]; then
+    if [ "$(uname -s)" = "OpenBSD" ]; then
+        if [ -n "$(which ggrep)" ]; then
+            alias grep='ggrep --color=auto'
+            alias egrep='gegrep --color=auto'
+        fi
+
+        alias pcregrep='pcregrep --color=auto'
+    elif [ "$(readlink $(which grep))" != "busybox" ]; then
         alias grep='grep --color=auto'
         alias egrep='egrep --color=auto'
         alias zgrep='zgrep --color=auto'
