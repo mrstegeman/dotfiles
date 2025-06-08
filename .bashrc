@@ -128,6 +128,15 @@ export GPG_TTY=$(tty)
 
 # platform-specific
 if [ "$(uname -s)" = "Darwin" ]; then
+    HOMEBREW_PREFIX=""
+    if [ -d "/opt/brew" ]; then
+        HOMEBREW_PREFIX="/opt/brew"
+    elif [ -d "/opt/homebrew" ]; then
+        HOMEBREW_PREFIX="/opt/homebrew"
+    elif [ -d "/usr/local" ]; then
+        HOMEBREW_PREFIX="/usr/local"
+    fi
+
     export HOMEBREW_INSTALL_CLEANUP=1
     export HOMEBREW_NO_ANALYTICS=1
 
@@ -154,7 +163,7 @@ fi
 if [ "$TERM" != "dumb" ]; then
     PS1="┌──[\e[0;33m\u\e[0m@\e[0;34m\h\e[0m]─[\e[2;37m\w\e[0m]\$(__custom_git_ps1)\n└─\$ "
 
-    if [ $(uname) = "Darwin" ]; then
+    if [ "$(uname -s)" = "Darwin" ]; then
         export CLICOLOR=YES
     fi
 
@@ -207,15 +216,14 @@ fi
 complete -cf sudo
 
 # colors for less
-LESS='-R -c -i'
-LESS_TERMCAP_mb=$'\E[01;31m'
-LESS_TERMCAP_md=$'\E[01;31m'
-LESS_TERMCAP_me=$'\E[0m'
-LESS_TERMCAP_se=$'\E[0m'                           
-LESS_TERMCAP_so=$'\E[01;44;33m'                                 
-LESS_TERMCAP_ue=$'\E[0m'
-LESS_TERMCAP_us=$'\E[01;32m'
-export ${!LESS@}
+export LESS='-R -c -i'
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
 
 # alias definitions.
 if [ -f ~/.sh_aliases ]; then
@@ -223,4 +231,4 @@ if [ -f ~/.sh_aliases ]; then
 fi
 
 # extra, private stuff
-[ -f ~/.sh_extra ] && . ~/.sh_extra
+[ -f ~/.sh_extra ] && . ~/.sh_extra || true

@@ -94,6 +94,10 @@ stty -ctlecho
 
 # enable color support of ls and grep
 if [ "$TERM" != "dumb" ]; then
+    if [ "$(uname -s)" = "Darwin" ]; then
+        export CLICOLOR=YES
+    fi
+
     if type dircolors >/dev/null 2>&1; then
         if [ -f ~/.dircolors ]; then
             eval "`dircolors -b ~/.dircolors`"
@@ -103,17 +107,33 @@ if [ "$TERM" != "dumb" ]; then
     fi
 
     if [ "$(uname -s)" = "Darwin" ]; then
-        if ! which gls >/dev/null 2>&1; then
+        if [ -z "$(which gls)" ]; then
+            export LSCOLORS=ExGxFxdaCxDaDahbadacec
             alias ls='ls --color=auto -Av'
         else
             alias ls='gls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
+        fi
+    elif [ "$(uname -s)" = "OpenBSD" ]; then
+        if [ -n "$(which colorls)" ]; then
+            export LSCOLORS=ExGxFxdaCxDaDahbadacec
+            alias ls='colorls -AG'
+        elif [ -n "$(which gls)" ]; then
+            alias ls='gls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
+        else
+            alias ls='ls -AF'
         fi
     else
         alias ls='ls --color=auto -Av --ignore=.DS_Store --ignore=.localized'
     fi
 
-    _link=$(readlink $(which -p grep))
-    if [ "$_link" != "busybox" ]; then
+    if [ "$(uname -s)" = "OpenBSD" ]; then
+        if [ -n "$(which ggrep)" ]; then
+            alias grep='ggrep --color=auto'
+            alias egrep='gegrep --color=auto'
+        fi
+
+        alias pcregrep='pcregrep --color=auto'
+    elif [ "$(readlink $(which grep))" != "busybox" ]; then
         alias grep='grep --color=auto'
         alias egrep='egrep --color=auto'
         alias zgrep='zgrep --color=auto'
