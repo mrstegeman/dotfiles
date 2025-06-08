@@ -45,7 +45,7 @@ fi
 # enable programmable completion features
 if [ -r /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
-if [ -r /usr/local/share/bash-completion/bash_completion ]; then
+elif [ -r /usr/local/share/bash-completion/bash_completion ]; then
     . /usr/local/share/bash-completion/bash_completion
 elif [ -r /etc/bash_completion ]; then
     . /etc/bash_completion
