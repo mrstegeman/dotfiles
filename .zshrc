@@ -107,7 +107,7 @@ if [ "$TERM" != "dumb" ]; then
     fi
 
     if [ "$(uname -s)" = "Darwin" ]; then
-        if [ -z "$(which gls)" ]; then
+        if ! which gls >/dev/null 2>&1; then
             export LSCOLORS=ExGxFxdaCxDaDahbadacec
             alias ls='ls --color=auto -Av'
         else
@@ -133,7 +133,7 @@ if [ "$TERM" != "dumb" ]; then
         fi
 
         alias pcregrep='pcregrep --color=auto'
-    elif [ "$(readlink $(which grep))" != "busybox" ]; then
+    elif [ "$(readlink $(which -p grep))" != "busybox" ]; then
         alias grep='grep --color=auto'
         alias egrep='egrep --color=auto'
         alias zgrep='zgrep --color=auto'
