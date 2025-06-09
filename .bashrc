@@ -64,11 +64,11 @@ else
     if [ ! -d /tmp/.bash.git-completion ]; then
         mkdir /tmp/.bash.git-completion
         curl \
-            -S -L \
+            -s -S -L \
             -o /tmp/.bash.git-completion/git-completion.bash \
             "https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-completion.bash"
         curl \
-            -S -L \
+            -s -S -L \
             -o /tmp/.bash.git-completion/git-prompt.sh \
             "https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh"
     fi
