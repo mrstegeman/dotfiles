@@ -1,5 +1,6 @@
 # locale
 export LC_COLLATE=C
+export LC_CTYPE=en_US.UTF-8
 
 # programs
 export EDITOR=vim
