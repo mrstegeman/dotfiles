@@ -136,9 +136,11 @@ upgrade() {
             ;;
         OpenBSD)
             if [ $(id -u) = "0" ]; then
-                syspatch && pkg_add -u
+                syspatch
+                pkg_add -u
             else
-                doas syspatch && doas pkg_add -u
+                doas syspatch
+                doas pkg_add -u
             fi
             ;;
         OpenWrt)
