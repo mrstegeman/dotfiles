@@ -135,7 +135,11 @@ upgrade() {
             brew update && brew upgrade
             ;;
         OpenBSD)
-            pkg_add -u
+            if [ $(id -u) = "0" ]; then
+                syspatch && pkg_add -u
+            else
+                doas syspatch && doas pkg_add -u
+            fi
             ;;
         OpenWrt)
             opkg list-upgradable | cut -f 1 -d ' ' | xargs opkg upgrade
