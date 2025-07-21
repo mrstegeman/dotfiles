@@ -4,6 +4,8 @@
 <dict>
 	<key>AlternateMouseScroll</key>
 	<true/>
+	<key>ClickToSelectCommand</key>
+	<false/>
 	<key>Default Bookmark Guid</key>
 	<string>8D40D415-894F-4593-A6A3-9572275AA041</string>
 	<key>DoubleClickPerformsSmartSelection</key>
