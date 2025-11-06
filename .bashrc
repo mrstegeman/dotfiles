@@ -202,12 +202,14 @@ if [ "$TERM" != "dumb" ]; then
             alias egrep='gegrep --color=auto'
         fi
 
-        alias pcregrep='pcregrep --color=auto'
+        alias pcregrep='pcre2grep --color=auto'
+        alias pcre2grep='pcre2grep --color=auto'
     elif [ "$(readlink $(which grep))" != "busybox" ]; then
         alias grep='grep --color=auto'
         alias egrep='egrep --color=auto'
         alias zgrep='zgrep --color=auto'
-        alias pcregrep='pcregrep --color=auto'
+        alias pcregrep='pcre2grep --color=auto'
+        alias pcre2grep='pcre2grep --color=auto'
     fi
 else
     PS1='┌──[\u@\h]─[\w]\n└─\$ '
