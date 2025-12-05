@@ -61,17 +61,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rust-lang/rust.vim'
 Plug 'keith/swift.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'crusoexia/vim-javascript-lib'
 Plug 'mrstegeman/detectindent'
-Plug 'cespare/vim-toml'
 Plug 'crusoexia/vim-monokai'
 Plug 'leafgarland/typescript-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'projectfluent/fluent.vim'
-Plug 'elzr/vim-json'
 
 " Initialize plugin system
 call plug#end()
