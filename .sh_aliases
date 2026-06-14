@@ -1,0 +1,259 @@
+__get_os_type() {
+    if [ "$(uname)" = "Darwin" ]; then
+        echo 'Darwin'
+    elif [ "$(uname)" = "OpenBSD" ]; then
+        echo 'OpenBSD'
+    elif [ -L /etc/fedora-release -o -f /etc/redhat-release ]; then
+        echo 'RHEL'
+    elif [ -f /etc/debian_version ]; then
+        echo 'Debian'
+    elif [ -f /etc/openwrt_version ]; then
+        echo 'OpenWrt'
+    else
+        DISTRIB_ID=$(lsb_release -is)
+        if [ "$DISTRIB_ID" = "Ubuntu" ]; then
+            echo 'Debian'
+        fi
+
+        echo "$DISTRIB_ID"
+    fi
+}
+
+alias extract='bsdtar xf'
+
+# make directory and change to it
+mkcd() {
+    [[ $1 ]] || return 0
+    [[ ! -d $1 ]] && mkdir -p "$1"
+    [[ -d $1 ]] && builtin cd "$1"
+}
+
+# move up specified number of directories
+up() {
+    declare -i x=$1
+    local traverse
+
+    [[ $1 ]] || { cd ..; return; } # default to 1 level
+    (( x == 0 )) && return # noop
+
+    while (( x-- )); do
+        traverse+='../'
+    done
+
+    cd $traverse
+}
+
+# find what package owns a given executable or file
+pkgown() {
+    if [[ $1 =~ ^/ ]]; then
+        file="$1"
+    else
+        file="$(which "$1")"
+    fi
+
+    case "$(__get_os_type)" in
+        Arch)
+            pacman -Qo "$file"
+            ;;
+        Debian)
+            dpkg -S "$file"
+            ;;
+        RHEL)
+            rpm -qf "$file" --queryformat '%{NAME}\n'
+            ;;
+        Darwin)
+            _path="$(readlink -f "$file")"
+            if [[ "$_path" =~ Cellar ]]; then
+                echo "$_path" | cut -d/ -f5
+            fi
+            ;;
+        OpenBSD)
+            pkg_locate "$file"
+            ;;
+        OpenWrt)
+            opkg search "$file"
+            ;;
+    esac
+}
+
+# search for a package
+pkgsearch() {
+    case "$(__get_os_type)" in
+        Arch)
+            pacman -Ss "$1"
+            if [ $(id -u) = "0" ]; then
+                su -P -c "trizen -Ss --aur \"$1\"" michael
+            else
+                trizen -Ss --aur "$1"
+            fi
+            ;;
+        Debian)
+            apt-cache search "$1"
+            ;;
+        RHEL)
+            dnf search "$1"
+            ;;
+        Darwin)
+            brew search "$1"
+            ;;
+        OpenBSD)
+            pkg_info -Q "$1"
+            ;;
+        OpenWrt)
+            opkg list | grep "$1"
+            ;;
+    esac
+}
+
+# update packages
+upgrade() {
+    case "$(__get_os_type)" in
+        Arch)
+            if [ $(id -u) = "0" ]; then
+                pacman -Syu
+                su -P -c "trizen -Su --aur" michael
+            else
+                sudo pacman -Syu
+                trizen -Su --aur
+            fi
+            ;;
+        Debian)
+            if [ $(id -u) = "0" ]; then
+                apt-get update && apt-get dist-upgrade
+            else
+                sudo apt-get update && sudo apt-get dist-upgrade
+            fi
+            ;;
+        RHEL)
+            if [ $(id -u) = "0" ]; then
+                dnf update
+            else
+                sudo dnf update
+            fi
+            ;;
+        Darwin)
+            brew update && brew upgrade
+            ;;
+        OpenBSD)
+            if [ $(id -u) = "0" ]; then
+                syspatch
+                pkg_add -u
+            else
+                doas syspatch
+                doas pkg_add -u
+            fi
+            ;;
+        OpenWrt)
+            opkg list-upgradable | cut -f 1 -d ' ' | xargs opkg upgrade
+            ;;
+    esac
+}
+
+# get installed packages
+getinstalled() {
+    case "$(__get_os_type)" in
+        Arch)
+            pacman -Q
+            ;;
+        Debian)
+            dpkg --get-selections | grep '\sinstall$' | awk '{print $1}'
+            ;;
+        RHEL)
+            dnf list installed | awk '{print $1}'
+            ;;
+        Darwin)
+            brew list
+            ;;
+        OpenBSD)
+            pkg_info -A | awk '{ print $1 }'
+            ;;
+        OpenWrt)
+            opkg list-installed
+            ;;
+    esac
+}
+
+# get information about a packagae
+pkginfo() {
+    case "$(__get_os_type)" in
+        Arch)
+            if [ $(id -u) = "0" ]; then
+                pacman -Qi "$1" 2>/dev/null || \
+                    pacman -Si "$1" 2>/dev/null || \
+                    su -P -c "trizen -Si --aur \"$1\"" michael
+            else
+                pacman -Qi "$1" 2>/dev/null || \
+                    pacman -Si "$1" 2>/dev/null || \
+                    trizen -Si --aur "$1"
+            fi
+            ;;
+        Debian)
+            apt-cache show "$1"
+            ;;
+        RHEL)
+            dnf info "$1"
+            ;;
+        Darwin)
+            brew info "$1"
+            ;;
+        OpenBSD)
+            pkg_info "$1"
+            ;;
+        OpenWrt)
+            opkg info "$1"
+            ;;
+    esac
+}
+
+pkgprovides() {
+    case "$(__get_os_type)" in
+        Arch)
+            pkgfile "$1"
+            ;;
+        Debian)
+            apt-file search "$1"
+            ;;
+        RHEL)
+            dnf whatprovides "$1"
+            ;;
+        Darwin)
+            echo "Function unimplemented on Darwin"
+            ;;
+        OpenBSD)
+            pkg_info -E "$1"
+            ;;
+        OpenWrt)
+            echo "Function unimplemented on OpenWrt"
+            ;;
+    esac
+}
+
+pkglist() {
+    case "$(__get_os_type)" in
+        Arch)
+            pacman -Ql "$1"
+            ;;
+        Debian)
+            dpkg-query -L "$1"
+            ;;
+        RHEL)
+            rpm -ql "$1"
+            ;;
+        Darwin)
+            brew list "$1"
+            ;;
+        OpenBSD)
+            pkg_info -L "$1"
+            ;;
+        OpenWrt)
+            opkg files "$1"
+            ;;
+    esac
+}
+
+if which nvim >/dev/null 2>&1; then
+    alias vim=nvim
+    alias vimdiff='nvim -d'
+fi
+
+# vim: ft=sh

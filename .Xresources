@@ -1,0 +1,96 @@
+URxvt.transparent: true
+URxvt.shading: 15
+URxvt.scrollBar: false
+URxvt.saveLines: 100000
+URxvt.font: xft:Hack\-Regular:pixelsize=12
+URxvt.perl-ext-common: default,matcher,vtwheel,clipboard
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+URxvt.iso14755: false
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.cutchars: "\\ `\"\'()*;<>[]{|}&,=?@^\:"
+URxvt.urgentOnBell: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+
+URxvt.background: #0D0D0D
+URxvt.foreground: #E0E0E0
+URxvt.colorBD: #EFEFEF
+URxvt.colorIT: #EFEFEF
+URxvt.cursorColor: #FFA827
+URxvt.cursorColor2: #000000
+
+! black
+URxvt.color0: #222222
+URxvt.color8: #75715E
+! red
+URxvt.color1: #F92A72
+URxvt.color9: #F92A72
+! green
+URxvt.color2: #A6E22E
+URxvt.color10: #A6E22E
+! yellow
+URxvt.color3: #FFA827
+URxvt.color11: #E6DB74
+! blue
+URxvt.color4: #AE81FF
+URxvt.color12: #AE81FF
+! magenta
+URxvt.color5: #F92A72
+URxvt.color13: #F92A72
+! cyan
+URxvt.color6: #66D9EF
+URxvt.color14: #66D9EF
+! white
+URxvt.color7: #CFCFC2
+URxvt.color15: #F8F8F2
+
+XTerm.termName: xterm-256color
+XTerm.vt100.locale: true
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.saveLines: 100000
+XTerm.vt100.scrollBar: false
+XTerm.vt100.faceName: Hack Regular:size=12:antialias=true
+XTerm.vt100.bellIsUrgent: true
+XTerm.vt100.selectToClipboard: true
+XTerm.vt100.translations: #override \n\
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+XTerm.vt100.background: #0D0D0D
+XTerm.vt100.foreground: #E0E0E0
+XTerm.vt100.colorBD: #EFEFEF
+XTerm.vt100.colorIT: #EFEFEF
+XTerm.vt100.cursorColor: #FFA827
+XTerm.vt100.cursorColor2: #000000
+
+! black
+XTerm.vt100.color0: #222222
+XTerm.vt100.color8: #75715E
+! red
+XTerm.vt100.color1: #F92A72
+XTerm.vt100.color9: #F92A72
+! green
+XTerm.vt100.color2: #A6E22E
+XTerm.vt100.color10: #A6E22E
+! yellow
+XTerm.vt100.color3: #FFA827
+XTerm.vt100.color11: #E6DB74
+! blue
+XTerm.vt100.color4: #AE81FF
+XTerm.vt100.color12: #AE81FF
+! magenta
+XTerm.vt100.color5: #F92A72
+XTerm.vt100.color13: #F92A72
+! cyan
+XTerm.vt100.color6: #66D9EF
+XTerm.vt100.color14: #66D9EF
+! white
+XTerm.vt100.color7: #CFCFC2
+XTerm.vt100.color15: #F8F8F2

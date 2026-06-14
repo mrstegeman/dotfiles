@@ -1,0 +1,14 @@
+font-family = "Hack Nerd Font Mono Regular"
+font-family-bold-italic = "Hack Nerd Font Mono Bold Italic"
+font-family-italic = "Hack Nerd Font Mono Italic"
+font-family-bold = "Hack Nerd Font Mono Bold"
+font-size = 12
+#theme = "Monokai Pro Machine"
+theme = "TokyoNight"
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor,ssh-terminfo
+quit-after-last-window-closed = true
+copy-on-select = clipboard
+scrollback-limit = 1073741824
+split-divider-color = #828BB8

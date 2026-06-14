@@ -1,0 +1,23 @@
+[global]
+line-length = 100
+
+[MD003]
+style = "atx"
+
+[MD004]
+style = "asterisk"
+
+[MD009]
+strict = true
+
+[MD013]
+code-blocks = false
+tables = false
+reflow = true
+reflow-mode = "normalize"
+
+[MD029]
+style = "one_or_ordered"
+
+[MD046]
+style = "fenced"

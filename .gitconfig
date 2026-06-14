@@ -1,0 +1,32 @@
+[user]
+    name = Michael Stegeman
+    email = michael@stegeman.me
+[color]
+    diff = true
+    branch = true
+    status = true
+[diff]
+    external = git_diff_wrapper
+[pager]
+    diff =
+[core]
+    editor = vim
+    pager = less
+    excludesfile = ~/.gitignore
+[merge]
+    tool = vimdiff
+[push]
+    default = simple
+[commit]
+    gpgsign = true
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[pull]
+    ff = only
+[include]
+    path = ~/.gitconfig-extra
+[init]
+    defaultBranch = main

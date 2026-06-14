@@ -1,0 +1,9 @@
+au! BufRead,BufNewFile  *.md                set filetype=markdown
+au! BufRead,BufNewFile  *.aidl,*.stamp      set filetype=java
+au! BufRead,BufNewFile  */etc/hosts         set filetype=hosts
+au! BufRead,BufNewFile  *.lnk               set filetype=ld
+au! BufRead,BufNewFile  *.brs               set filetype=vb
+au! BufRead,BufNewFile  *SConscript         set filetype=python
+au! BufRead,BufNewFile  *.ino               set filetype=cpp
+au! BufRead,BufNewFile  *.pcl               set filetype=groovy
+au! BufRead,BufNewFile  *Package.resolved   set filetype=json
