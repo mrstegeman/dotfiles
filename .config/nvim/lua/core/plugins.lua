@@ -28,6 +28,7 @@ local packages = {
     src = "https://github.com/fredrikaverpil/neotest-golang",
     version = vim.version.range("*"),
   },
+  { src = "https://github.com/nvim-neotest/neotest-python" },
   { src = "https://github.com/nvim-neotest/neotest-jest" },
   { src = "https://github.com/rcarriga/nvim-dap-ui" },
   { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
@@ -200,6 +201,7 @@ require("neotest").setup({
       jestConfigFile = "jest.config.mjs",
       extensions = { "js", "jsx", "ts", "tsx" },
     }),
+    require("neotest-python")({}),
     require("neotest-swift-testing")({}),
   },
   quickfix = {

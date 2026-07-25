@@ -160,6 +160,3 @@ fi
 if [ -f ~/.sh_aliases ]; then
     . ~/.sh_aliases
 fi
-
-# swiftly setup
-[ -f ~/.swiftly/env.sh ] && . ~/.swiftly/env.sh || true
