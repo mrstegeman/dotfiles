@@ -9,3 +9,6 @@ require("core.plugins")
 require("core.lsp")
 require("core.dap")
 require("core.filetypes")
+
+-- load `extra.lua` if it's present
+pcall(require, "core.extra")

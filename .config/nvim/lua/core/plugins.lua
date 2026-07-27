@@ -38,7 +38,7 @@ local packages = {
   { src = "https://github.com/hrsh7th/nvim-cmp" },
   { src = "https://github.com/apple/pkl-neovim" },
   { src = "https://github.com/Darazaki/indent-o-matic" },
-  { src = "https://codeberg.org/mmllr/neotest-swift-testing" },
+  -- { src = "https://codeberg.org/mmllr/neotest-swift-testing" },
 }
 
 vim.pack.add(packages)
@@ -202,7 +202,7 @@ require("neotest").setup({
       extensions = { "js", "jsx", "ts", "tsx" },
     }),
     require("neotest-python")({}),
-    require("neotest-swift-testing")({}),
+    -- require("neotest-swift-testing")({}),
   },
   quickfix = {
     open = true,
