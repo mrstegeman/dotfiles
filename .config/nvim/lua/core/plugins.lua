@@ -1,6 +1,15 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == "telescope-fzf-native.nvim" and (kind == "install" or kind == "update") then
+      vim.system({ "make" }, { cwd = ev.data.path })
+    end
+  end,
+})
+
 local packages = {
   { src = "https://github.com/folke/tokyonight.nvim" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
@@ -14,6 +23,7 @@ local packages = {
     name = "ibl",
   },
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
   { src = "https://github.com/nvim-tree/nvim-tree.lua", version = vim.version.range("*") },
   {
     src = "https://github.com/neovim/nvim-lspconfig",
@@ -22,6 +32,7 @@ local packages = {
   { src = "https://github.com/nvim-neotest/nvim-nio" }, -- dependency
   { src = "https://github.com/nvim-lua/plenary.nvim" }, -- dependency
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
   { src = "https://github.com/mfussenegger/nvim-dap" },
   { src = "https://github.com/nvim-neotest/neotest", version = vim.version.range("*") },
   {
@@ -152,6 +163,7 @@ require("ibl").setup()
 
 -- telescope setup
 require("telescope").setup({})
+require("telescope").load_extension("fzf")
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope: Files" })
