@@ -1,2 +1,7 @@
+**/.claude/.cc-writes/
+**/.claude/settings.local.json
+**/.claude/worktrees/
+**/CLAUDE.local.md
+/.build/
 /.idea/
 /.vscode/
